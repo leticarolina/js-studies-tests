@@ -42,7 +42,7 @@
 //* ---------------- NaN = not a number ------------------*//
 // isNaN(); function to check if this is not a number
 
-const a = parseInt("abc");
-const b = 2;
-console.log(isNaN(a)); // true , because "a" is not a number even though we tried to pass it to parseInt using another function
-console.log(isNaN(b)); // false, because "b" is a Number (2)
+// const a = parseInt("abc");
+// const b = 2;
+// console.log(isNaN(a)); // true , because "a" is not a number even though we tried to pass it to parseInt using another function
+// console.log(isNaN(b)); // false, because "b" is a Number (2)
