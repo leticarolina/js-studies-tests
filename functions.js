@@ -1,6 +1,6 @@
 //* ----------------FUNCTIONS-----------------------*//
 
-// //*syntax function nameOfTheFunction (parameters = giving a name to the info the function will take later , max of 2) {} *//
+//*syntax function nameOfTheFunction (parameters = giving a name to the info the function will take later , max of 2) {then code here} *//
 // function sayHi() {
 //   console.log("hi");
 // }
@@ -17,7 +17,7 @@
 // function sum(a, b) {
 //   console.log(a + b);
 // }
-// let x = 1;//option to create a variable to define a value that will be passed to the function inside ()
+// let x = 1; //option to create a variable to define a value that will be passed to the function inside ()
 // let y = 2;
 // sum(x, y); //passing the information to a and b inside the () is another option, could put 1 and 2 straight here
 
@@ -25,16 +25,22 @@
 // function myName(a) {
 //   console.log(a);
 // }
-// myName("Leticia");//passing the info/my name to "a" parameter
+// myName("Leticia"); //passing the info/my name to "a" parameter
 
-//* -----------RETURN VALUE FROM A FUCNTION---------------*//
+//* -----------RETURN VALUE FROM A FUNCTION---------------*//
 
 //create a function with one argument (name) it will return that name added to the end of the string "Hello"
+// function person(she) {
+//   return "Hello " + she;
+// }
+// const girl = person("Leti");
+// console.log(girl);//Hello Leti
+
 // function storeName(a) {
 //   return "Hello " + a;
 //   console.log("this will not run because there is a return above");
 // } //return is used to return a value from the fuNCtion BUT NOTHING will run after "return"
-// let sayHi = storeName("Leticia");
+// const sayHi = storeName("Leticia");
 // console.log(sayHi);
 
 // function number(a, b) {
@@ -55,6 +61,14 @@
 // }
 // takeValue(printVariable); // this is passing the parameter of takeValue to the function printVariable
 
+// function first(ab) {
+//   console.log(ab);
+// }
+// function second(b) {
+//   b("hi");
+// }
+// second(first);
+
 // //create function that takes 2 parameter name and callback, take the name and append "hello" and print on the first fucntion
 // function printVariable(variable) {
 //   console.log(variable);
@@ -70,8 +84,8 @@
 // function number(a, b, callback) {
 //   callback(a + b);
 // }
-// function sum(number) {
-//   console.log(number);
+// function sum(num) {
+//   console.log(num);
 // }
 // number(1, 1, sum); //2
 
@@ -100,9 +114,9 @@
 
 //minimalistic version to pass function
 // function func(a, callback) {
-//   callback(a);//the callback turned into "console.log"
+//   callback(a); //the callback turned into "console.log"
 // }
-// func('I am "a"', (x) => console.log(x));// x is the parameter of the new function, after the => is what the function will return
+// func('I am "a"', (x) => console.log(x)); // x is the parameter of the new function, after the => is what the function will return
 
 /*----------PASSING FUNCTION AS PARAMETERS ANOTHER EXAMPLE----------*/
 // function doItAll(x, y, hi) /* x= 1 , y= 1, hi = 'Leti'*/ {
@@ -174,7 +188,7 @@ but global scope cannot access code inside the scope. */
 // console.log(c); // error 'c' is not defined in the global scope
 
 //*---------CLOSURES (good for interview)-----------*//
-/*normally closures are defined by function inside other fucntion*/
+/*normally closures are defined by function inside other function*/
 /*what is a closure? closure describe or limit the scope of a function*/
 
 // function first(a) {
@@ -185,16 +199,16 @@ but global scope cannot access code inside the scope. */
 // }
 // let x = first("Leticia"); //calling "first" function that will return another function from it
 // //x now represents the function "first"
-// x("Leti"); //when calling "x" we are calling the function "first" and passing the second parameter which maps to "second" function
-// let x = first("Leticia")('Leti'); // this code will give same result as line 185 and 187 together.
+// x("Leti"); //when calling "x" we are calling the function "first" and passing the second parameter which maps to "second" function, thats how we pass value to the inner function
+// let x = first("Leticia")('Leti'); // this code will give same result as 3 lines above together.
 
-function first(a) {
-  console.log(a + " first"); //Leticia first
-  return function second(b, c) {
-    console.log(b + " second b"); //Carolina second b
-    console.log(c + " second c"); //Azevedo second c
-  };
-}
-
-let theValues = first("Leticia");
-//second("Carolina", "Azevedo"); //this code is basically giving values to the parameters inside the "first" function
+// function first(a) {
+//   console.log(a + " first"); //Leticia first
+//   return function second(b, c) {
+//     console.log(b + " second b"); //Carolina second b
+//     console.log(c + " second c"); //Azevedo second c
+//   };
+// }
+// // let theValues = first("Leticia");
+// // theValues("Carolina", "Azevedo"); //this code is basically giving values to the 2 parameters of the inner function inside the "first" function
+// let theValues = first("Leticia")("Carolina", "Azevedo");// code will give same result as 2 lined above
