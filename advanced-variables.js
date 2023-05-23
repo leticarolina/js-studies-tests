@@ -56,6 +56,10 @@
 // array.push(11); //using variable.push() to add an element to the end of array, since push is a function need to use parenthesis
 // console.log(array); //now array goes till 11
 
+// const girl = ["leticia", 26, "single"];
+// girl.push("yes");
+// console.log(girl[3]);//yes
+
 // const us = [26, 31];
 // us.push(["Leticia", "Luca"]); //creating array inside another here
 // console.log(us);
@@ -86,9 +90,9 @@
 // console.log(array.length); //5 return
 
 //channging the value of an array
-const number = [1, 2, 3];
-number[0] = 26;
-console.log(number); //26, 2, 3
+// const number = [1, 2, 3];
+// number[0] = 26;
+// console.log(number); //26, 2, 3
 
 //* -------------------------OBJECTS-----------------------------*//
 /*objects are defined with curly brackets {key: value} inside goes key and value*/
@@ -96,10 +100,10 @@ console.log(number); //26, 2, 3
 // const sex = "Female";
 // const age = 26;
 // const favNumber = 8;
-//declaring same thing as an object
+// //declaring same thing as an object
 // const person = { sex: "Female", age: 26, favNumber: 8 };
 // console.log(person); //{sex: 'Female', age: 26, favNumber: 8}
-// console.log(person.sex); //Female variable.key will return it's value
+// console.log(person.sex); //return only Female, variable.key will return it's value
 
 //creating functions inside the objects
 // const person = {
@@ -108,10 +112,10 @@ console.log(number); //26, 2, 3
 //   number: 8,
 //   callFunction: function () {
 //     console.log("Hello");
-//   } /*one way to create fucntion*/,
+//   } /*one way to create function*/,
 //   callFunction2() {
 //     console.log("Hi");
-//   } /*easier way to create fucntion*/,
+//   } /*easier way to create function*/,
 // };
 // person.callFunction(); //Hello
 // person.callFunction2(); //Hi
@@ -129,7 +133,8 @@ console.log(number); //26, 2, 3
 //puttting objects and array inside another object
 // const person = {
 //   name: "leticia",
-//   hobbies: ["programming", "music", "swimming"],
+//   hobbies: ["programming", "music", "swimming"]//array
+//   ,
 //   address: {
 //     street: "primeiro de maio",
 //     city: "São Paulo",
@@ -146,5 +151,100 @@ console.log(number); //26, 2, 3
 //     age: 75,
 //   },
 // };
-// book.title = "The power of now"; //code to give a new value variable.key and then give the new value
+// book.title = "The power of now"; //code to give a new value variable.key = and then give the new value
 // console.log(book);
+
+//* -------------------------REFERENCE VS VALUE--------------------------*//
+//each array/object created has a NEW memory address, if the array/object is set as value of object then will share THE SAME memory address
+//array and objects reference the same code unless they are not related, aka: mentioned as value from another variable
+
+// const a = 1;
+// const b = "hi";
+// const c = [2, 3];
+// const d = c; //this code is making C and D array refer to the same value so if one channge the other will too
+// d.push(4); // this code will push "4" to both variables B and C, because when it comes to array/onjects they are referencing the same "memory address" 0x01
+// console.log(a);
+// console.log(b);
+// console.log(c);//[2, 3, 4]
+// console.log(d);//[2, 3, 4]
+
+// let a = [1, 2]; //one memory address
+// let b = [1, 2]; //another memory address
+// console.log(a === b); //return false, because variable a and b was nnever related so each has it's own memory address
+// b.push(3);
+// console.log(a); // [1, 2]
+// console.log(b); //[1, 2, 3]
+
+// let person = { name: "leticia", age: 26 }; //one memory address
+// person = { name: "leticia", age: 26, sex: "Female" };
+// let person2 = { name: "leticia", age: 26 }; //another memory address even tho same value inside
+// person.hobby = "Swimming"; //pushing only to one variable
+// console.log(person); // { name: "leticia", age: 26, sex: "Female" , hobby: "Swimming"}
+
+// const a = [1, 2];
+// const elementToAdd = 3;
+// add(a, elementToAdd); //array and element paramethers being passed to variables "a" and "elementToAdd"
+// function add(array, element) {
+//   element = element + 1;
+//   array.push(element);
+// }
+// //console.log(a); //[1, 2, 3]
+
+//* -------------------------ARRAYS METHODS--------------------------*//
+/*methods are functions you can use on the array*/
+
+//forEach logs out each array value separately
+// const a = [1, 2, 3, 4, 5];
+// a.forEach((line) => {
+//   console.log(line);
+// });
+// console.log(a);
+
+//map will loop thru each element of the array and return a new array with new values without changing the original
+// const a = [1, 2, 3];
+// const newA = a.map((mapping) => {
+//   return mapping * 2; //asking to return mapping which is the array multyplied by 2
+// });
+// console.log(a); //[1, 2, 3]
+// console.log(newA);//[2, 4, 6]
+
+//filter will loop thru element and filter the values that match with code
+// const a = [1, 2, 3, 4, 5, 6];
+// const newA = a.filter((filtering) => {
+//   return filtering > 3; //Code to filter only number higher than 3
+// });
+// console.log(newA); //OUTPUT [4, 5, 6]
+
+//find to find a value inside the array, this fucntion will return only the first true value, example below return only 4
+// const a = [2, 4, 6];
+// const newA = a.find((n) => {
+//   return n > 2;
+// });
+// console.log(newA);//4
+
+//some will return true of false if at least one element inside the array match with code given
+//.every will do the same but return true if only EVERY element match
+// const a = [1, 2, 3, 4, 5];
+// const isTrue = a.some((odd) => {
+//   return odd === 1; //code asking if there is number 1 on the array
+// });
+// console.log(isTrue); // true
+
+//!!!!exercise: get the total of the code below using .reduce method
+//.reduce takes at least 2 paramethers .reduce(1, 2)
+// const items = [
+//   { price: 10 },
+//   { price: 20 },
+//   { price: 14 },
+//   { price: 1 },
+//   { price: 6 },
+// ];
+// const total = items.reduce((sum, item) => {
+//   return sum + item.price;
+// }, 0);
+// console.log(total);
+
+//includes: return true or false is array include that value
+const myName = ["Leticia", "Carolina", "Nascimento", "Azevedo"];
+const isTrue = myName.includes("Carolina");
+console.log(isTrue);

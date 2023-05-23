@@ -91,7 +91,7 @@
 
 //* -----ARROW FUNCTION-----------*//
 
-/* normal fucntion syntax*/
+/* normal function syntax*/
 // function sum(a, b) {
 //   return a + b;
 // }
