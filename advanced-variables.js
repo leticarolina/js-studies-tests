@@ -232,7 +232,6 @@
 
 //---------REDUCE METHOD
 //!!!!exercise: get the total of the code below using .reduce method
-//.reduce takes at least 2 paramethers .reduce(function, starting value that will be used in the reducer function) and reduce the array down to ONE SINGLE METHOD
 // const items = [
 //   { price: 10 },
 //   { price: 20 },
@@ -240,8 +239,10 @@
 //   { price: 1 },
 //   { price: 6 },
 // ];
+//.reduce takes at least 2 paramethers .reduce(first is a function, second starting value that will be used in the reducer function) and reduce the array down to ONE SINGLE VALUE
+//the function inside .reduce() has 2 parameters aswell, the first is the accumulater(total) and the second parameter is each individual item on the abject given a name (info to be passed)
 // const total = items.reduce((sum, item) => {
-//   return sum + item.price;
+//   return sum + item.price; //whathever return here will be added to "sum" and then do the next loop until items are over
 // }, 0/*starting value as 0*/);
 // console.log(total);
 
@@ -286,14 +287,13 @@
 // console.log(values); //{name: 'Luca', age: 31, human: true}
 // console.log(newValues); //NewPerson {name: 'Leticia', age: 26, human: true}
 
-function car(model, brand, year) {
-  return {
-    model: model,
-    brand: brand,
-    year: year,
-  };
-}
-
+// function car(model, brand, year) {
+//   return {
+//     model: model,
+//     brand: brand,
+//     year: year,
+//   };
+// }
 // function NewCar(
 //   model,
 //   brand,
@@ -304,14 +304,13 @@ function car(model, brand, year) {
 //     (this.brand = brand),
 //     (this.year = year); //() curly brackets here are optional
 // }
-
-class NewCar {
-  constructor(model, brand, year) {
-    (this.model = model), (this.brand = brand), (this.year = year);
-  }
-}
-
-const newValues = new NewCar("Renegade", "Jeep", 2014); // the keyword "new" creates a new variable using the same paramets as the variable "car"
-const values = car("Model S", "Tesla", 2022);
-console.log(values);
-console.log(newValues);
+//this code below will do the same as the function above but using classes instead (not very common)
+// class NewCar {
+//   constructor(model, brand, year) {
+//     (this.model = model), (this.brand = brand), (this.year = year);
+//   }
+// }
+// const newValues = new NewCar("Renegade", "Jeep", 2014); // the keyword "new" creates a new variable using the same paramets as the variable "car"
+// const values = car("Model S", "Tesla", 2022);
+// console.log(values);
+// console.log(newValues);
