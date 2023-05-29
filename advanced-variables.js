@@ -47,30 +47,32 @@
 //* ---------------- NaN = not a number ------------------*//
 // isNaN(); function to check if this is not a number
 
-const a = parseInt("abc");
-const b = 2;
-console.log(isNaN(a)); // true , because "a" is not a number even though we tried to pass it to parseInt using another function
-console.log(isNaN(b)); // false, because "b" is a Number (2)
-console.log(a);
+// const a = parseInt("abc");
+// const b = 2;
+// console.log(isNaN(a)); // true , because "a" is not a number even though we tried to pass it to parseInt using another function
+// console.log(isNaN(b)); // false, because "b" is a Number (2)
+// console.log(a); //NaN
 
 //* ---------------- ARRAYS ------------------*//
-/*arrays are defined inside the square brackets [] and elements inside separated by comma ALSO ARRAY INDEX STARTS AT 0*/
+/*arrays are defined inside the square brackets [] and elements inside separated by comma - ALSO ARRAY INDEX STARTS AT 0*/
 
 // const array = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
 // console.log(array); // 1, 2, 3, 4, 5, 6, 7, 8, 9, 10
 // console.log(array[0]); //1 //to access the array use square brackets and the index
 // array.push(11); //using variable.push() to add an element to the end of array, since push is a function need to use parenthesis
-// console.log(array); //now array goes till 11
+// console.log(array); //now array goes till 11 because of the push
 
 // const girl = ["leticia", 26, "single"];
 // girl.push("yes");
-// console.log(girl[3]);//yes
+// console.log(girl[3]); //yes
 
+//Pushing a nested array inside another
 // const us = [26, 31];
 // us.push(["Leticia", "Luca"]); //creating array inside another here
 // console.log(us);
 // console.log(us[2]); //return ['Leticia', 'Luca'] which is the inner array created and has index of 2
 
+//accessing an array index inside of another array
 // const array = [
 //   ["hi", "bye"],
 //   ["day", "night"],
@@ -95,10 +97,15 @@ console.log(a);
 // const array = [1, 2, 3, 4, 5];
 // console.log(array.length); //5 return
 
-//channging the value of an array
+// const array = ["hy", "bye"];
+// console.log(array.length); //2 array length doesn't starts at 0
+
+//changing the value of an array
 // const number = [1, 2, 3];
-// number[0] = 26;
+// const numberNew = number;
+// number[0] = 26; //telling that the index 0 of variable number will be 26 but also changes variable numberNew
 // console.log(number); //26, 2, 3
+// console.log(numberNew); //26,2 ,3
 
 //* -------------------------OBJECTS-----------------------------*//
 /*objects are defined with curly brackets {key: value} inside goes key and value*/
@@ -125,6 +132,7 @@ console.log(a);
 // };
 // person.callFunction(); //Hello
 // person.callFunction2(); //Hi
+// console.log(person.number); //8
 
 //exercise: create object car with properties Make, model and isUsed. Also add a function which logs "Vroom"
 // const car = {
@@ -135,6 +143,7 @@ console.log(a);
 //     console.log("Vroom");
 //   },
 // };
+// car.noise();
 
 //puttting objects and array inside another object
 // const person = {
@@ -148,6 +157,7 @@ console.log(a);
 // };
 // console.log(person.address.city); //São Paulo, accessing value object inside another object
 // console.log(person.hobbies[2]); //swimming, accesing array index inside the object
+// //dot.name of the key to access key, and awith array need to put index inside parenthesis
 
 //channging the value of an object
 // const book = {
@@ -184,7 +194,7 @@ console.log(a);
 // let person = { name: "leticia", age: 26 }; //one memory address
 // person = { name: "leticia", age: 26, sex: "Female" }; // pushing new key and value
 // let person2 = { name: "leticia", age: 26 }; //another memory address even tho same value inside
-// person.hobby = "Swimming"; //pushing only to first variable
+// person.hobby = "Swimming"; //pushing new key and value only to first variable
 // console.log(person); // { name: "leticia", age: 26, sex: "Female" , hobby: "Swimming"}
 
 // const a = [1, 2];
@@ -194,7 +204,7 @@ console.log(a);
 //   element = element + 1;
 //   array.push(element);
 // }
-// //console.log(a); //[1, 2, 3]
+// console.log(a); //[1, 2, 3]
 
 //* -------------------------ARRAYS METHODS--------------------------*//
 /*methods are functions you can use on the array*/
@@ -303,19 +313,19 @@ console.log(a);
 // function NewCar(
 //   model,
 //   brand,
-//   year /*parameters will defined based on which function it will construct*/
+//   year /*parameters will defined base on which function it will construct*/
 // ) {
 //   (this.model = model),
 //     (this.name = " "),
 //     (this.brand = brand),
 //     (this.year = year); //() curly brackets here are optional
 // }
-//this code below will do the same as the function above but using classes instead (not very common)
-// class NewCar {
-//   constructor(model, brand, year) {
-//     (this.model = model), (this.brand = brand), (this.year = year);
-//   }
-// }
+// // //this code below will do the same as the function above but using classes instead (not very common)
+// // class NewCar {
+// //   constructor(model, brand, year) {
+// //     (this.model = model), (this.brand = brand), (this.year = year);
+// //   }
+// // }
 // const newValues = new NewCar("Renegade", "Jeep", 2014); // the keyword "new" creates a new variable using the same paramets as the variable "car"
 // const values = car("Model S", "Tesla", 2022);
 // console.log(values);

@@ -214,13 +214,13 @@ but global scope cannot access code inside the scope. */
 // }
 // const myName = a("Leticia")(25);
 
-function first(a) {
-  console.log(a + " = first"); //Leticia first
-  return function second(b, c) {
-    console.log(b + " = second b"); //Carolina = second b
-    console.log(c + " = second c"); //Azevedo = second c
-  };
-}
-// let theValues = first("Leticia");
-// theValues("Carolina", "Azevedo"); //this code is basically giving values to the 2 parameters of the inner function called "second"
-let theValues = first("Leticia")("Carolina", "Azevedo"); // code will give same result as 2 lined above
+// function first(a) {
+//   console.log(a + " = first"); //Leticia first
+//   return function second(b, c) {
+//     console.log(b + " = second b"); //Carolina = second b
+//     console.log(c + " = second c"); //Azevedo = second c
+//   };
+// }
+// // let theValues = first("Leticia");
+// // theValues("Carolina", "Azevedo"); //this code is basically giving values to the 2 parameters of the inner function called "second"
+// let theValues = first("Leticia")("Carolina", "Azevedo"); // code will give same result as 2 lined above
