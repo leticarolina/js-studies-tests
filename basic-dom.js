@@ -38,7 +38,7 @@ the browser will also understand without*/
 // }); //this code is telling to take classToArray variable and for each array run the function
 
 /*--------------------------QUERY SELECTOR-----------------------*/
-/*select any element regardless it's type, querySelector will select first element that match, querySelectorAll will select all elements that match on a node list*/
+/*select any element regardless it's type, querySelector will select first element that match, querySelectorAll will select all elements that match on a node list (sort of an array) with only forEach method included*/
 /*querySelectorAll has forEach method without needing to convert into an array before*/
 
 //selecting a data element
@@ -51,5 +51,47 @@ the browser will also understand without*/
 // divClass.forEach((line) => (line.style.color = "green")); //creating a loop for each array and then changing it's color, no need to change to array with query bcs it has forEach method appended
 
 //selecting an input
-const input = document.querySelector("input");
-console.log(input);
+// const input = document.querySelector("input");
+// console.log(input);
+
+/*--------------------------EVENT LISTENERS-----------------------*/
+
+//event listener on a button from html
+//create a variable to target the button
+// const myButton = document.querySelector("[data-button");
+// //addinng an event listener to the button variable
+// myButton.addEventListener("click", (after) => {
+//   console.log("Clicked");
+// }); //syntax nameOfVariable.addEventListener(2 parameters) first is name of the event seconf is the function that will run after event
+
+// const myButton = document.querySelector("[data-button]");
+// myButton.addEventListener("click", afterClick);
+// //removing an event listener
+// myButton.removeEventListener("click", afterClick);
+// //function created to be the second parameter of the event listeners
+// function afterClick() {
+//   console.log("Clicked");
+// }//nothing will happen on the console after clicking bcs the event is being added and remove right after on the same click
+
+//addidng event listener to an input
+// const input = document.querySelector("[data-input]");
+// input.addEventListener("change", inputChanged);
+// function inputChanged() {
+//   console.log("The input value has been changed");
+// } // "change" event listener will return on the console how many times the input has been changed
+//using "input" event instead of "change" will return how many characters are being written on the input
+
+//Using submit event listener on the submit button from a form
+// const submitButton = document.querySelector("[data-form]");
+// submitButton.addEventListener("submit", (clicked) => {
+//   clicked.preventDefault(); //this code is to prevent the default behaviour when running code**
+//   console.log("Submitted");
+// });
+//**the default behaviour for submit event listener, is to submit a form again to same page and the console.log will not work so need to use method .preventDefault() to escape default behaviour   */
+
+//exercise: Create an anchor <a> and when its clicked prevent the default (opening the link) and log something to the console instead
+const site = document.querySelector("[data-anchor");
+site.addEventListener("click", (a) => {
+  a.preventDefault();
+  console.log("The link was clicked");
+});
