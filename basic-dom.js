@@ -127,10 +127,64 @@ rezise = whenever the user resixe the window browser */
 
 /*----------------------------DATA ATTRIBUTES------------------------*/
 
-const dataOne = document.querySelector("[data-one]");
-//dataset will give a javascript object with all data values it has inside
-// console.log(dataOne.dataset); // return {one: '123'} "one" is from data-one="123" name I gave. (If you dont give a value for data it will return empty string)
-// console.log(dataOne.dataset.one); //return only value of the data "123"
-//changing value of data attribute inside javascript (instead of HTML)
-dataOne.dataset.one = "456";
-console.log(dataOne);
+// const dataOne = document.querySelector("[data-one]");
+// //dataset will give a javascript object with all data values it has inside
+// // console.log(dataOne.dataset); // return {one: '123'} "one" is from data-one="123" name I gave. (If you dont give a value for data it will return empty string)
+// // console.log(dataOne.dataset.one); //return only value of the data "123"
+// //changing value of data attribute inside javascript (instead of HTML)
+// dataOne.dataset.one = "456"; //this will change 123 to 456 only on javascript not html (same way as changing value of an object)
+
+//this code will chage inside the html data-clicks= "" the amount of times the button is clicked
+// const buttons = document.querySelectorAll("button");
+// buttons.forEach((theButton) => {
+//   theButton.addEventListener("click", () => {
+//     const dataToNumber = parseInt(theButton.dataset.clicks); //.clicks is from the data-clicks on html
+//     theButton.dataset.clicks = dataToNumber + 1;
+//   });
+// });
+
+/*----------------------------DOM TRAVERSAL------------------------*/
+/*traverse = atravessar*/
+//key elements = children, nextElementSibling, previousElementSibling, parentElement
+/*  <div id="grand-parent">
+      Grand Parent 
+      <div>
+        Parent 1
+          <div id="child-one" class='child' >Child 1</div>
+          <div class='child'>Child 2</div>
+      </div>
+      <div> Parent 2</div>
+    </div> */
+
+// const grandParent = document.querySelector("#grand-parent");
+// grandParent.style.color = "red";
+// //accessing the children of Main element, in this case of the grandParent
+// grandParent.children[0].style.color = "pink"; // syntax: children[index] in this case parent 1 is index 0.
+// grandParent.children[1].style.color = "gray"; // channging color of parent 2
+// //another way to get access the parents declaring variable (recommended)
+// const ParentOne = grandParent.children[0]; //accessing parent one
+// const parentTwo = ParentOne.nextElementSibling; //nextElementSibling to get the next sibling of the Elements, there is also previousElementSibling
+// const childrenOne = ParentOne.children[0]; //accessing the child of parent one <div>Child 1</div>
+// const childrenTwo = ParentOne.children[1]; //accessing the child of parent one <div>Child 2</div>
+// childrenOne.style.color = "brown"; //changing the color of only the first children of Parent 1
+
+//getting the parent element of a child
+// const childOne = document.querySelector("#child-one");
+// const itsParent = childOne.parentElement; //getting the parent element of the target
+// itsParent.style.color = "red";
+// //getting the parent of itsParent
+// const grandParent = itsParent.parentElement;
+// grandParent.style.color = "blue";
+
+//jumping from the child straight to the grand parent, without having to pass thru elements in between using method closest()
+//*important because not always you will know how many children/parent there is
+// const childOne = document.querySelector("#child-one");
+// const grandParent = childOne.closest("#grand-parent"); //closest method look for all of the parents and finds the FIRST/closest one that matches with selector we put in () that can be class, id etc
+// grandParent.style.color = "red";
+
+//jumping from the grand parent to the childs
+const grandParent = document.querySelector("#grand-parent");
+const childrens = grandParent.querySelectorAll(".child");
+childrens.forEach((c) => {
+  c.style.color = "red";
+});
