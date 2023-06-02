@@ -68,7 +68,7 @@ the browser will also understand without*/
 // myButton.addEventListener("click", afterClick);
 // //removing an event listener
 // myButton.removeEventListener("click", afterClick);
-// //function created to be the second parameter of the event listeners
+// //function created to be the second parameter of both the event listeners
 // function afterClick() {
 //   console.log("Clicked");
 // }//nothing will happen on the console after clicking bcs the event is being added and remove right after on the same click
@@ -81,7 +81,7 @@ the browser will also understand without*/
 // } // "change" event listener will return on the console how many times the input has been changed
 //using "input" event instead of "change" will return how many characters are being written on the input
 
-//Using submit event listener on the submit button from a form
+//Using 'submit' event listener on the submit button from a form
 // const submitButton = document.querySelector("[data-form]");
 // submitButton.addEventListener("submit", (clicked) => {
 //   clicked.preventDefault(); //this code is to prevent the default behaviour when running code**
@@ -89,9 +89,48 @@ the browser will also understand without*/
 // });
 //**the default behaviour for submit event listener, is to submit a form again to same page and the console.log will not work so need to use method .preventDefault() to escape default behaviour   */
 
+//PREVENTING THE DEFAULT BEHAVIOUR
 //exercise: Create an anchor <a> and when its clicked prevent the default (opening the link) and log something to the console instead
-const site = document.querySelector("[data-anchor");
-site.addEventListener("click", (a) => {
-  a.preventDefault();
-  console.log("The link was clicked");
-});
+// const site = document.querySelector("[data-anchor");
+// site.addEventListener("click", (a) => {
+//   a.preventDefault(); //this method prevents the link to be opened and will run code below instead
+//   console.log("The link was clicked");
+// });
+//same result of exercise on a different way
+// const theLink = document.querySelector("a");
+// theLink.addEventListener("click", recalculate);
+// function recalculate(aa) {
+//   aa.preventDefault();
+//   console.log("The link was clicked");
+// }
+
+//TYPES OF Event
+/*mouseenter = everytime mouse hover will trigger the event listener
+mouseleave = whenever the mouse leave the object will trigger the event listener
+mouseover = mouse over will only run once when the mouse is over an element (?)
+focus = whenever the object receives focus (stop will mouse or click) from the mouse it will trigger
+blur = after the object loose the focus
+rezise = whenever the user resixe the window browser */
+
+/*----------------NORMAL VS ARROW FUNCTION (using 'this' keyword)---------------*/
+
+//always use arrow function is you will use the keyword 'this'
+// const button = document.querySelector("[data-button]");
+// //adding evennt listener with arrow function to log 'this'
+// button.addEventListener("click", (theEvent) => {
+//   console.log(this);
+// }); //'this' will access a window object (means that can do things like this.document inside the arrow function only)
+// //adding evennt listener with normal function to log 'this'
+// button.addEventListener("click", function theEvent(a) {
+//   console.log(this);
+// }); //this will access the html code for button, if I would write console.log(a.targe) would return the same
+
+/*----------------------------DATA ATTRIBUTES------------------------*/
+
+const dataOne = document.querySelector("[data-one]");
+//dataset will give a javascript object with all data values it has inside
+// console.log(dataOne.dataset); // return {one: '123'} "one" is from data-one="123" name I gave. (If you dont give a value for data it will return empty string)
+// console.log(dataOne.dataset.one); //return only value of the data "123"
+//changing value of data attribute inside javascript (instead of HTML)
+dataOne.dataset.one = "456";
+console.log(dataOne);
