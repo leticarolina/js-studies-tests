@@ -27,8 +27,6 @@
 // }
 // myName("Leticia"); //passing the info/Leticia straight to "a" parameter without creating a variable for that
 
-//* -----------RETURN VALUE FROM A FUNCTION---------------*//
-
 //create a function with one argument (name) it will return that name added to the end of the string "Hello"
 // function person(she) {
 //   return "Hello " + she;

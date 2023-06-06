@@ -183,8 +183,33 @@ rezise = whenever the user resixe the window browser */
 // grandParent.style.color = "red";
 
 //jumping from the grand parent to the childs
-const grandParent = document.querySelector("#grand-parent");
-const childrens = grandParent.querySelectorAll(".child");
-childrens.forEach((c) => {
-  c.style.color = "red";
-});
+// const grandParent = document.querySelector("#grand-parent");
+// const childrens = grandParent.querySelectorAll(".child"); //queryselectorAll will select all elements that match with class child
+// childrens.forEach((c) => {
+//   c.style.color = "red";
+// });//forEach because it is more than one element then need to create a function
+
+/*----------------------------TO DO LIST CODE------------------------*/
+// //1. Select all elements
+// const form = document.querySelector("#new-item-form");
+// const list = document.querySelector("#list");
+// const input = document.querySelector("#item-input");
+// const button = document.querySelector("[data-button]");
+
+// //2. When click submit the form, add a new element
+// form.addEventListener("submit", (a) => {
+//   a.preventDefault();
+//   //2.1 create a new item/element on the html after click submit
+//   const item = document.createElement("div");
+//   item.innerText = input.value; //setting what will be the inner text of div
+//   item.classList.add("list-item"); //addidng the css class list-item to this new element created
+//   //2.2 add the item/element to the list element on html using append child
+//   list.appendChild(item); //syntax parentHTMLElement.appendChild(variable)
+//   //2.3 clear the input after clicking to add the value
+//   input.value = "";
+//   //2.4 Setup event listener to delete item when click on it 2 ways
+//   item.addEventListener("click", (deleted) => {
+//     list.removeChild(item); //this will remove the child from the list
+//     item.remove(); //method remove() willremove this individual item
+//   });
+// });
