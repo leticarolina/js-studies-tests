@@ -2,12 +2,14 @@
 //sintax if (here goes variable that will reference the statement or js code) {code that will run if true} else { code that will run if false}
 //basically if (this is true) {run this code} else/if not {run this code}
 
-// let a = 18;
-// if (a >= 18) {
-//   console.log("You are old enough!");
-// } else {
-//   console.log("You are still young!");
-// } //you are old enough!
+let a = 17;
+if (a >= 18) {
+  console.log("You are old enough!");
+} else if (a > 14 || a <= 17) {
+  console.log("You are almost there");
+} else {
+  console.log("You are still young!");
+} //you are old enough!
 
 //combining multiples if statements in one chain using else if, (the last else can be at the end)
 //You can only run onne condition inside if statement, either one or another(s) to run more than one statement need to declare each if separately
@@ -68,7 +70,7 @@
 // const isUserOnline = true;
 // isUserOnline ? console.log("Online") : console.log("Offline"); //online
 
-//when is interesting actually use ternary operator is when need to set a variable based on true or false variable
+//ONLY CASE when is interesting actually use ternary operator is when need to set a variable based on true or false of another variable
 // const isUserLogged = true;
 // let welcomeMessage = "";
 // if (isUserLogged) {
@@ -78,8 +80,63 @@
 // }
 // console.log(welcomeMessage); //welcome! because isUserLogged = true;
 //same code using ternary operator (syntax Variable  ?  code to run if true : code to run if false)
-const isUserLogged = true;
-const welcomeMessage = isUserLogged
-  ? (welcomeMessage = "welcome!")
-  : "Please log in";
-console.log(welcomeMessage); //welcome!
+// const isUserLogged = true;
+// const welcomeMessage = isUserLogged ? "welcome!" : "Please log in"; //no need to redeclare variable, only put the new value
+// console.log(welcomeMessage); //welcome!
+
+//* -----------------SWITCH STATEMENT---------------*//
+//Useful when you have  multiple choices inside if statement can use switch statement
+//syntax switch (variable to check) { case JSCodeForTheCaseorStringNumberETC : codeToRun break }
+
+// const favoriteAnimal = "bobcat";
+// //example using if statement
+// // if (favoriteAnimal === "cat") {
+// //   console.log("Cats are so cute");
+// // } else if (favoriteAnimal === "dog") {
+// //   console.log("Dogs are humans best friend");
+// // } else if (favoriteAnimal === "horse") {
+// //   console.log("That is an interesting choice");
+// // } else {
+// //   console.log("I am not familiar with that Animal");
+// // }
+// //example using switch statement
+// // switch (favoriteAnimal /*syntax switch (variable to check)*/) {
+// //   case "bobcat": //putting 2 cases possibilities to run one code
+// //   case "cat":
+// //     console.log("Cats are so cute");
+// //     break; //break after every case so it won't keep running every case
+// //   case "dog": //case keyword then check statement :
+// //     console.log("Dogs are humans best friend");
+// //     break;
+// //   case "horse":
+// //     console.log("That is an interesting choice");
+// //     break;
+// //   default:
+// //     /*default keyword is the "else" for if statement*/ console.log(
+// //       "That is cool but I am unfamiliar with that animal"
+// //     );
+// // }
+
+//EXERCISE: create switch statement to check the value of number variable
+//if 0 prints "It is zero"
+//if between 1-2 prints "It is small" //if between 3-4 prints "It is medium"
+//if 5 prints "It is large" //if none of these prints "Try again"
+// const number = 5;
+// switch (number) {
+//   case 0:
+//     console.log("It is zero");
+//     break;
+//   case 1:
+//   case 2:
+//     console.log("It is small");
+//     break;
+//   case 3:
+//   case 4:
+//     console.log("It is medium");
+//     break;
+//   case 5:
+//     console.log("It is large");
+//     break;
+//   default:
+//     console.log("Try again");
+// }

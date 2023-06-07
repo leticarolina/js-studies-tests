@@ -25,6 +25,7 @@
 
 //* ---------------- == Vs === ------------------*//
 /* triple equal signs === tell JS to not convert types before comparing, because type coercion with 2 equal signs == can give bugs*/
+//unly use == when comparing null and undefined otherwise use ALWAYS ===
 
 // with type coercion
 // const a = 1; //number
