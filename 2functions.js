@@ -222,3 +222,5 @@ but global scope cannot access code inside the scope. */
 // // let theValues = first("Leticia");
 // // theValues("Carolina", "Azevedo"); //this code is basically giving values to the 2 parameters of the inner function called "second"
 // let theValues = first("Leticia")("Carolina", "Azevedo"); // code will give same result as 2 lined above
+
+//*---------FOR LOOP-----------*//
