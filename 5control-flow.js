@@ -179,7 +179,7 @@
 // }
 
 //* --------------------------------WHILE LOOP------------------------------*//
-//does the same thing as for loop but take only one paramether (the ennding point)
+//does the same thing as for loop but take only one paramether (the ending point)
 
 //with for loop, looping till number 5
 // for (let i = 1; i <= 5; i++) {
@@ -193,17 +193,80 @@
 // }
 
 //USEFUL: while loop is useful when you don't know how many times code needs to loop
-const family = {
-  names: "Leticia",
-  child: {
-    names: "Zoe",
-    child: {
-      names: "snow",
+// const family = {
+//   names: "Leticia",
+//   child: {
+//     names: "Zoe",
+//     child: {
+//       names: "snow",
+//     },
+//   },
+// }; //suppose that the last child is a number we don't know
+// let currentName = family;
+// while (currentName != null /*while family is not null run the code*/) {
+//   console.log(currentName.names); //this will loop forever on 'Leticia'
+//   currentName = currentName.child; //this will change the currentName to be the child every time it loops until child is null
+// }
+
+//* --------------------------------RECURSION (GOOD FOR INTERVIEWS)------------------------------*//
+//recursion is a function that calls itself again, anything you can do with recursion you do with a normal for loop aswell
+//not reccomended to use recutrsion unless you have a strong case for it
+
+//example with for loop to print 1 to 10
+// for (let n = 1; n <= 10; n++) {
+//   console.log(n);
+// }
+//example same result to print 1 to 10 but with recursion
+// function callNumber(number) {
+//   if (number > 10) return;
+//   console.log(number);
+//   callNumber(number + 1);
+// }
+// callNumber(1);
+
+//usinng the word return, it will return to the previous function that was called
+// function currentNumber(number) {
+//   if (number > 2) return; //when getts to nnumber 3 it will return to the previous call equals 2 and then return
+//   console.log(number);
+//   currentNumber(number + 1); //number will be equal to 2
+//   console.log("I am the return stack"); //will be logged 2 times after the number 1 , 2
+// }
+// currentNumber(1); //it will start here with number 1
+// console.log()
+
+//getting the sum of 1 to 5 with for loop
+// let total = 0;
+// for (let n = 1; n <= 5; n++) {
+//   total = total + n;
+// }
+// console.log(total); //15
+//getting the sum of 1 to 5 with for recursion
+// function total(number) {
+//   if (number <= 0) return 0;
+//   return number + total(number - 1);
+// }
+// console.log(total(5));
+
+//EXERCISE: object base for the exercise
+const person = {
+  name: "Leticia",
+  friend: {
+    name: "Fernanda",
+    friend: {
+      name: "Beatriz",
     },
   },
 };
-let currentName = family;
-while (currentName != null /*while family is not null run the code*/) {
-  console.log(currentName.names); //this will loop forever on 'Leticia'
-  currentName = currentName.child; //
+//Getting info from object with whikle loop
+// let currentName = person;
+// while (currentName != null) {
+//   console.log(currentName.name);
+//   currentName = currentName.friend;
+// }
+//exercise get the same result with recursion
+function printNames(n) {
+  if (n == null) return;
+  console.log(n.name);
+  printNames(n.friend);
 }
+printNames(person);
