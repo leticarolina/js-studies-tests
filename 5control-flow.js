@@ -248,15 +248,15 @@
 // console.log(total(5));
 
 //EXERCISE: object base for the exercise
-const person = {
-  name: "Leticia",
-  friend: {
-    name: "Fernanda",
-    friend: {
-      name: "Beatriz",
-    },
-  },
-};
+// const person = {
+//   name: "Leticia",
+//   friend: {
+//     name: "Fernanda",
+//     friend: {
+//       name: "Juliano",
+//     },
+//   },
+// };
 //Getting info from object with whikle loop
 // let currentName = person;
 // while (currentName != null) {
@@ -264,9 +264,83 @@ const person = {
 //   currentName = currentName.friend;
 // }
 //exercise get the same result with recursion
-function printNames(n) {
-  if (n == null) return;
-  console.log(n.name);
-  printNames(n.friend);
+// function printNames(n) {
+//   if (n == null) return;
+//   console.log(n.name);
+//   printNames(n.friend);
+//   console.log("I am returning"); // was logged 3 times
+// }
+// printNames(person);
+
+// const person = {
+//   name: "Leticia",
+//   friend: {
+//     name: "Fernanda",
+//     friend: {
+//       name: "Juliano",
+//     },
+//   },
+// };
+
+// function printNames(theName) {
+//   if (theName == null) return;
+//   console.log(theName.name);
+//   printNames(theName.friend);
+// }
+
+// printNames(person);
+
+//anpother example of recursion
+// function printNumber(number) {
+//   if (number > 11) {
+//     return number;
+//   }
+//   console.log(number);
+//   return printNumber(number + 1);
+// }
+// printNumber(10);
+// console.log("this code will run after the function printNumber is done");
+
+//
+// function printNumber(number) {
+//   if (number > 10) return;
+//   console.log(number);
+//   printNumber(number + 1);
+//   console.log("bob " + number); /*<- this is BOB*/
+// }
+// printNumber(1);
+
+//* --------------------------------SHORT CIRCUIT EVALUATION------------------------------*//
+//short circuit evaluation will skip the rest of the code if the first boolean will already return true
+//true ||or false will always be equal to true, javascript will not evaluate the second booleam bcs the first one already returns true
+//false && anything will always return false
+
+//using or to compare
+// console.log(true || true); //true
+// console.log(true || false); //true
+// console.log(false || true); //true
+// console.log(false || false || true); //true
+
+// function printTrue() {
+//   console.log("I am true");
+//   return true;
+// }
+// function printFalse() {
+//   console.log("I am false");
+//   return false;
+// }
+// // printTrue() || printFalse(); // it will print out "I am true" and ignore the second function
+// printFalse() || printTrue(); // "I am false" "I am true" , since the first function return false it will keep going until the true
+// printFalse() || printTrue() || printFalse(); //will not print the last function since the second one already returned true
+
+//using and && , javascript will return false
+function printFalse() {
+  console.log("I am false");
+  return false;
 }
-printNames(person);
+function printTrue() {
+  console.log("I am true");
+  return true;
+}
+// printFalse() && printTrue(); //I am false
+printTrue() && printFalse();
