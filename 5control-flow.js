@@ -2,17 +2,17 @@
 //sintax if (here goes variable that will reference the statement or js code) {code that will run if true} else { code that will run if false}
 //basically if (this is true) {run this code} else/if not {run this code}
 
-// let a = 17;
+// let a = 40;
 // if (a >= 18) {
 //   console.log("You are old enough!");
-// } else if (a > 14 || a <= 17)  {
-//   console.log("You are almost there");
+// } else if (a > 14 || a <= 17) {
+//   console.log("You are almost old enough");
 // } else {
 //   console.log("You are still young!");
-// }//you are old enough!
+// } //you are old enough!
 
 //combining multiples if statements in one chain using else if, (the last else can be at the end)
-//You can only run onne condition inside if statement, either one or another(s) to run more than one statement need to declare each if separately
+//You can only run one condition inside if statement, either one or another(s) to run more than one statement need to declare each if separately
 // const price = 15;
 // if (price === null) {
 //   console.log("There is no price");
@@ -79,7 +79,7 @@
 //   welcomeMessage = "Please log in";
 // }
 // console.log(welcomeMessage); //welcome! because isUserLogged = true;
-// //same code using ternary operator (syntax Variable  ?  code to run if true : code to run if false)
+//same code using ternary operator (syntax Variable  ?  code to run if true : code to run if false)
 // const isUserLogged = true;
 // const welcomeMessage = isUserLogged ? "welcome!" : "Please log in"; //no need to redeclare variable, only put the new value
 // console.log(welcomeMessage); //welcome!
@@ -88,18 +88,18 @@
 //Useful when you have  multiple choices inside if statement can use switch statement
 //syntax switch (variable to check) { case JSCodeForTheCaseorStringNumberETC : codeToRun break }
 
-// const favoriteAnimal = "bobcat";
-// //example using if statement
-// // if (favoriteAnimal === "cat") {
-// //   console.log("Cats are so cute");
-// // } else if (favoriteAnimal === "dog") {
-// //   console.log("Dogs are humans best friend");
-// // } else if (favoriteAnimal === "horse") {
-// //   console.log("That is an interesting choice");
-// // } else {
-// //   console.log("I am not familiar with that Animal");
-// // }
-// //example using switch statement
+// const favoriteAnimal = "rat";
+//example using if statement
+// if (favoriteAnimal === "cat") {
+//   console.log("Cats are so cute");
+// } else if (favoriteAnimal === "dog") {
+//   console.log("Dogs are humans best friend");
+// } else if (favoriteAnimal === "horse") {
+//   console.log("That is an interesting choice");
+// } else {
+//   console.log("I am not familiar with that Animal");
+// }
+//example using switch statement
 // switch (favoriteAnimal /*syntax switch (variable to check)*/) {
 //   case "bobcat": //putting 2 cases possibilities to run one code
 //   case "cat":
@@ -151,26 +151,34 @@
 //runnning a for loop statement to print out Hello world
 // for (
 //   let start = 0 /*step 1*/;
-//   start < 10 /*step 2*/;
+//   start < 5 /*step 2*/;
 //   start = start + 1 /*step 3 or can be  start++*/
 // ) {
 //   console.log("Hello world");
 // } //hello world 5X
 
-//using break keyword inside for loop to stop the loop
+// for (var a = 0; a < 10; a++) {
+//   console.log("clap!");
+// } //clap 10x
+
+// using break keyword inside for loop to stop the loop
 // for (let i = 1; i < 11; i++) {
 //   if (i > 5) break; //declaring an if statement to break
 //   console.log(i);
 // } //1 2 3 4 5
 
-//using continue inside for loop
-// for (let start = 1; start <= 5; start++) {
-//   if (start > 3) continue; //this will not run the code that match if statement, will be skipped
-//   console.log(start);
+// //using continue inside for loop
+// // for (let start = 1; start <= 5; start++) {
+// //   if (start > 3) continue; //this will not run the code that match if statement, will be skipped
+// //   console.log(start);
 // } // 1 2 3
 
 //exercise: create a for loop that prints out from 0 to 10
 //then modify the loop to exit the loop when the value is equal to 5
+// for (a = 0; a < 11; a++) {
+//   if (a > 4) break;
+//   console.log(a);
+// }
 // for (let number = 0; number <= 10; number++) {
 //   if (number === 5) {
 //     break;
@@ -185,7 +193,7 @@
 // for (let i = 1; i <= 5; i++) {
 //   console.log(i);
 // }
-//with while loop, looping until number 5
+// // with while loop, looping until number 5
 // i = 0; //need to declare a separate variable
 // while (i <= 5) {
 //   console.log(i);
@@ -198,33 +206,33 @@
 //   child: {
 //     names: "Zoe",
 //     child: {
-//       names: "snow",
+//       names: "Snow",
 //     },
 //   },
 // }; //suppose that the last child is a number we don't know
-// let currentName = family;
-// while (currentName != null /*while family is not null run the code*/) {
-//   console.log(currentName.names); //this will loop forever on 'Leticia'
-//   currentName = currentName.child; //this will change the currentName to be the child every time it loops until child is null
-// }
+// // let currentName = family;
+// // while (currentName != null /*while family is not null run the code*/) {
+// //   console.log(currentName.names); //this will loop forever on 'Leticia'
+// //   currentName = currentName.child; //this will change the currentName to be the child every time it loops until child is null
+// // }
 
 //* --------------------------------RECURSION (GOOD FOR INTERVIEWS)------------------------------*//
 //recursion is a function that calls itself again, anything you can do with recursion you do with a normal for loop aswell
-//not reccomended to use recutrsion unless you have a strong case for it
+//not reccomended to use recursion unless you have a strong case for it
 
 //example with for loop to print 1 to 10
 // for (let n = 1; n <= 10; n++) {
 //   console.log(n);
 // }
-//example same result to print 1 to 10 but with recursion
+// example same result to print 1 to 10 but with recursion
 // function callNumber(number) {
-//   if (number > 10) return;
+//   if (number > 10) return; // this is the ending point
 //   console.log(number);
 //   callNumber(number + 1);
 // }
 // callNumber(1);
 
-//usinng the word return, it will return to the previous function that was called
+//using the word return, it will return to the previous function that was called
 // function currentNumber(number) {
 //   if (number > 2) return; //when getts to nnumber 3 it will return to the previous call equals 2 and then return
 //   console.log(number);
@@ -232,7 +240,7 @@
 //   console.log("I am the return stack"); //will be logged 2 times after the number 1 , 2
 // }
 // currentNumber(1); //it will start here with number 1
-// console.log()
+// console.log("hi"); //bla bla will run after the whole recursion is done
 
 //getting the sum of 1 to 5 with for loop
 // let total = 0;
@@ -257,7 +265,7 @@
 //     },
 //   },
 // };
-//Getting info from object with whikle loop
+//Getting info from object with while loop
 // let currentName = person;
 // while (currentName != null) {
 //   console.log(currentName.name);
@@ -271,37 +279,33 @@
 //   console.log("I am returning"); // was logged 3 times
 // }
 // printNames(person);
-
-// const person = {
-//   name: "Leticia",
-//   friend: {
-//     name: "Fernanda",
-//     friend: {
-//       name: "Juliano",
-//     },
-//   },
-// };
+//another way to run with recursion changing the if statement
+// function printName(n) {
+//   if (n != null) {
+//     console.log(n.name);
+//     printName(n.friend);
+//   }
+// }
+// printName(person);
 
 // function printNames(theName) {
 //   if (theName == null) return;
 //   console.log(theName.name);
 //   printNames(theName.friend);
 // }
-
 // printNames(person);
 
-//anpother example of recursion
+//another example of recursion
 // function printNumber(number) {
 //   if (number > 11) {
 //     return number;
 //   }
-//   console.log(number);
+//   console.log(number); //10, 11
 //   return printNumber(number + 1);
 // }
 // printNumber(10);
 // console.log("this code will run after the function printNumber is done");
 
-//
 // function printNumber(number) {
 //   if (number > 10) return;
 //   console.log(number);
@@ -311,8 +315,9 @@
 // printNumber(1);
 
 //* --------------------------------SHORT CIRCUIT EVALUATION------------------------------*//
-//short circuit evaluation will skip the rest of the code if the first boolean will already return true
+//short circuit evaluation will skip the rest of the code if the first boolean/code will already return true
 //true ||or false will always be equal to true, javascript will not evaluate the second booleam bcs the first one already returns true
+//false || true will return both first the false and then true, or until it's true
 //false && anything will always return false
 
 //using or to compare
@@ -329,11 +334,11 @@
 //   console.log("I am false");
 //   return false;
 // }
-// // printTrue() || printFalse(); // it will print out "I am true" and ignore the second function
+// printTrue() || printFalse(); // it will print out "I am true" and ignore the second function
 // printFalse() || printTrue(); // "I am false" "I am true" , since the first function return false it will keep going until the true
-// printFalse() || printTrue() || printFalse(); //will not print the last function since the second one already returned true
+// printFalse() || printTrue() || printFalse(); // "I am false" "I am true" , will not print the last function since the second one already returned true
 
-//using and && , javascript will return false
+//using and && , javascript will stop at the fisrt false statement (opposite as ||)
 function printFalse() {
   console.log("I am false");
   return false;
@@ -343,4 +348,5 @@ function printTrue() {
   return true;
 }
 // printFalse() && printTrue(); //I am false
-printTrue() && printFalse();
+printTrue() && printFalse() && printFalse();
+// printTrue() && printFalse(); //I am true, I am false
