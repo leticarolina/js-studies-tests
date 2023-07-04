@@ -339,14 +339,37 @@
 // printFalse() || printTrue() || printFalse(); // "I am false" "I am true" , will not print the last function since the second one already returned true
 
 //using and && , javascript will stop at the fisrt false statement (opposite as ||)
-function printFalse() {
-  console.log("I am false");
-  return false;
-}
-function printTrue() {
-  console.log("I am true");
-  return true;
-}
-// printFalse() && printTrue(); //I am false
-printTrue() && printFalse() && printFalse();
-// printTrue() && printFalse(); //I am true, I am false
+// function printFalse() {
+//   console.log("I am false");
+//   return false;
+// }
+// function printTrue() {
+//   console.log("I am true");
+//   return true;
+// }
+// // printFalse() && printTrue(); //I am false
+// printTrue() && printFalse() && printFalse();// I am true, I am false
+// // printTrue() && printFalse(); //I am true, I am false
+
+//when to use ||
+// function printName(name) {
+//   name = name || "Default"; //name is "true", default is "false"
+//   console.log(name);
+//   //can make code above even smaller
+//   console.log(name || "Default"); // if name is true will not log default, if name is false will continue nad then log default
+// }
+// printName();
+
+//when to use &&, && will short circuit at the false statement
+// const person = {
+//   name: "Leticia",
+//   address: {
+//     street: "Main st",
+//   },
+// };
+// console.log(person && person.address && person.address.street); //Main st
+
+// function printName(name = "Default") /*telling here that name is default until it's not*/ */ {
+//   console.log(name);
+// }
+// printName();
