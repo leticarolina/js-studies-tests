@@ -201,20 +201,20 @@
 // }
 
 //USEFUL: while loop is useful when you don't know how many times code needs to loop
-// const family = {
-//   names: "Leticia",
-//   child: {
-//     names: "Zoe",
-//     child: {
-//       names: "Snow",
-//     },
-//   },
-// }; //suppose that the last child is a number we don't know
-// // let currentName = family;
-// // while (currentName != null /*while family is not null run the code*/) {
-// //   console.log(currentName.names); //this will loop forever on 'Leticia'
-// //   currentName = currentName.child; //this will change the currentName to be the child every time it loops until child is null
-// // }
+const family = {
+  names: "Leticia",
+  child: {
+    names: "Zoe",
+    child: {
+      names: "Snow",
+    },
+  },
+}; //suppose that the last child is a number we don't know
+let currentName = family;
+while (currentName != null /*while family is not null run the code*/) {
+  console.log(currentName.names); //this will loop forever on 'Leticia'
+  currentName = currentName.child; //this will change the currentName to be the child every time it loops until child is null
+}
 
 //* --------------------------------RECURSION (GOOD FOR INTERVIEWS)------------------------------*//
 //recursion is a function that calls itself again, anything you can do with recursion you do with a normal for loop aswell
@@ -361,6 +361,7 @@
 // printName();
 
 //when to use &&, && will short circuit at the false statement
+//With && JavaScript will calculate the result which will either be the last element in the && chain or if one of the values is falsey (such as null/undefined) then it will exit the calculation prematurely and print out the falsey value.
 // const person = {
 //   name: "Leticia",
 //   address: {

@@ -239,7 +239,7 @@
 // });
 // console.log(newA);//4
 
-//some will return true of false if at least one element inside the array match with code given
+//.some will return true of false if at least one element inside the array match with code given
 //.every will do the same but return true if only EVERY element match
 // const a = [1, 2, 3, 4, 5];
 // const isTrue = a.some((odd) => {
