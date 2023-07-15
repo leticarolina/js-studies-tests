@@ -119,19 +119,19 @@
 // ); //3 because was the first to suceed
 
 //RACE: to get the first promises that finish running WHATEVER it succeeds or fail the syntax is Promise.race([]) will also only return ONE
-const p1 = new Promise((resolve, reject) => {
-  resolve("I am promise 1");
-});
-const p2 = new Promise((resolve, reject) => {
-  resolve("I am promise 2");
-});
-const p3 = new Promise((resolve, reject) => {
-  resolve("I am promise 3");
-});
+// const p1 = new Promise((resolve, reject) => {
+//   resolve("I am promise 1");
+// });
+// const p2 = new Promise((resolve, reject) => {
+//   resolve("I am promise 2");
+// });
+// const p3 = new Promise((resolve, reject) => {
+//   resolve("I am promise 3");
+// });
 
-Promise.race([p1, p2, p3]).then((message) => {
-  console.log(message);
-}); //'I am promise 1'
+// Promise.race([p1, p2, p3]).then((message) => {
+//   console.log(message);
+// }); //'I am promise 1'
 
 //to return ALL of of promises after loading no matter it succeeds or fail, use Promise.allSettled([]), .catch() has no roll in this scenario only the .then()
 // Promise.allSettled([
@@ -160,3 +160,155 @@ Promise.race([p1, p2, p3]).then((message) => {
 //   }); //hi, finally
 
 //The code inside .then and .catch are the placeholders that just sit there and do nothing on their own. The only time the code in those functions runs is when you call either resolve or reject. Once you do that the code inside your .then or .catch will run based on which method you called.
+
+//* --------------------------------60. ASYNC AWAIT------------------------------*//
+//The keyword async before a function makes the function return a promise
+//The await keyword can only be used inside an async function.
+//The await keyword makes the function pause the execution and wait for a resolved promise before it continues
+//Await just means that none of the code after await will be executed until the promise is finished, It doesn't actually pause your other code and stop it from running. Instead if just stops the code directly after await from running until the promise is finished.
+
+//creating async function instead of a promise
+// function setTimeOutPromise(delay) {
+//   return new Promise((resolve) => {
+//     setTimeout(resolve, delay);
+//   });
+// }
+// async function doStuff() {
+//   await setTimeOutPromise(1000);
+//   console.log("1");
+//   await setTimeOutPromise(1000);
+//   console.log("2");
+// }; //after one sec: 1 after another sec: 2
+// doStuff(); //need to call the async function after so everything can run
+
+//creating async function to log out the "resolve" that was declared in another function
+// function setTimeOutPromise(delay) {
+//   return new Promise((resolve) => {
+//     setTimeout(() => {
+//       resolve("You waited ${delay} milliseconds");
+//     }, delay);
+//   });
+// }
+// async function doStuff() {
+//   const message = await setTimeOutPromise(1000);
+//   console.log(message);
+//   console.log("1");
+// }
+// doStuff();
+
+//async with await only has a return for "resolve" promises, if you want to get result for reject aswell need to wrap up the code
+//wrapping up the code inside try{resolve code} catch{reject code here}
+//created a function that returns a promise, the promise will check if my nickname is written correctly but it's not so it will reject
+// function setTimeOutPromise(delay) {
+//   return new Promise((resolve, reject) => {
+//     setTimeout(() => {
+//       //if it takes a fucntion I can put anything inside here, in this case created an if statement
+//       const name = "Leticia";
+//       if (name == "Leti") {
+//         resolve("name is correct");
+//       } else {
+//         reject("Name is not correct");
+//       }
+//     }, delay);
+//   });
+// }
+// //creating async function with try and catch
+// async function printName() {
+//   try {
+//     const message = await setTimeOutPromise(250);
+//     console.log(a);
+//   } catch (error) /*catch HAS to take a parameter*/ {
+//     console.error(error);
+//   }
+// }
+// printName(); //Name is not correct
+
+//EXERCISE
+// function getValueWithDelay(value, delay) {
+//   return new Promise((resolve, reject) => {
+//     setTimeout(() => {
+//       resolve(value);
+//     }, delay);
+//   });
+// }
+// function getValueWithDelayError(delay) {
+//   return new Promise((resolve, reject) => {
+//     setTimeout(() => {
+//       reject("Some error happened");
+//     }, delay);
+//   });
+// }
+// //EXERCISE: call getValueWithDelay twice and print out the value, then call getValueWithDelayError and make sure the error is caught
+// async function printValues() {
+//   try /*assuming this is the true side*/ {
+//     const value = await getValueWithDelay("Hello ", 1000); /*IMPORTANT ASYNC AWAIT will only run next value after first is finnished*/
+//     console.log(value);
+//     const value2 = await getValueWithDelay("World", 1000);
+//     console.log(value2);
+//     const value3 = await getValueWithDelayError("value 3", 1000);
+//     console.log(value3);
+//   } catch (e) {
+//     console.error(e);
+//   } finally {
+//     console.log(
+//       "finally"
+//     ); /*async await also has finally that will run after regardless*/
+//   }
+// }
+// printValues(); //Hello, World, Some error happened, finally
+
+//To run every promise code at the same time need to use .then() insteads of asynnc await
+// function getValue(value, delay) {
+//   return new Promise((resolve, reject) => {
+//     setTimeout(() => {
+//       resolve(value);
+//     }, delay);
+//   });
+// }
+// getValue("how", 1000).then((a) => {
+//   console.log(a);
+// });
+// getValue("are", 1000).then((a) => {
+//   console.log(a);
+// });
+// getValue("you", 1000).then((a) => {
+//   console.log(a);
+// }); //how are you, all logged AT THE SAME TIME and not each after 1sec
+
+//DIFFERENCE BETWEEN PROMISE USING THEN/CATCH AND ASYNC/AWAIT
+//Using .then.catch
+// const firstPromise = new Promise((resolve, reject) => {
+//   const sum = 1 + 1;
+//   if (sum === 2) {
+//     resolve("Success");
+//   } else {
+//     reject("Some Error");
+//   }
+// });
+// firstPromise
+//   .then((a) => {
+//     console.log(a); //success
+//   })
+//   .catch((b) => {
+//     console.log(b); //some error
+//   });
+//using async/await
+function aPromise(value) {
+  return new Promise((resolve, reject) => {
+    const sum = 1 + 2;
+    if (sum === 3) {
+      resolve(value);
+    } else {
+      reject("Sum is not correct");
+    }
+  });
+}
+async function checkPromise() {
+  try {
+    const s = await aPromise("Sum is correct");
+    console.log(s);
+  } catch (e) {
+    console.error(e);
+  }
+}
+checkPromise();
