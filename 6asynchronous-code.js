@@ -275,7 +275,7 @@
 //   console.log(a);
 // }); //how are you, all logged AT THE SAME TIME and not each after 1sec
 
-//DIFFERENCE BETWEEN PROMISE USING THEN/CATCH AND ASYNC/AWAIT
+//SAME OUTPUT DIFFERENT CODE, DIFFERENCE BETWEEN PROMISE USING THEN/CATCH AND ASYNC/AWAIT
 //Using .then.catch
 // const firstPromise = new Promise((resolve, reject) => {
 //   const sum = 1 + 1;
@@ -292,23 +292,23 @@
 //   .catch((b) => {
 //     console.log(b); //some error
 //   });
-//using async/await
-function aPromise(value) {
-  return new Promise((resolve, reject) => {
-    const sum = 1 + 2;
-    if (sum === 3) {
-      resolve(value);
-    } else {
-      reject("Sum is not correct");
-    }
-  });
-}
-async function checkPromise() {
-  try {
-    const s = await aPromise("Sum is correct");
-    console.log(s);
-  } catch (e) {
-    console.error(e);
-  }
-}
-checkPromise();
+//same code above using async/await
+// function aPromise(value) {
+//   return new Promise((resolve, reject) => {
+//     const sum = 1 + 2;
+//     if (sum === 3) {
+//       resolve(value);
+//     } else {
+//       reject("Sum is not correct");
+//     }
+//   });
+// }
+// async function checkPromise() {
+//   try {
+//     const s = await aPromise("Sum is correct");
+//     console.log(s);
+//   } catch (e) {
+//     console.error(e);
+//   }
+// }
+// checkPromise();
