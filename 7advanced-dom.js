@@ -60,15 +60,59 @@
 // doStuff();
 
 //getting data from the server with fetch and async function
-const URL = "https://jsonplaceholder.typicode.com/comments?postId=1";
-// async function logging() {
-//   const response = await fetch(URL);
-//   const content = await response.json();
+// const URL = "https://jsonplaceholder.typicode.com/comments?postId=1";
+// // async function logging() {
+// //   const response = await fetch(URL);
+// //   const content = await response.json();
+// //   console.log(content);
+// // }
+// // logging();
+//with PROMISE INSTEAD OF async await
+// fetch(URL).then((response) => {
+//   const content = response.json();
 //   console.log(content);
-// }
-// logging();
+// });
 
-fetch(URL).then((response) => {
-  const content = response.json();
-  console.log(content);
-});
+//* --------------------------------62. EVENT LOOP------------------------------*//
+//the way javascript run the code
+
+//javascript run code in a line called "MAIN THREAD"
+//any async code will run on a different thread, and queue up to run after the main one is finished
+// function sayHi() {
+//   console.log("hi 1");
+//   console.log("hi 2");
+//   setTimeout(() => console.log("hi 3"), 300);
+//   setTimeout(() => console.log("hi 4"), 0);
+//   console.log("hi 5");
+// }
+// sayHi();
+// console.log("hi 6");
+//hi 1, hi 2, hi 5, hi 4, hi 3.
+//hi 1, hi 2, hi 5, hi 6 (MAIN THREAD)
+//hi 4, hi 3 other thread which "hi 4" was the next on the queue bcs delay of 0
+
+// functions behave differently than others async like settime and addevent
+//promises and async will go to the queue immediately after the function it's in finishes reading.
+function sayHi() {
+  console.log("hi 1");
+  setTimeout(() => {
+    console.log("hi 2");
+  }, 30);
+  new Promise((resolve) => {
+    resolve("hi 3");
+  }).then((a) => {
+    console.log(a);
+  });
+  setTimeout(() => {
+    console.log("hi 4");
+  }, 0);
+  console.log("hi 5");
+}
+sayHi();
+//hi 1, hi 5, hi 3, hi 4, hi 2
+//hi 1, hi 5 (MAIN THREAD)
+//hi 3 logged out after function started to run
+//hi 4, hi 2 queued up accordingly to the settimeout specifically
+for (i = 0; i < 1000; i++) {
+  console.log("First things first");
+}
