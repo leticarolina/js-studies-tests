@@ -1,24 +1,24 @@
-//console.log("Hello Worldfhghc");
+//console.log("Hello World");
 
-//----VARIABLES---------
+//----8. VARIABLES---------
 
 // var grocery = ["apple", "juice"];
 // grocery = ["Lime", "wine"]; //changing the variable value
-// console.log(grocery);
+// console.log(grocery); //Lime, wine
 
-// let a = 1;
-// let b = 2;
-// let c = 3;
-// let d = a;
+let a = 1;
+let b = 2;
+let c = 3;
+let d = a;
 
-// a = 3; //reassigning the variable value
+a = 3; //reassigning the variable value
 
-// console.log(a); //1
-// console.log(b); //2
-// console.log(c); //3
-// console.log(d); //1
+console.log(a); //1
+console.log(b); //2
+console.log(c); //3
+console.log(d); //1
 
-//-----------NUMBER TYPE-------------
+//-----------9. NUMBER TYPE-------------
 
 // let integer = 1;
 // let float = 2.3;
@@ -33,7 +33,7 @@
 // console.log((a + b) / c); // double parethesis to log the sum first
 // console.log(b * c);
 
-//-------STRING TYPE--------
+//-------10. STRING TYPE--------
 
 // let a = "Leticia says 'hi'"; //single or double quote
 // console.log(typeof a); //string

@@ -178,20 +178,33 @@
 //3 different main types of browser storage: cookies, local storage and session storage
 // Local Storage       |  Cookies              | Session Storage
 // 10 MB (a lot)       | 4KB                   | 5MB                   //you're gonna get limit of for each item inside
-// data never expires  | set manual expiration | Expire on tab close   //when the data expires?
+// data never expires  |manual up to 400 days  | Expire on tab close   //when the data expires?
 // only on user browser| client and server     | only on user browser //how can you access this information? *cookies are perfect for when u need to send data from the client/user to the server automatically
 // Easy to use         | Hard                  | Easy to use
 
-//can access with keyword localStorage,since it is an object has methods on it
+//LOCAL/SESSION STORAGE can access with keyword localStorage,since it is an object has methods on it
 //syntax .setItem("key - you choose", "value - always string") syntax to save a new item on the storage
-localStorage.setItem("Name", "Leticia");
-//updated the same key "name", it will not add a new key
-localStorage.setItem("Name", "Carolina");
-//deleting an item .removeItem('key')
-// localStorage.removeItem("Name"); //case-sensitive
-//same for session Storage
-sessionStorage.setItem("Name", "Leticia");
-sessionStorage.setItem("Name", "Azevedo");
-sessionStorage.removeItem("Name");
-//getting data from the storage with .getItem("key")
-console.log(localStorage.getItem("Name"));
+// window.localStorage.setItem("Name", "Leticia");
+// //updated the same key "name", it will not add a new key
+// localStorage.setItem("Name", "Carolina");
+// //deleting an item .removeItem('key')
+// // localStorage.removeItem("Name"); //case-sensitive
+// //same for session Storage
+// sessionStorage.setItem("Name", "Leticia");
+// sessionStorage.setItem("Name", "Azevedo");
+// sessionStorage.removeItem("Name");
+// //getting data from the storage with .getItem("key")
+// console.log(localStorage.getItem("Name")); //Carolina
+
+// //COOKIES
+// const date = new Date(2024, 0, 1).toUTCString(); //cookies can add a manually expiration, need to set a date for it maximum of 400 days
+// //storaging data with cookie
+// document.cookie = `name=Leticia; expires=1 Jan 2024 00:00:00 `; //expires=${data} could alternatively set expires to the variable date
+// //addinng a new cookie to the storage
+// document.cookie = "age=26"; //this will not redeclare the cookie but add a new one instead, unless we declare the SAME key and another value
+// console.log(document.cookie);
+// //to delete a cookie need to set key as nothing and the expires as a past date
+// //deleting cookie with key of Name
+// document.cookie = "name= ; expires=1 Jan 2023 00:00:00";
+
+console.log("hi!!!");
