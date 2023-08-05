@@ -207,4 +207,39 @@
 // //deleting cookie with key of Name
 // document.cookie = "name= ; expires=1 Jan 2023 00:00:00";
 
-console.log("hi!!!");
+//* ---------------------69. ES6 MODULES------------------*/
+//exporting code to another .js file
+//need to tell browser that will use module on the html head <script type="module"></script> (this automatically has defer on it)
+
+//example code at script1.js helper doc with code inside
+// export const me = { name: "Leticia", age: 26 };
+// export const luca = { name: "Luca", age: 31 };
+// function printName(user) {
+//   console.log(`Name: ${user.name}. Age: ${user.age}`);
+// }
+// export default printName;
+
+// // example code at script2.js with <script type="module" src="/script2.js ></script>
+// import print, { me as leti, luca } from "./7advanced-dom.js";
+// // if it's not default export need to defined inside curly brackets {}, to rename NameofVariable as new Name.
+// //default export can have any name, exported as printName and imported as print
+// print(leti); //Name: Leticia. Age: 26
+
+//* ---------------------70. NODE MODULES------------------*/
+//with node we cannot have a export defaulft and the syntax is different
+
+//code to export from user.js
+// const me = { name: "Leticia", age: 26 };
+// const luca = { name: "Luca", age: 31 };
+// function printName(user) {
+//   console.log(`Name: ${user.name}. Age: ${user.age}`);
+// }
+// //need to declare , ser it to object if exporting more than one thing
+// module.exports = { me: me, luca: luca, printName: printName }; //can also write module.exports = { me, luca, printName } as long as the key and the variable are exactly the same, can do with any object
+
+//code to import require()
+// const imported = require("./user.js"); //variable set the whole object imported
+// const leti = imported.me; //tagging the key of the object and setting as a new variable
+// const luca = imported.luca;
+// const aFucntion = imported.printName;
+// aFucntion(leti); // Name: Leticia. Age: 26

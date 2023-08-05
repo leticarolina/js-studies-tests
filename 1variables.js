@@ -6,17 +6,17 @@
 // grocery = ["Lime", "wine"]; //changing the variable value
 // console.log(grocery); //Lime, wine
 
-let a = 1;
-let b = 2;
-let c = 3;
-let d = a;
+// let a = 1;
+// let b = 2;
+// let c = 3;
+// let d = a;
 
-a = 3; //reassigning the variable value
+// a = 3; //reassigning the variable value
 
-console.log(a); //1
-console.log(b); //2
-console.log(c); //3
-console.log(d); //1
+// console.log(a); //1
+// console.log(b); //2
+// console.log(c); //3
+// console.log(d); //1 because variable a was still 1 when I declared d, I haven't redeclared a before d was called
 
 //-----------9. NUMBER TYPE-------------
 

@@ -156,17 +156,17 @@ rezise = whenever the user resixe the window browser */
       <div> Parent 2</div>
     </div> */
 
-// const grandParent = document.querySelector("#grand-parent");
-// grandParent.style.color = "red";
-// //accessing the children of Main element, in this case of the grandParent
-// grandParent.children[0].style.color = "pink"; // syntax: children[index] in this case parent 1 is index 0.
-// grandParent.children[1].style.color = "gray"; // channging color of parent 2
-// //another way to get access the parents declaring variable (recommended)
-// const ParentOne = grandParent.children[0]; //accessing parent one
-// const parentTwo = ParentOne.nextElementSibling; //nextElementSibling to get the next sibling of the Elements, there is also previousElementSibling
-// const childrenOne = ParentOne.children[0]; //accessing the child of parent one <div>Child 1</div>
-// const childrenTwo = ParentOne.children[1]; //accessing the child of parent one <div>Child 2</div>
-// childrenOne.style.color = "brown"; //changing the color of only the first children of Parent 1
+const grandParent = document.querySelector("#grand-parent");
+grandParent.style.color = "red";
+//accessing the children of Main element, in this case of the grandParent
+grandParent.children[0].style.color = "pink"; // syntax: children[index] in this case parent 1 is index 0.
+grandParent.children[1].style.color = "gray"; // channging color of parent 2
+//another way to get access the parents declaring variable (recommended)
+const ParentOne = grandParent.children[0]; //accessing parent one
+const parentTwo = ParentOne.nextElementSibling; //nextElementSibling to get the next sibling of the Elements, there is also previousElementSibling
+const childrenOne = ParentOne.children[0]; //accessing the child of parent one <div>Child 1</div>
+const childrenTwo = ParentOne.children[1]; //accessing the child of parent one <div>Child 2</div>
+childrenOne.style.color = "brown"; //changing the color of only the first children of Parent 1
 
 //getting the parent element of a child
 // const childOne = document.querySelector("#child-one");

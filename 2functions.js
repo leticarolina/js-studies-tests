@@ -121,7 +121,7 @@
 // }
 // func('I am "a"', (x) => console.log(x)); // x is the parameter of the new function, after the => is what the function will return
 
-/*----------PASSING FUNCTION AS PARAMETERS/ARGUMENTS ANOTHER EXAMPLE----------*/
+/*---------- 17. PASSING FUNCTION AS PARAMETERS/ARGUMENTS ANOTHER EXAMPLE----------*/
 // function doItAll(x, y, hi) /* x= 1 , y= 1, hi = 'Leti'*/ {
 //   printVariable(sum(x, y) /*this is replacing "variable"*/);
 //   printVariable(sayHi(hi) /*this is replacing "variable"*/);
@@ -158,7 +158,7 @@
 // }
 // theName("Leticia", printVariable);
 
-//*---------SCOOPING-----------*//
+//*---------21. SCOOPING-----------*//
 
 /*code inside the scope can access the code from global scope.
 but global scope cannot access code inside the scope. */
@@ -189,19 +189,19 @@ but global scope cannot access code inside the scope. */
 
 //functions has it's own scope and can be placed at the end of js code
 
-//*---------CLOSURES (good for interview)-----------*//
+//*---------22. CLOSURES (good for interview)-----------*//
 /*normally closures are defined by function inside other function*/
 /*what is a closure? closure describe or limit the scope of a function*/
 
-// function first(a) {
-//   return function second(b) {
-//     console.log(a); //Leticia
-//     console.log(b); //Leti
-//   };
-// }
-// let x = first("Leticia"); //calling "first" function that will return another function from it
-// //x now represents the function "first"
-// x("Leti"); //when calling "x" we are calling the function "first" and passing the second parameter which maps to "second" function, thats how we pass value to the inner function
+function first(a) {
+  return function second(b) {
+    console.log(a); //Leticia
+    console.log(b); //Leti
+  };
+}
+let x = first("Leticia"); //calling "first" function that will return another function from it
+console.log(x); //x now represents the function "first"
+// x("Leti"); //when calling "x" we are calling the function "first" which has a function inside and passing the parameter which maps to "second" function, thats how we pass value to the inner function
 // let x = first("Leticia")('Leti'); // this code will give same result as 3 lines above together.
 
 // function a(x) {
