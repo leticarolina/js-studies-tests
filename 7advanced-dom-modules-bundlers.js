@@ -243,3 +243,22 @@
 // const luca = imported.luca;
 // const aFucntion = imported.printName;
 // aFucntion(leti); // Name: Leticia. Age: 26
+
+//* ---------------------71. NPM node package manager------------------*/
+//import libraries into the project
+
+//IMPORTING A NPM TO USE ON NODE
+//code to initiate npm, this will create package.json file with dependencies inside
+//npm init -y (-y is yes to all questions)
+
+//terminal code to install npm a package, this will turn nameOfPackage as value of dependencie so won't need the big folder of package
+//npm install NameOfPackage NameOfPackage2
+
+// //js normal file, running the npm inside node
+// const uuid = require("uuid");
+// //uuid.v4() is the functionn inside this specific npm to generate a randon ID
+// console.log(uuid.v4()); //978b8dee-894f-4abe-91fe-a60e764d7f38
+
+//IMPORTING A NPM TO USE ON HTML
+import { v4 as uuid } from "./node_modules/uuid/dist/esm-browser/index.js";
+console.log(uuid());

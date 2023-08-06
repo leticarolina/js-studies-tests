@@ -193,14 +193,14 @@ but global scope cannot access code inside the scope. */
 /*normally closures are defined by function inside other function*/
 /*what is a closure? closure describe or limit the scope of a function*/
 
-function first(a) {
-  return function second(b) {
-    console.log(a); //Leticia
-    console.log(b); //Leti
-  };
-}
-let x = first("Leticia"); //calling "first" function that will return another function from it
-console.log(x); //x now represents the function "first"
+// function first(a) {
+//   return function second(b) {
+//     console.log(a); //Leticia
+//     console.log(b); //Leti
+//   };
+// }
+// let x = first("Leticia"); //calling "first" function that will return another function from it
+// console.log(x); //x now represents the function "first"
 // x("Leti"); //when calling "x" we are calling the function "first" which has a function inside and passing the parameter which maps to "second" function, thats how we pass value to the inner function
 // let x = first("Leticia")('Leti'); // this code will give same result as 3 lines above together.
 
