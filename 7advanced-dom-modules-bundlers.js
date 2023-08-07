@@ -208,7 +208,7 @@
 // document.cookie = "name= ; expires=1 Jan 2023 00:00:00";
 
 //* ---------------------69. ES6 MODULES------------------*/
-//exporting code to another .js file
+//raw exporting code to another .js file
 //need to tell browser that will use module on the html head <script type="module"></script> (this automatically has defer on it)
 
 //example code at script1.js helper doc with code inside
@@ -244,7 +244,7 @@
 // const aFucntion = imported.printName;
 // aFucntion(leti); // Name: Leticia. Age: 26
 
-//* ---------------------71. NPM node package manager------------------*/
+//* ---------------------71. NPM node package manager website------------------*/
 //import libraries into the project
 
 //IMPORTING A NPM TO USE ON NODE
@@ -260,5 +260,50 @@
 // console.log(uuid.v4()); //978b8dee-894f-4abe-91fe-a60e764d7f38
 
 //IMPORTING A NPM TO USE ON HTML
-import { v4 as uuid } from "./node_modules/uuid/dist/esm-browser/index.js";
-console.log(uuid());
+// import { v4 as uuid } from "./node_modules/uuid/dist/esm-browser/index.js"; //this relative path has to find inside the package which file has the export
+// console.log(uuid()); //dd2a378b-fc51-46b8-af59-e4e44b0e9abd
+
+//* ---------------------72. Bundler called PARCEL website------------------*/
+//bundle = a collection of things or quantity of material tied or wrapped up together in a parcel
+
+//Initiating npm to run parcel
+//npm init -y
+
+//instal parcel
+//npm install parcel-bundler (will install normal dependency) which your entire program depends on to run
+//npm install parcel-bundler --save-dev (development dependency) need when actually developing the site but not when you run it
+
+//using type="modules"
+//example code on another file user.js
+// export const luca = {
+//     name: "luca",
+//   };
+//   export const leti = { name: "leti" };
+//   export default function printName(name) {
+//     console.log(name);
+//   }
+//importing code from user.js to this file
+import printName, { luca, leti } from "./user.js";
+printName(leti.name); //leti
+import { v4 } from "uuid";
+console.log(v4());
+
+//getting a browser link from parcel to develop without using type=modules on html
+//inside package.json there is an object value called scripts: scripts are sets of code you can run thru npm
+//need to do the setting
+// "scripts": {
+//     "start": "parcel index.html" //this will run parcel inside the html file (technically can remove type="modules" from html head)
+//   }
+//on the terminal run ( npm start ) to get a link for browser window
+
+//making file of code available in any browser with parcel
+//inside package.json there is an object value called scripts: scripts are sets of code you can run thru npm
+//need to do the setting
+// "scripts": {
+//     "start": "parcel index.html" //this will run parcel inside the html file (technically can remove type="modules" from html head)
+//       "build": "parcel build index.html" //
+//   }
+//on the terminal run ( npm run build)
+//will return 3 files with reduced convoluted code (?)
+
+//then can run npm i uuid as a test

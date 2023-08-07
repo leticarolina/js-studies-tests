@@ -1,4 +1,4 @@
-//* ----------------FUNCTIONS-----------------------*//
+//* ----------------16. FUNCTIONS-----------------------*//
 //*syntax function nameOfTheFunction (parameters = giving a name to the info the function will take later , max of 2(?)) {then code here} *//
 
 // function sayHi() {
@@ -6,16 +6,16 @@
 // }
 // sayHi(); //this run the function and "()" to pass info to the function, in this case no info needed
 
-// //create a function with no argument, insert your name and print it out
+// exercise: create a function with no argument, insert your name and print it out
 // function myName() {
 //   console.log("Leticia Azevedo");
 // }
 // myName();
 
-//* ----------------FUNCTIONS WITH ARGUMENT-----------------------*//
+//* ----------------16.1 FUNCTIONS WITH ARGUMENT-----------------------*//
 
 // function sum(a, b) {
-//   console.log(a + b);
+//   console.log(a + b); //3
 // }
 // let x = 1; //option to create a variable to define a value that will be passed to the function inside ()
 // let y = 2;
@@ -39,16 +39,16 @@
 //   console.log("this will not run because there is a return above");
 // } //return is used to return a value from the fuNCtion BUT NOTHING will run after "return"
 // const sayHi = storeName("Leticia");
-// console.log(sayHi);
+// console.log(sayHi); //Hello Leticia
 
 // function number(a, b) {
 //   return a + b;
 // }
-// let sum = number(1, 1); //created variable to define value of parameters, now sum has a value of 2
-// let sum2 = sum + number(1, 1); //created another variable, set the value of sum + new parameters on the function
+// let sum = number(1, 1); //created variable to define value of parameters of function number, now sum has a value of 2
+// let sum2 = sum + number(1, 1); //created another variable, set the value of sum + 2 new parameters on the function number
 // console.log(sum2); //4
 
-//* -----PASS FUNCTION TO ANOTHER, OR AS ARGUMENTS/PARAMETERS-----------*//
+//* ----- 17. PASS FUNCTION TO ANOTHER, OR AS ARGUMENTS/PARAMETERS-----------*//
 //function is a "variable" with a name
 
 // function printVariable(variable) {
@@ -59,8 +59,8 @@
 // }
 // takeValue(printVariable); // this is passing the parameter of takeValue to the function printVariable
 
-// function first(ab) {
-//   console.log(ab);
+// function first(a) {
+//   console.log(a);
 // }
 // function second(b) {
 //   b("hi");
@@ -68,6 +68,16 @@
 // second(first);
 
 // //create function that takes 2 parameter name and callback, take the name and append "hello" and print on the first function
+
+function oi(name, callback) {
+  callback("Hello " + name);
+}
+
+function printe(a) {
+  console.log(a);
+}
+
+oi("leticia", printe);
 // function person(she, callback) {
 //   callback("Hello " + she);
 // }
