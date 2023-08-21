@@ -270,8 +270,11 @@
 //npm init -y
 
 //instal parcel
-//npm install parcel-bundler (will install normal dependency) which your entire program depends on to run
-//npm install parcel-bundler --save-dev (development dependency) need when actually developing the site but not when you run it
+//npm install parcel-bundler (will install normal dependency) which your entire program depends on to run //   Normal dependencies are installed always and will be used in the production build of your code.
+//npm install parcel-bundler --save-dev (development dependency) need when actually developing the site but not when you run it // dev dependencies are only installed and used when you run the start command
+//anything that is not needed for your site to run (such as Parcel, Babel, etc.) should be a dev dependency while everything else is a normal dependency.
+
+//  Parcel-bundler will probably still work, but if you want to use new parcel do this: instead of running "npm i --save-dev parcel-bundler", run "npm i --save-dev parcel".
 
 //using type="modules"
 //example code on another file user.js
@@ -282,11 +285,9 @@
 //   export default function printName(name) {
 //     console.log(name);
 //   }
-//importing code from user.js to this file
-import printName, { luca, leti } from "./user.js";
-printName(leti.name); //leti
-import { v4 } from "uuid";
-console.log(v4());
+// example importing code from user.js to this file
+// import printName, { luca, leti } from "./user.js";
+// printName(leti.name); //leti
 
 //getting a browser link from parcel to develop without using type=modules on html
 //inside package.json there is an object value called scripts: scripts are sets of code you can run thru npm
@@ -306,4 +307,9 @@ console.log(v4());
 //on the terminal run ( npm run build)
 //will return 3 files with reduced convoluted code (?)
 
-//then can run npm i uuid as a test
+//then can run npm i uuid as a test, will create a dependencie of uuid on package.json
+//importing code from user.js to this file
+// import printName, { luca, leti } from "./user.js";
+// printName(leti.name); //leti
+// import { v4 } from "uuid";
+// console.log(v4()); // 75667de6-8313-4640-8449-eab712ddaba0 easy running without having to do code at lesson 70 node modules

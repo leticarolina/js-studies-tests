@@ -1,36 +1,38 @@
-//* ----------------CONST------------------*//
+//* ----------------23. CONST------------------*//
 /* since const never changes its value, you can always use const on your code and 'let' only when the value WILL have to change*/
 /*remember objects and arrays has memory address as values, declaring const means only the memory address can't change aka redeclare the variable*/
 
 // let a = 1;
-// a = 2;
-// console.log(a);
+// {
+//   a = 2;
+// }
+// console.log(a); //2
 
 // const b = 2;
-// b = 3; //error assignment to const variable
-// console.log(b);
+// b = 3;
+// console.log(b); //error assignment to constant variable
 
-//* ----------------TYPE COERCION------------------*//
+//* ----------------25. TYPE COERCION------------------*//
 /*convert from one type to another e.g. convert string to number*/
 
 // string to number
 // let a = "1"; //variable "a" is a string
-// console.log(typeof parseInt(a));//'a' now is a number
-// parseInt(the variable here); // function name to pass string to an integer number
+// console.log(typeof parseInt(a));//'a' now is a number because of parseInt() fucntion
+// syntax parseInt(the variable here); // function name to pass string to an integer number
 // parseFloat(a); // pass string to a floating number like 1.1
 
 // let a = 1.34; //"a" is a number
 // console.log(typeof toString(a)); //"a" is now a string
-// toString();//function to pass value to string
+// toString(variable);//function to pass value to string
 
-//* ---------------- == Vs === ------------------*//
+//* ----------------26. == Vs === ------------------*//
 /* triple equal signs === tell JS to not convert types before comparing, because type coercion with 2 equal signs == can give bugs*/
-//unly use == when comparing null and undefined otherwise use ALWAYS ===
+//only use == when comparing null and undefined otherwise use ALWAYS ===
 
 // with type coercion
 // const a = 1; //number
 // const b = "1"; //string
-// console.log(a == b); //true (even though one is number and the another string, JS is doing type coercion)
+// console.log(a == b); //true (even though one is number and the another string, JS is doing type coercion bcs of both is 1)
 
 // const a = 0; //number
 // const b = false; //boolean
@@ -45,7 +47,10 @@
 // const b = false; //boolean
 // // console.log(a === b); //is 'a' TRULY equal to 'b?' // false
 
-//* ---------------- NaN = not a number ------------------*//
+// const a = 1;
+// const b = null;
+// console.log(a == b); //false
+//* ----------------27. NaN = not a number ------------------*//
 // isNaN(); function to check if this is not a number
 
 // const a = parseInt("abc");
@@ -54,14 +59,17 @@
 // console.log(isNaN(b)); // false, because "b" is a Number (2)
 // console.log(a); //NaN
 
-//* ---------------- ARRAYS ------------------*//
-/*arrays are defined inside the square brackets [] and elements inside separated by comma - ALSO ARRAY INDEX STARTS AT 0*/
+//* ----------------28.ARRAYS ------------------*//
+//arrays are defined inside the square brackets [] and elements inside separated by comma
+//ALSO ARRAY INDEX STARTS AT 0
 
 // const array = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
 // console.log(array); // 1, 2, 3, 4, 5, 6, 7, 8, 9, 10
-// console.log(array[0]); //1 //to access the array use square brackets and the index
-// array.push(11); //using variable.push() to add an element to the end of array, since push is a function need to use parenthesis
-// console.log(array); //now array goes till 11 because of the push
+// to access an specific element of the array use square brackets and the index
+// console.log(array[0]); //1
+// adding a new element to the array use function .push()
+// array.push(11); // variable.push() adds an element to the end of array, since push is a function need to use parenthesis
+// console.log(array); // 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11
 
 // const girl = ["leticia", 26, "single"];
 // girl.push("yes");
@@ -70,15 +78,15 @@
 //Pushing a nested array inside another
 // const us = [26, 31];
 // us.push(["Leticia", "Luca"]); //creating array inside another here
-// console.log(us);
-// console.log(us[2]); //return ['Leticia', 'Luca'] which is the inner array created and has index of 2
+// console.log(us); //[26, 31, Array(2)]
+// console.log(us[2]); // ['Leticia', 'Luca'] which is the inner array created and has index of 2
 
 //accessing an array index inside of another array
 // const array = [
 //   ["hi", "bye"],
 //   ["day", "night"],
-// ]; //this is a nested array
-// console.log(array[0][1]); //return 'bye', first brackets access array and the second brackets access the element index inside the array
+// ]; //this is a nested array 2 arrays inside a parent array
+// console.log(array[0][1]); //return 'bye', first brackets access array index and the second brackets access the value index inside the array
 
 //exercise: create array with 5 letters and print out the middle element on the array
 // const letters = ["a", "b", "c", "d", "e"];
@@ -95,8 +103,10 @@
 // console.log(array[2][0]); //11
 
 //getting the lenght of array
-// const array = [1, 2, 3, 4, 5];
-// console.log(array.length); //5 return
+// const array = [1, 2, 3, 4, "b", [1]];
+// console.log(array.length); //6 return
+// array.push(1);
+// console.log(array.length); //7
 
 // const array = ["hy", "bye"];
 // console.log(array.length); //2 array length doesn't starts at 0
@@ -108,16 +118,16 @@
 // console.log(number); //26, 2, 3
 // console.log(numberNew); //26,2 ,3
 
-//* -------------------------OBJECTS-----------------------------*//
+//* -------------------------29. OBJECTS-----------------------------*//
 /*objects are defined with curly brackets {key: value} inside goes key and value*/
 
 // const sex = "Female";
-// const age = 26;
+// const age = 23;
 // const favNumber = 8;
-// //declaring same thing as an object
+//declaring same thing as an object
 // const person = { sex: "Female", age: 26, favNumber: 8 };
 // console.log(person); //{sex: 'Female', age: 26, favNumber: 8}
-// console.log(person.sex); //return only Female, variable.key will return it's value
+// console.log(person.sex); //Female , variable.key will return it's value
 
 //creating functions inside the objects
 // const person = {
@@ -135,7 +145,7 @@
 // person.callFunction2(); //Hi
 // console.log(person.number); //8
 
-//exercise: create object car with properties Make, model and isUsed. Also add a function which logs "Vroom"
+//exercise: create object car with properties brand, model and isUsed. Also add a function which logs "Vroom"
 // const car = {
 //   brand: "BMW",
 //   model: "polo",
@@ -158,9 +168,9 @@
 // };
 // console.log(person.address.city); //São Paulo, accessing value object inside another object
 // console.log(person.hobbies[2]); //swimming, accesing array index inside the object
-// //dot.name of the key to access key, and awith array need to put index inside parenthesis
+// variableObject.nameOfKey to access key's value
 
-//channging the value of an object
+//changing the value of an object
 // const book = {
 //   title: "The power of nowhere",
 //   author: {
@@ -168,10 +178,10 @@
 //     age: 75,
 //   },
 // };
-// book.title = "The power of now"; //code to give a new value variable.key = and then give the new value
-// console.log(book);
+// book.title = "The power of now"; //code to give a new value variable.key =  new value
+// console.log(book.title); //The power of now
 
-//* -------------------------REFERENCE VS VALUE--------------------------*//
+//* -------------------------30. REFERENCE VS VALUE--------------------------*//
 //each array/object created has a NEW memory address this is their "value", if the array/object is set as value of variable then will share THE SAME memory address
 //array and objects reference the same code unless they are not related, aka: mentioned as value from another variable
 

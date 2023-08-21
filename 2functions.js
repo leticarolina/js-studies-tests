@@ -68,16 +68,6 @@
 // second(first);
 
 // //create function that takes 2 parameter name and callback, take the name and append "hello" and print on the first function
-
-function oi(name, callback) {
-  callback("Hello " + name);
-}
-
-function printe(a) {
-  console.log(a);
-}
-
-oi("leticia", printe);
 // function person(she, callback) {
 //   callback("Hello " + she);
 // }
@@ -87,7 +77,7 @@ oi("leticia", printe);
 
 // function printVariable(variable) {
 //   console.log(variable);
-// } //function to print whatever I'm going to to put on the function below
+// } //helper function to print whatever I'm going to to put on the function below
 // function sayHi(x, callback /*callback to call another function*/) {
 //   callback("Hello " + x);
 // }
