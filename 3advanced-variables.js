@@ -182,8 +182,8 @@
 // console.log(book.title); //The power of now
 
 //* -------------------------30. REFERENCE VS VALUE--------------------------*//
-//each array/object created has a NEW memory address this is their "value", if the array/object is set as value of variable then will share THE SAME memory address
-//array and objects reference the same code unless they are not related, aka: mentioned as value from another variable
+//each array/object created with bracket notation has a NEW memory address this is their "value", if the array/object is set as value of variable then will share THE SAME memory address
+//array and objects reference the same memory address unless they are not related, aka: mentioned as value from another variable
 
 // const a = 1;
 // const b = "hi";
@@ -204,7 +204,8 @@
 
 // let person = { name: "leticia", age: 26 }; //one memory address
 // person = { name: "leticia", age: 26, sex: "Female" }; // pushing new key and value
-// let person2 = { name: "leticia", age: 26 }; //another memory address even tho same value inside
+// person.sex = "Female"; //easier way to push new key and value
+// let person2 = { name: "leticia", age: 26 }; //new memory address even tho same value inside
 // person.hobby = "Swimming"; //pushing new key and value only to first variable
 // console.log(person); // { name: "leticia", age: 26, sex: "Female" , hobby: "Swimming"}
 
@@ -215,39 +216,40 @@
 //   element = element + 1;
 //   array.push(element);
 // }
-// console.log(a); //[1, 2, 3]
-
-//* -------------------------ARRAYS METHODS--------------------------*//
+// console.log(a); //[1, 2, 4]
+//
+//* -------------------------31. ARRAYS METHODS--------------------------*//
 /*methods are functions you can use on the array*/
 
-//forEach logs out each array value separately
+//forEach logs out each array value separately, or will run code for each value of array
 // const a = [1, 2, 3, 4, 5];
-// a.forEach((line) => {
-//   console.log(line);
+// a.forEach((number) => {
+//   console.log(number); //logs each separately
 // });
-// console.log(a);
+// console.log(a); //logs number together on array
 
-//map will loop thru each element of the array and return a new array with new values without changing the original
+//.map() will loop thru each element of the array and return a new array with new values without changing the original
 // const a = [1, 2, 3];
-// const newA = a.map((mapping) => {
-//   return mapping * 2; //asking to return mapping which is the array multyplied by 2
+// const newA = a.map((number) => {
+//   return number * 2; //asking to return mapping which is the array multyplied by 2
 // });
 // console.log(a); //[1, 2, 3]
-// console.log(newA);//[2, 4, 6]
+// console.log(newA); //[2, 4, 6]
 
-//filter will loop thru element and filter the values that match with code
+//.filter() will loop thru element and filter the values that match with code
 // const a = [1, 2, 3, 4, 5, 6];
-// const newA = a.filter((filtering) => {
-//   return filtering > 3; //Code to filter only number higher than 3
+// const newA = a.filter((number) => {
+//   return number > 3; //Code to filter only number higher than 3
 // });
-// console.log(newA); //OUTPUT [4, 5, 6]
+// console.log(a); //[1, 2, 3, 4, 5, 6]
+// console.log(newA); //[4, 5, 6]
 
-//find to find a value inside the array, this fucntion will return only the first true value, example below return only 4
+//.find() to find a value inside the array, this fucntion will return only one value which is the first true value
 // const a = [2, 4, 6];
-// const newA = a.find((n) => {
-//   return n > 2;
+// const newA = a.find((number) => {
+//   return number > 2;
 // });
-// console.log(newA);//4
+// console.log(newA); // return only 4 due to first true value
 
 //.some will return true of false if at least one element inside the array match with code given
 //.every will do the same but return true if only EVERY element match
@@ -257,8 +259,13 @@
 // });
 // console.log(isTrue); // true
 
-//---------REDUCE METHOD
-//!!!!exercise: get the total of the code below using .reduce method
+//.includes() return true or false is array include that value
+// const myName = ["Leticia", "Carolina", "Nascimento", "Azevedo"];
+// const isTrue = myName.includes("Carolina");
+// console.log(isTrue); //true
+
+//-------- .reduce() METHOD
+//!!exercise: get the total of the code below using .reduce method
 // const items = [
 //   { price: 10 },
 //   { price: 20 },
@@ -266,20 +273,16 @@
 //   { price: 1 },
 //   { price: 6 },
 // ];
-//.reduce takes at least 2 paramethers .reduce(first is a function, second starting value that will be used in the reducer function) and reduce the array down to ONE SINGLE VALUE
-//the function inside .reduce() has 2 parameters aswell, the first is the accumulater(total) and the second parameter is each individual item on the abject given a name (info to be passed)
-// const total = items.reduce((sum, item) => {
-//   return sum + item.price; //whathever return here will be added to "sum" and then do the next loop until items are over
-// }, 0/*starting value as 0*/);
+// //.reduce takes at least 2 paramethers .reduce(first is a function, second starting value that will be used in the reducer function) and reduce the array down to ONE SINGLE VALUE
+// //the function inside .reduce() has 2 parameters aswell, the first is the accumulater(total) for the starting value and the second parameter is each individual item on the abject given a name (info to be passed)
+// const total = items.reduce((total, item) => {
+//   return total + item.price; //whathever return here will be added to "sum" and then do the next loop until items are over
+// }, 0 /*starting value as 0*/);
 // console.log(total);
 
-//includes: return true or false is array include that value
-// const myName = ["Leticia", "Carolina", "Nascimento", "Azevedo"];
-// const isTrue = myName.includes("Carolina");
-// console.log(isTrue); //true
-
-//* -------------------------STRING TEMPLATE LITERALS--------------------------*//
+//* ------------------------- 32. STRING TEMPLATE LITERALS--------------------------*//
 /*ways to declare a string on a variable ""  ''  ``*/
+// `` this backticks syntax is called template literals or template string
 
 // const a = "Hi";
 // const b = "Hello";
@@ -291,26 +294,26 @@
 //exercise: create 2 variables with your name and combina them together with backticks
 // const first = "Leticia";
 // const last = "Azevedo";
-// console.log(`${first} ${last}`);// Leticia Azevedo // this backticks syntax is called template literals or template string
+// console.log(`${first} ${last}`);// Leticia Azevedo, I did put space between the dollar sign to obtain space between variables
 
-//* -------------------------NEW & THIS keyword--------------------------*//
+//* ------------------------- 33. NEW & THIS keyword--------------------------*//
 
 //when you are creating an object that will be repeated, use first letter as capital for best pratice like the Date object
-// const today = new Date();//this "Date" is essentially an object that is converted to a string before logged out //new keyword is a constructor
+// const today = new Date();//this "Date" is essentially an object that is converted to a string before logged out //'new' keyword is a constructor
 // console.log(today);
 
 // function person(name, age) {
 //   return { name: name, age: age, human: true };
 // }
-// function NewPerson(name, age) {
-//   // this = {} calling "this" it creates a new empty object and we will push the key&values to it
+// function NewPerson(name, age) {  /*parameters will defined base on which function it will construct*/
+//   // this = {} calling "this" it's like it creates a new empty object and we will push the key&values to it
 //   this.name = name; //'this' keyword reference the current object you are trying to create
 //   this.age = age;
 //   this.human = true;
-//   //(return this) at the end it will return the object "this"
+//   //(return this) at the end it's like there is (return this) because will return the object "this"
 // } //this is a constructor function, because it will construct a new code/object that will be repeated
 // const values = person("Luca", 31);
-// const newValues = new NewPerson("Leticia", 26);
+// const newValues = new NewPerson("Leticia", 26); //
 // console.log(values); //{name: 'Luca', age: 31, human: true}
 // console.log(newValues); //NewPerson {name: 'Leticia', age: 26, human: true}
 
@@ -321,22 +324,19 @@
 //     year: year,
 //   };
 // }
-// function NewCar(
-//   model,
-//   brand,
-//   year /*parameters will defined base on which function it will construct*/
-// ) {
+// function NewCar(model, brand, year) {
+//   /*parameters will define base on which function it will construct*/
 //   (this.model = model),
 //     (this.name = " "),
 //     (this.brand = brand),
 //     (this.year = year); //() curly brackets here are optional
 // }
-// // //this code below will do the same as the function above but using classes instead (not very common)
-// // class NewCar {
-// //   constructor(model, brand, year) {
-// //     (this.model = model), (this.brand = brand), (this.year = year);
-// //   }
-// // }
+// //this code below will do the same as the function above but using classes instead (not very common)
+// class NewCar {
+//   constructor(model, brand, year) {
+//     (this.model = model), (this.brand = brand), (this.year = year);
+//   }
+// }
 // const newValues = new NewCar("Renegade", "Jeep", 2014); // the keyword "new" creates a new variable using the same paramets as the variable "car"
 // const values = car("Model S", "Tesla", 2022);
 // console.log(values);
