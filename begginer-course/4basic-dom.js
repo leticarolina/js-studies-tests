@@ -1,18 +1,22 @@
 /*--------------------------WINDOW OBJECT-----------------------*/
 
-/*window is an object that we can access using 'window.' However it is totally optional to use it 
+/*window is an object that we can access using 'window.' However it is totally optional to use it because
 the browser will also understand without*/
 
 // window.alert("Hello"); //pops out alert window saying Hello
 // alert("Hello"); //same as above
 
 // //can be good practice to write window on code before adding an event listener
-// window.addEventListener();
-
+//this code would still work without the window.
+// window.addEventListener("resize", () => {
+//   console.log("resized");
+// }); //will log "resized" when user change window side
 /*--------------------------DOCUMENT OBJECT-----------------------*/
 /*document is the keyword we use to access the html document, also add elements to html or change them*/
 
-// console.log(document.documentElement);//prints out only elements of the html
+// console.log(document); //prints out the whole html page including <!DOCTYPE html>
+// console.log(document.body); //prints only
+// console.log(document.documentElement); //prints out only the body and head portion oh html
 
 //creating a new element on the html using document in 3 steps
 // /*1*/ const htmlElement = document.createElement("h1"); //inside the parethesis insert name of html that will be created, variable created to save info
@@ -156,17 +160,7 @@ rezise = whenever the user resixe the window browser */
       <div> Parent 2</div>
     </div> */
 
-const grandParent = document.querySelector("#grand-parent");
-grandParent.style.color = "red";
-//accessing the children of Main element, in this case of the grandParent
-grandParent.children[0].style.color = "pink"; // syntax: children[index] in this case parent 1 is index 0.
-grandParent.children[1].style.color = "gray"; // channging color of parent 2
-//another way to get access the parents declaring variable (recommended)
-const ParentOne = grandParent.children[0]; //accessing parent one
-const parentTwo = ParentOne.nextElementSibling; //nextElementSibling to get the next sibling of the Elements, there is also previousElementSibling
-const childrenOne = ParentOne.children[0]; //accessing the child of parent one <div>Child 1</div>
-const childrenTwo = ParentOne.children[1]; //accessing the child of parent one <div>Child 2</div>
-childrenOne.style.color = "brown"; //changing the color of only the first children of Parent 1
+//changing the color of only the first children of Parent 1
 
 //getting the parent element of a child
 // const childOne = document.querySelector("#child-one");
