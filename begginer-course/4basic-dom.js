@@ -1,4 +1,4 @@
-/*--------------------------WINDOW OBJECT-----------------------*/
+/*-------------------------- 35. WINDOW OBJECT-----------------------*/
 
 /*window is an object that we can access using 'window.' However it is totally optional to use it because
 the browser will also understand without*/
@@ -11,7 +11,7 @@ the browser will also understand without*/
 // window.addEventListener("resize", () => {
 //   console.log("resized");
 // }); //will log "resized" when user change window side
-/*--------------------------DOCUMENT OBJECT-----------------------*/
+/*-------------------------- 36 .DOCUMENT OBJECT-----------------------*/
 /*document is the keyword we use to access the html document, also add elements to html or change them*/
 
 // console.log(document); //prints out the whole html page including <!DOCTYPE html>

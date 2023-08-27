@@ -108,17 +108,78 @@
 //every value added to the function that has parameters with ... will be turned into an array ...parameter: any[]
 
 // function multiplyAndAdd(multiplier, ...add) {
+//   console.log(multiplier); //2
+//   console.log(add); //(3) [1, 2, 3]
 //   return multiplier * add.reduce((base, sum) => base + sum, 0);
 // }
 // const values = multiplyAndAdd(2, 1, 2, 3); //12 will do the sum and then multiply last
 // console.log(values);
 
+// --------- SPREAD OPERATOR
+//spread operator take all index of array and convertes it to individual values
+
+// const numberArray = [2, 1, 3, 1];
+// function multiplyAndAdd(multiplier, ...add) {
+//   console.log(multiplier); //2
+//   console.log(add); // (2) [1, 3, 1]
+//   return multiplier * add.reduce((base, sum) => base + sum, 0);
+// }
+// multiplyAndAdd(...numberArray); //passing numberArray as parameters, will take first index to first parameters and so on. If there is a rest operator will take all last indexes as last parameter
+// const newArray = [...numberArray]; //copying an existent array, exact same array as const numberArray but a brand new one
+// newArray.push("hi"); //will only push to newArray  and not numberArray
+// console.log(newArray); //[2, 1, 3, 1]
+
+// const myName = ["Leticia", "Nascimento", "Azevedo"];
+// function concatNames(first, ...last) {
+//   //   console.log(last); // ['Nascimento', 'Azevedo']
+//   console.log(`${first} ${last}`); //Leticia Nascimento,Azevedo
+// }
+// concatNames(...myName); //using spread operator , will spread index of array according to parameters
+
+//converting smt similar to an array into an array, example with Nodelist
+// const divs = document.querySelectorAll("div");
+// console.log(divs); //NodeList(5) [div, div, div, div, div]
+// // divs.map((number) => {
+// //   console.log(number); //Uncaught TypeError: divs.map is not a function
+// // });
+// const divsArray = [...divs];
+// console.log(divsArray); //(5) [div, div, div, div, div]
+// divsArray.map((number) => {
+//   console.log(number); //return each div separetely
+// });
+// //can also convert Nodelist to an array straight from the document.querySelector
+// const div = [...document.querySelectorAll("div")];
+// console.log(div); //(5) [div, div, div, div, div]
+
+// const array = ["a", "b", "c", "d", "e"];
+// const [first, second, ...rest] = array;
+// console.log(rest); //['c', 'd', 'e']
+
+//REST OPERATOR OBJECT ORIENTED
+// const object = {
+//   name: "Leticia",
+//   age: 26,
+//   favoriteFood: "burger",
+//   address: {
+//     street: "222 s main st",
+//     city: "Los Angeles",
+//   },
+// };
+// const { name: firstName, age, ...rest } = object;
+// console.log(firstName, age); //Leticia 26
+// console.log(rest); // {favoriteFood: 'burger', address: {…}}
+// const object2 = { ...object, hobbie: "read" }; //cloned the object to a new one with new memory address
+// object2.name = "Fernanda";
+// object2.age = 29;
+// console.log(object2);
+
 const object = {
-  name: "Leticia",
-  age: 26,
   favoriteFood: "burger",
   address: {
     street: "222 s main st",
     city: "Los Angeles",
   },
 };
+const person = { name: "Leticia", age: 26 };
+const combined = { ...object, ...person };
+console.log(combined); //turned 2 objects into one
