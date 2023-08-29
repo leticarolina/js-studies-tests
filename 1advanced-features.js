@@ -173,6 +173,7 @@
 // object2.age = 29;
 // console.log(object2);
 
+//combine 2 objects together
 const object = {
   favoriteFood: "burger",
   address: {

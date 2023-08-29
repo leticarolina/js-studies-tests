@@ -23,48 +23,54 @@ the browser will also understand without*/
 // /*2*/ htmlElement.innerText = "Hello I am an element created on Javascript"; // innerText to specify the text content of the element, what if was an image?
 // /*3*/ document.body.appendChild(htmlElement); // document.body is telling that the element will be created on the body, .appendChild(name of variable) is to push the element to the html
 
-/*--------------------------ID AND CLASS SELECTORS-----------------------*/
+/*-------------------------- 37. ID AND CLASS SELECTORS-----------------------*/
 
 //calling an id element
-//console.log(document.getElementById("div-id")); //inside curly brackets goes the name of the class
+// const id = document.getElementById("div-id"); //inside curly brackets goes the name of the class or ID
+// console.log(id);
 
 //changing css style of an ID
 // const divWithId = document.getElementById("div-id");
+// console.log(divWithId);
 // divWithId.style.color = "red"; // the text inside div-id will turn into red this code won't work for class because class is an array
 
 //selecting elements by their class and changing color
 // const divWithClass = document.getElementsByClassName("div-class"); // this code return htmlCollection which is an object similar to an array
-// divWithClass[0].style.color = "green"; //this will change color of only the first div, this is kinda of an array but without the methods
-// converting divs into an actual array and then modyfing the color of it all
-// const classToArray = Array.from(divWithClass); // Array.from(variable) method syntax to transform something into an array, in this case the div with class
-// classToArray.forEach(function (hi) => { return
-//   hi.style.color = "green";
+// console.log(divWithClass); //HTMLCollection(3) [div.div-class, div.div-class, div.div-class]
+// divWithClass[0].style.color = "green"; //this will change color of only the first div, this is kinda of an array but without the array methods
+// converting HTMLcollection divs into an actual array and then modyfing the color of it all
+// const classToArray = Array.from(divWithClass); // Array.from(variable) method syntax to transform something into an array, in this case the div-class
+// classToArray.forEach((element) => {
+//   element.style.color = "green";
 // }); //this code is telling to take classToArray variable and for each array run the function
 
-/*--------------------------QUERY SELECTOR-----------------------*/
-/*select any element regardless it's type, querySelector will select first element that match, querySelectorAll will select all elements that match on a node list (sort of an array) with only forEach method included*/
+/*-------------------------- 38. QUERY SELECTOR-----------------------*/
+/*select any element regardless it's type, querySelector will select first element that match and return the html element, querySelectorAll will select all elements that match and turn into a Nodelist (sort of an array) with only forEach method included*/
 /*querySelectorAll has forEach method without needing to convert into an array before*/
 
 //selecting a data element
 // const dataElement = document.querySelector("[data-test]");
-// dataElement.style.color = "red";
+// dataElement.style.color = "orange";
 // console.log(dataElement);
 
 //selecting divs by class with querySelectorAll
-// const divClass = document.querySelectorAll(".div-class"); //need to put class as it would be in CSS
-// divClass.forEach((line) => (line.style.color = "green")); //creating a loop for each array and then changing it's color, no need to change to array with query bcs it has forEach method appended
+// const divWithClass = document.querySelectorAll(".div-class"); //need to put class as it would be in CSS
+// divWithClass.forEach((div) => (div.style.color = "green")); //creating a loop for each array and then changing it's color, no need to change to array with query bcs it has forEach method appended
 
 //selecting an input
 // const input = document.querySelector("input");
-// console.log(input);
+// console.log(input); // <input>
+// //can be more specific
+// const inputSpecific = document.querySelector("input[type='text']");
+// console.log(inputSpecific); //<input type="text">
 
-/*--------------------------EVENT LISTENERS-----------------------*/
+/*-------------------------- 39. EVENT LISTENERS-----------------------*/
 
 //event listener on a button from html
 //create a variable to target the button
-// const myButton = document.querySelector("[data-button");
+// const myButton = document.querySelector("[data-button]");
 // //addinng an event listener to the button variable
-// myButton.addEventListener("click", (after) => {
+// myButton.addEventListener("click", (afterClick) => {
 //   console.log("Clicked");
 // }); //syntax nameOfVariable.addEventListener(2 parameters) first is name of the event seconf is the function that will run after event
 
@@ -75,27 +81,27 @@ the browser will also understand without*/
 // //function created to be the second parameter of both the event listeners
 // function afterClick() {
 //   console.log("Clicked");
-// }//nothing will happen on the console after clicking bcs the event is being added and remove right after on the same click
+// } //nothing will happen on the console after clicking bcs the event is being added and remove right after on the same click
 
 //addidng event listener to an input
 // const input = document.querySelector("[data-input]");
 // input.addEventListener("change", inputChanged);
 // function inputChanged() {
 //   console.log("The input value has been changed");
-// } // "change" event listener will return on the console how many times the input has been changed
+// } // "change" event listener will run once the input has been changed and mouse clicked out of the input
 //using "input" event instead of "change" will return how many characters are being written on the input
 
 //Using 'submit' event listener on the submit button from a form
 // const submitButton = document.querySelector("[data-form]");
 // submitButton.addEventListener("submit", (clicked) => {
 //   clicked.preventDefault(); //this code is to prevent the default behaviour when running code**
-//   console.log("Submitted");
+//   console.log("Submitted form");
 // });
-//**the default behaviour for submit event listener, is to submit a form again to same page and the console.log will not work so need to use method .preventDefault() to escape default behaviour   */
+//**the default behaviour for submit event listener, is to submit a form again to same page bcs it was not specified where the form will be submitted to and the console.log will not work so need to use method .preventDefault() to escape default behaviour   */
 
 //PREVENTING THE DEFAULT BEHAVIOUR
 //exercise: Create an anchor <a> and when its clicked prevent the default (opening the link) and log something to the console instead
-// const site = document.querySelector("[data-anchor");
+// const site = document.querySelector("[data-anchor]");
 // site.addEventListener("click", (a) => {
 //   a.preventDefault(); //this method prevents the link to be opened and will run code below instead
 //   console.log("The link was clicked");
@@ -110,7 +116,7 @@ the browser will also understand without*/
 
 //TYPES OF Event
 /*mouseenter = everytime mouse hover will trigger the event listener
-mouseleave = whenever the mouse leave the object will trigger the event listener
+mouseleave = whenever the mouse leave hovering the object will trigger the event listener
 mouseover = mouse over will only run once when the mouse is over an element (?)
 focus = whenever the object receives focus (stop will mouse or click) from the mouse it will trigger
 blur = after the object loose the focus
