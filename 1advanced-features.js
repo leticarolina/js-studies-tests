@@ -103,7 +103,7 @@
 // const [sum, sub] = addAndMultiply({ a: 2, b: 1 });
 // console.log(sum, sub); //3 1
 
-//*------------------------- 2. SPREAD AND REST ------------------------*//
+//*------------------------- 3. SPREAD AND REST ------------------------*//
 //rest operator is 3 dots that goes before the last parameter of a function
 //every value added to the function that has parameters with ... will be turned into an array ...parameter: any[]
 
@@ -174,13 +174,78 @@
 // console.log(object2);
 
 //combine 2 objects together
-const object = {
-  favoriteFood: "burger",
-  address: {
-    street: "222 s main st",
-    city: "Los Angeles",
-  },
-};
-const person = { name: "Leticia", age: 26 };
-const combined = { ...object, ...person };
-console.log(combined); //turned 2 objects into one
+// const object = {
+//   favoriteFood: "burger",
+//   address: {
+//     street: "222 s main st",
+//     city: "Los Angeles",
+//   },
+// };
+// const person = { name: "Leticia", age: 26 };
+// const combined = { ...object, ...person };
+// console.log(combined); //turned 2 objects into one
+
+//*------------------------- 4. ENHANCED OBJECT LITERALS ------------------------*//
+//regarding an object if the key and variable are the same doesn't need to write it twice like firstName: firstName
+//only useful when you want to use variables or variable values to define object property
+
+// const firstName = "Leticia";
+// const secondName = "name";
+// const age = 26;
+// const ageIndex = 1;
+// const person = {
+//   [secondName]: firstName, //secondName is just a way to refer the variable, the value of mentioned variable will turn to be the key of the object
+//   firstName, //with object literals can write firstName only once
+//   age,
+//   [`age${ageIndex}`]: age, //age1: 26
+//   sayHi() {
+//     console.log("hi"); //can also write the function directly on the object, no need to declare function keyword
+//   },
+// };
+// console.log(person); //{name: 'Leticia', firstName: 'Leticia', age: 26, age1: 26, sayHi: ƒ}
+
+//*------------------------- 5. DEFAULT PARAMETERS ------------------------*//
+//giving default values to the parameters of a function
+//not advisable to have default parameters before normal parameters unless good reason to do so, bcs can be quite confusing
+//if giving default parameters put them at the end of the list of parameters
+
+//greet and fullName has default parameters
+//If we specify the parameter when calling the fucntion it will override the default value
+// function greetings(
+//   firstName,
+//   lastName,
+//   greet = "Hello",
+//   fullName = `${firstName} ${lastName}`
+// ) {
+//   console.log(`${greet} ${fullName}`);
+// }
+// greetings("Leticia", "Azevedo"); //Hello Leticia Azevedo
+//if we pass an undefined value to the parameter and it has a default value it will refer to the default
+
+//using objects to default the parameters
+// function greetings(lastName, { greet, suffix }) {
+//   console.log(`${greet} ${suffix} ${lastName}`); // Hello Mrs Azevedo
+// }
+// greetings("Azevedo", { greet: "Hello", suffix: "Mrs" }); //destructing the object
+
+//can also set value directly on the parameter object destructed but need to set to an empty object
+// function greetings(lastName, { greet = "Hi", suffix = "Mrs" } = {}) {
+//   console.log(`${greet} ${suffix} ${lastName}`);
+// }
+// greetings("Azevedo"); //Hi Mrs Azevedo
+
+//*------------------------- 6. NULL COALESCING ------------------------*//
+//coalesce = come together to form one mass or whole.
+//syntax variable1 ?? variable2
+//variable1 is to check weather null or undefined, variable2 is the one that will return in case variable1 result is null/undefined
+
+// function greetings(firstName = "Leticia", lastName) {
+//   lastName = lastName ?? "Azevedo"; //syntax If last name return falsie value("" 0) it will return the falsie anyway
+//   console.log(`${firstName} ${lastName}`);
+// }
+// greetings("Leti", null); //Leti Azevedo
+// greetings("Leti", undefined); //Leti Azevedo
+// greetings("Leti", 0); //Leti 0
+// greetings("Leti", " "); //Leti   //empty string is being printed out because it is not null or undefined
+
+console.log(undefined ?? false);
