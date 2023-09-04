@@ -227,11 +227,10 @@
 //   console.log(`${greet} ${suffix} ${lastName}`); // Hello Mrs Azevedo
 // }
 // greetings("Azevedo", { greet: "Hello", suffix: "Mrs" }); //destructing the object
-
 //can also set value directly on the parameter object destructed but need to set to an empty object
 // function greetings(lastName, { greet = "Hi", suffix = "Mrs" } = {}) {
 //   console.log(`${greet} ${suffix} ${lastName}`);
-// }
+// }gi
 // greetings("Azevedo"); //Hi Mrs Azevedo
 
 //*------------------------- 6. NULL COALESCING ------------------------*//
@@ -248,4 +247,155 @@
 // greetings("Leti", 0); //Leti 0
 // greetings("Leti", " "); //Leti   //empty string is being printed out because it is not null or undefined
 
-console.log(undefined ?? false);
+//*------------------------- 7. OPTIONAL CHAINING (new feature) ------------------------*//
+// It is an easy way to check for null/undefined without having to write it out the long way.
+//person != null && person.address vs person?.address
+//it's a question mark syntax after a variable/key/fucntion to basically check if we have something called that name on the code to return if not wil;l return undefined instead of throwing error
+
+//object key
+// const leti = {
+//   name: "Leticia",
+//   age: 25,
+//   address: {
+//     street: "222 s main st",
+//   },
+// };
+// //syntax key?.key?. this question mark after check if key is null or undefined,if so will stop right there and return undefined instead of throwing an error
+// //if it's not null/undefined it continues
+// function printStreet(parameter) {
+//   console.log(parameter?.address?.street); // 222 s main st
+// }
+// printStreet(leti);
+
+//on functions
+// const person = {
+//   name: "Leticia",
+//   sayHi() {
+//     console.log("hi");
+//   },
+// };
+// function sayHi(person) {
+//   person?.sayHi?.(); // person?. checks if there is a variable called person, if so continues, sayHi?.() check if this fucntion exist
+// }
+// sayHi(person);
+
+//on an array
+// const person = {
+//   name: "Leticia",
+//   hobbies: ["swimming", "coding"],
+// };
+// function printHobby(person) {
+//   //checking do we have an object person?. yes
+//   //do we have a property called hobbies?. yes
+//   console.log(person?.hobbies?.[0]); //swimming
+// }
+// printHobby(person);
+
+//*------------------------- 8. MAPS ------------------------*//
+//to create a map need to declare new Map()
+//inside () can create an array, this array can contain other arrays with 2 values the first value will refer to key and second to value
+//plus: the key can be anything, regular object the key HAS to be an string
+
+//sintax new Map([])
+// const map = new Map([
+//   ["Brazil", "BRL"],
+//   ["United States", "USD"],
+//   [{ Germany: "Deutsch" }, "Euro"], //key {Germany: 'Deutsch'} value Euro
+// ]);
+// console.log(map); // Map(2)  {'Brazil' => 'BRL', 'USA' => 'USD'} key and value
+
+//mapping from one object to another object
+// const user = {
+//   name: "leticia",
+// };
+// const map = new Map([[user, { age: 26 }]]);
+// console.log(map); // key: {name: 'leticia'} value: {age: 26}
+// //to get a value from the map map.get(key)
+// console.log(map.get(user)); //{age: 26}
+
+//maps VS object, building a loop thru an object is way easier with map
+//the order on the map is always the same order we add them
+// const map = new Map([
+//   [1, "A"],
+//   [2, "B"],
+//   [3, "C"],
+//   [4, "D"],
+//   [5, "E"],
+// ]);
+// map.forEach((value) => {
+//   console.log(value); //A B C D E
+// });
+// //usually objects doesn't have a size but with map we can get the size property
+// console.log(map.size); //5
+
+// ---------------------------- MAP METHODS
+// const map = new Map([
+//   [1, "A"],
+//   [2, "B"],
+//   [3, "C"],
+//   [4, "D"],
+//   [5, "E"],
+// ]);
+// //Getting a value from the map map.get(key)
+// console.log(map.get(1)); // A
+// //adding a new key value to the existent map map.set(key, value)
+// map.set(6, "F");
+// console.log(map.get(6)); //F
+// //Checking if a value exists on the map map.has(key) return true or false
+// console.log(map.has(5)); //do we have a value for the key 5? // true
+// //deleting a map key/value map.delete(key)
+// map.delete(6);
+// console.log(map.has(6)); //false
+//map.clear() will clear the map and return a brand new empty map
+
+//EXERCISE create the map and get a value from it
+// const items = new Map([
+//   [1, { id: 1, name: "Test", description: "Desc" }],
+//   [2, { id: 2, name: "Test 2", description: "Desc 2" }],
+//   [3, { id: 3, name: "Test 3", description: "Desc 3" }],
+// ]);
+// function getItem(id) {
+//   console.log(id.get(2)); //{id: 2, name: 'Test 2', description: 'Desc 2'}
+// }
+// getItem(items);
+
+//*------------------------- 9. SETS------------------------*//
+//sets are extension to arrays, that is always guaranteed to have all items inside of it to be unique
+
+//example checking if a number is on the array ans if it's not add it to the array
+//without using sets >
+// const uniqueList = [2, 3, 4, 5];
+// const newNumber = 1;
+// if (!uniqueList.includes(newNumber)) {
+//   uniqueList.push(newNumber);
+// }
+// console.log(uniqueList); // [2, 3, 4, 5, 1]
+
+//using sets , syntax: new Set()
+// const set = new Set([1, 2, 3, 3, 3]);
+// console.log(set); //{1, 2, 3} sets remove all the duplicated values
+// //adding a value to the set, can't be an existent value variable.add(value)
+// set.add(4);
+// console.log(set); //{1, 2, 3, 4}
+// //acessing element inside of a set variable.has(value) returns true or false
+// //we cant really get an element from the array set but only check weather the set has that element
+// console.log(set.has(1)); //true
+// //delete an element from the set variable.delete(element)
+// //quite handy since it's difficult to delete an element on a regular array
+// set.delete(4);
+// console.log(set); //{1, 2, 3}
+// //can also get size of the set using set.size
+// console.log(set.size); //3
+// //clear the whole set using set.clear()
+// set.clear();
+// console.log(set); //Set(0) {size: 0}
+
+//EXERCISE
+//remove all the duplicate elements from the array
+function removeDuplicate(array) {
+  const set = new Set();
+  set.add(array);
+  console.log(set);
+}
+
+removeDuplicate([1, 2, 3, 4, 3, 2, 5]);
