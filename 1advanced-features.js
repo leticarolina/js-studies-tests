@@ -392,10 +392,122 @@
 
 //EXERCISE
 //remove all the duplicate elements from the array
-function removeDuplicate(array) {
-  const set = new Set();
-  set.add(array);
-  console.log(set);
-}
+// function removeDuplicate(array) {
+//   // return new Set(array);
+//   //another way
+//   return [...new Set(array)];
+// }
 
-removeDuplicate([1, 2, 3, 4, 3, 2, 5]);
+// console.log(removeDuplicate([1, 2, 3, 4, 3, 2, 5]));
+
+//*------------------------- 10. SYMBOLS------------------------*//
+//PRIMITIVE IS a string, boolean ,array etc
+
+//to create a symbol need to declare as a variable and use syntax Symbol('any name here')
+//the name inside symbol can be anything and also repeated
+// const sym = Symbol("leti");
+// const sym2 = Symbol("leti");
+// console.log(sym); //Symbol(leti)
+// console.log(sym === sym2); // false //every new symbol created will be unique
+
+// const sym = Symbol("leti");
+// const person = {
+//   age: 25,
+//   [sym]: "Leticia",
+// };
+// console.log(person); // {age: 25, Symbol(leti): 'Leticia'}
+// //accessing the symbol
+// console.log(person[sym]); //Leticia
+// console.log(Object.getOwnPropertySymbols(person)) // [Symbol(leti)]
+
+//there is a way symbols are not unique, can create a global symbol using syntax Symbol.for
+//Symbol.for will look for symbol with this name, if there is it will use it otherwise it will create a new symbol of that name
+
+//useful case for symbol, using symbol to not duplicate object
+// const LOG_LEVEL = {
+//   DEBUG: "debug",
+//   INFO: "info",
+//   WARNING: Symbol("warning"),
+//   ERROR: Symbol("error"),
+// };
+// const logLevel = LOG_LEVEL.WARNING;
+// if (logLevel === LOG_LEVEL.WARNING) {
+//   console.log(logLevel); //Symbol(warning)
+// }
+
+//*------------------ 11. GENERATORS AND ITERATORS -------------------*//
+//generator is broken in 2 different parts, the generator function and the generator itself
+//iterator is something has ability to call .next() on it
+
+//writing a generator function sytax function* , cannot be arrow fucntion only normal one
+// function* simpleGenerator() {
+//   //fucntion will return multiple values from the generator, use the keyword yield instead of "return"
+//   //yield is similar to async await
+//   console.log("before 1");
+//   yield 1; //return value of 1 and wait
+//   console.log("after 1");
+//   console.log("before 2");
+//   yield 2;
+//   yield 3;
+// }
+// const generator = simpleGenerator();
+// console.log(generator); //simpleGenerator , this won't call the code inside generator
+
+//running code inside the generator syntax variable.next()
+// generator.next(); //before 1 //this is running code before the first yield and waiting until next is called
+// generator.next(); // after 1 before 2 , stops right before the yield 2
+
+// console.log(generator.next()); // before 1 {value: 1, done: false} done will be false if generator is not over
+// console.log(generator.next()); //after 1 before 2 {value: 2, done: false}
+// console.log(generator.next()); //{value: 3, done: false}
+// console.log(generator.next()); // {value: undefined, done: true}
+
+//exercise
+//create a fucntion called ID Generator to generate a new ID every time, new ID will be 1 greater than previous ID
+// function* idGenerator() {
+//   let defaultID = 1;
+//   yield defaultID;
+
+//   while (true) {
+//     //creating new variable to add 1 to the defaultID
+//     let next = defaultID + 1;
+//     //making sure it won't run until I call generator.next()
+//     yield next;
+//     //setting the defaultID value to be the next variable
+//     defaultID = next;
+//   }
+// }
+//resolution = another way to write generator function
+// function* idGenerator() {
+//   let defaultID = 1;
+
+//   while (true) {
+//     yield defaultID++;
+//   }
+// }
+// const generator = idGenerator(); //creating a variable to call the generator, cann also create another variable and call the same generator each will be unique
+// console.log(generator.next()); //{value: 1, done: false} this is logging variable defaultID and waiting
+// console.log(generator.next()); //{value: 2, done: false}
+// console.log(generator.next()); //{value: 3, done: false}
+
+//can also pass a value to .next()
+//Essentially when you call next with a value it will always be returned from the yield of the generator function.
+function* idGenerator() {
+  let defaultID = 1;
+
+  while (true) {
+    const incrementor = yield defaultID;
+    console.log(incrementor);
+    if (incrementor != null) {
+      defaultID += incrementor;
+    } else {
+      defaultID++;
+    }
+  }
+}
+const generator = idGenerator();
+console.log(generator.next()); // {value: 1, done: false}
+console.log(generator.next(4)); //{value: 5, done: false}
+//variable.return() will exit/stop the generator, can pass value to return it will directly print out as value instead of undefined
+console.log(generator.next()); //{value: 6, done: false}
+console.log(generator.return()); //{value: undefined, done: true}
