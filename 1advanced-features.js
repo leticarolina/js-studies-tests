@@ -492,22 +492,90 @@
 
 //can also pass a value to .next()
 //Essentially when you call next with a value it will always be returned from the yield of the generator function.
-function* idGenerator() {
-  let defaultID = 1;
+// function* idGenerator() {
+//   let defaultID = 1;
 
-  while (true) {
-    const incrementor = yield defaultID;
-    console.log(incrementor);
-    if (incrementor != null) {
-      defaultID += incrementor;
-    } else {
-      defaultID++;
-    }
-  }
+//   while (true) {
+//     const incrementor = yield defaultID;
+//     console.log(incrementor); // if we pass a value to next(), this value is returned by yield
+//     if (incrementor != null) {
+//       defaultID += incrementor;
+//     } else {
+//       defaultID++;
+//     }
+//   }
+// }
+// const generator = idGenerator();
+// console.log(generator.next()); // {value: 1, done: false}
+// console.log(generator.next(4)); //{value: 5, done: false}
+// //variable.return() will exit/stop the generator, can pass value to return it will directly print out as value instead of undefined
+// console.log(generator.next()); //{value: 6, done: false}
+// console.log(generator.return()); //{value: undefined, done: true}
+
+//*------------------ 12. OBJECT GETTERS AND SETTERS -------------------*//
+//to build a property that you get the value from we use getter
+//get is a property name that would be normally a function but has no parameters so can be accessed as object
+//syntax get nameOfFunction(noValue) { here write code that will be returned from the property nameOfFunction}
+// const person = {
+//   firstName: "Leticia",
+//   lastName: "Azevedo",
+//   get fullName() {
+//     return `${this.firstName} ${this.lastName}`;
+//   },
+//   set fullName(value) {
+//     //condensed code
+//     [this.firstName, this.lastName] = value.split(" ");
+//     //same result
+//     // const nameArray = value.split(" ");
+//     // this.firstName = nameArray[0];
+//     // this.lastName = nameArray[1];
+//   },
+// };
+// //doesnt need to call fullname as a function with ()
+// console.log(person.fullName); //Leticia Azevedo
+// //setter is similar to getter except it allows to set a one parameter with a function
+// //syntax set nameOfFunction(oneValue) {inside here we use the parameter to set any value we want, dont have to worry about returning anything}
+// person.fullName = "Luca Hamm"; //changing the
+// console.log(person.fullName); //Luca Hamm
+
+//tip
+//if you see properties starting with an underscore _name it meanns it's a private property aka don't mess with this property
+// const user = {
+//   _username: "Letsgoma",
+//   get username() {
+//     return this._username;
+//   },
+//   set username(value) {
+//     if (value.length > 5) {
+//       this._username = value;
+//     }
+//   },
+// };
+// console.log(user); // {_username: 'Letsgoma'}
+// console.log(user.username); //Letsgoma
+
+//exercise create a getter that will return the year you were born
+// const person = {
+//   age: 26,
+//   get birthYear() {
+//     const date = new Date();
+//     let year = date.getFullYear();
+//     return year - this.age;
+//   },
+// };
+// console.log(person.birthYear);
+
+//*------------------ 13. BIND -------------------*//
+
+window.name = "Global Name";
+const person = {
+  name: "Leticia",
+};
+function printName() {
+  console.log(this.name); //Global Name , this. is reffering to the global variable window
 }
-const generator = idGenerator();
-console.log(generator.next()); // {value: 1, done: false}
-console.log(generator.next(4)); //{value: 5, done: false}
-//variable.return() will exit/stop the generator, can pass value to return it will directly print out as value instead of undefined
-console.log(generator.next()); //{value: 6, done: false}
-console.log(generator.return()); //{value: undefined, done: true}
+printName();
+//binding the person object
+const newPrintName = printName.bind(person);
+//cann call new variabled binded as function
+newPrintName(); //Leticia
