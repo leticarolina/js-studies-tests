@@ -566,7 +566,7 @@
 // console.log(person.birthYear);
 
 //*------------------ 13. BIND -------------------*//
-
+//NEED TO FINISH
 window.name = "Global Name";
 const person = {
   name: "Leticia",
@@ -579,3 +579,5 @@ printName();
 const newPrintName = printName.bind(person);
 //cann call new variabled binded as function
 newPrintName(); //Leticia
+
+//STOPPED WILL CONTINUE AFTER REAct basics
