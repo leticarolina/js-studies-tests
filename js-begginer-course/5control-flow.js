@@ -48,12 +48,12 @@
 //{} curly braces means a new scope
 
 //checking if there is a variable with that name null or undefined
-// const totalPrice = null;
-// if (totalPrice == null) {
-//   console.log("it is null");
-// } else {
-//   console.log("it is not null");
-// } // return it is null
+const totalPrice = null;
+if (totalPrice == null) {
+  console.log("it is null");
+} else {
+  console.log("it is not null");
+} // return it is null
 
 //it will always run true if variable exist, regardless the value unless empty string or 0.
 // const userLogged = []; //true
@@ -73,16 +73,17 @@
 //ONLY CASE when is interesting actually use ternary operator is when need to set a variable based on true or false of another variable
 // const isUserLogged = true;
 // let welcomeMessage = "";
-// if (isUserLogged) {
-//   welcomeMessage = "Welcome!";
-// } else {
-//   welcomeMessage = "Please log in";
-// }
-// console.log(welcomeMessage); //welcome! because isUserLogged = true;
-//same code using ternary operator (syntax Variable  ?  code to run if true : code to run if false)
-// const isUserLogged = true;
-// const welcomeMessage = isUserLogged ? "welcome!" : "Please log in"; //no need to redeclare variable, only put the new value
-// console.log(welcomeMessage); //welcome!
+if (isUserLogged) {
+  welcomeMessage = "Welcome!";
+} else {
+  welcomeMessage = "Please log in";
+}
+console.log(welcomeMessage); //welcome! because isUserLogged = true;
+// same code using ternary operator (syntax Variable  ?  code to run if true : code to run if false)
+const isUserLogged = true;
+const welcomeMessage = isUserLogged ? "welcome!" : "Please log in"; //no need to redeclare variable, only put the new value
+console.log(welcomeMessage); //welcome!
+console.log(welcomeMessage); //welcome!
 
 //* -----------------SWITCH STATEMENT---------------*//
 //Useful when you have  multiple choices inside if statement can use switch statement
