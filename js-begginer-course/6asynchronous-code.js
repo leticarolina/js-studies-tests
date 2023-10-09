@@ -6,8 +6,8 @@ console.log("hi");
 
 //takes a function and a delay timer to run
 setTimeout(() => {
-  console.log("I will run 2 seconds after 'hi' ");
-}, 2000); //settimeout takes a function and timer after
+  console.log(`My name is ${name}`);
+}, 1000); //settimeout takes a function and timer after
 console.log("hi");
 
 //* --------------------------------58. CALLBACKS------------------------------*//

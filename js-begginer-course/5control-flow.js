@@ -339,7 +339,7 @@ while (currentName != null /*while family is not null run the code*/) {
 // printFalse() || printTrue(); // "I am false" "I am true" , since the first function return false it will keep going until the true
 // printFalse() || printTrue() || printFalse(); // "I am false" "I am true" , will not print the last function since the second one already returned true
 
-//using and && , javascript will stop at the fisrt false statement (opposite as ||)
+//using and && , javascript will stop at the first false statement (opposite as ||)
 // function printFalse() {
 //   console.log("I am false");
 //   return false;
@@ -362,7 +362,8 @@ while (currentName != null /*while family is not null run the code*/) {
 // printName();
 
 //when to use &&, && will short circuit at the false statement
-//With && JavaScript will calculate the result which will either be the last element in the && chain or if one of the values is falsey (such as null/undefined) then it will exit the calculation prematurely and print out the falsey value.
+//With && JavaScript will calculate the result which will either be the last element in the && chain 
+//or if one of the values is falsey (such as null/undefined) then it will exit the calculation prematurely and print out the falsey value.
 // const person = {
 //   name: "Leticia",
 //   address: {
