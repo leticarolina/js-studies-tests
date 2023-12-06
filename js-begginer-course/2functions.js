@@ -1,10 +1,13 @@
 //* ----------------16. FUNCTIONS-----------------------*//
-//*syntax function nameOfTheFunction (parameters = giving a name to the info the function will take later , max of 2(?)) {then code here} *//
+//*syntax for function: function nameOfTheFunction (parameters) {then code here} *//
+//parameters = giving a name to the info the function will take later
 
+//creating the function
 // function sayHi() {
 //   console.log("hi");
 // }
-// sayHi(); //this run the function and "()" to pass info to the function, in this case no info needed
+// sayHi(); //functionName() calls the fucntion to run
+//when calling the function to run, the parethesis() is to pass the actual info to the function, in this case no info needed
 
 // exercise: create a function with no argument, insert your name and print it out
 // function myName() {
@@ -12,14 +15,17 @@
 // }
 // myName();
 
-//* ----------------16.1 FUNCTIONS WITH ARGUMENT-----------------------*//
+//* ----------------16.1 FUNCTIONS WITH ARGUMENT/PARAMETERS-----------------------*//
 
 // function sum(a, b) {
 //   console.log(a + b); //3
 // }
-// let x = 1; //option to create a variable to define a value that will be passed to the function inside ()
+// //option to create a variable to define a value that will be passed to the function inside ()
+// let x = 1;
 // let y = 2;
-// sum(x, y); //passing the information to a and b inside the () is another option, could put 1 and 2 straight here instead of x,y
+// sum(x, y);
+// //passing the number directly when calling the function() is another option
+// sum(1, 2);
 
 // //create a function that takes one argument (a person's name) ans prints that out
 // function myName(a) {
@@ -31,8 +37,10 @@
 // function person(she) {
 //   return "Hello " + she;
 // }
+// //code below the variable itself is holding the function as its value and also calling/passing the parameter to the function
 // const girl = person("Leti");
-// console.log(girl);//Hello Leti
+// console.log(girl); //Hello Leti
+// console.log(person()); //Hello undefined
 
 // function storeName(a) {
 //   return "Hello " + a;
@@ -41,12 +49,15 @@
 // const sayHi = storeName("Leticia");
 // console.log(sayHi); //Hello Leticia
 
-// function number(a, b) {
-//   return a + b;
-// }
-// let sum = number(1, 1); //created variable to define value of parameters of function number, now sum has a value of 2
-// let sum2 = sum + number(1, 1); //created another variable, set the value of sum + 2 new parameters on the function number
-// console.log(sum2); //4
+function number(a, b) {
+  return a + b;
+}
+//created variable to define value of parameters, now sum has total value of 2
+let sum = number(1, 1);
+//created another variable, taking the previous value returned by the function and add 2 new parameters on the function number
+let sum2 = sum + number(1, 1);
+console.log(sum); //2
+console.log(sum2); //4
 
 //* ----- 17. PASS FUNCTION TO ANOTHER, OR AS ARGUMENTS/PARAMETERS-----------*//
 //function is a "variable" with a name

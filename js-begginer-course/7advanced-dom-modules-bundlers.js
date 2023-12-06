@@ -185,16 +185,17 @@
 //LOCAL/SESSION STORAGE can access with keyword localStorage,since it is an object has methods on it
 //syntax .setItem("key - you choose", "value - always string") syntax to save a new item on the storage
 // window.localStorage.setItem("Name", "Leticia");
-// //updated the same key "name", it will not add a new key
+// //updating the same key "name", it will not add a new key
 // localStorage.setItem("Name", "Carolina");
 // //deleting an item .removeItem('key')
 // // localStorage.removeItem("Name"); //case-sensitive
+// //getting data from the storage with .getItem("key")
+// console.log(localStorage.getItem("Name")); //Carolina
+
 // //same for session Storage
 // sessionStorage.setItem("Name", "Leticia");
 // sessionStorage.setItem("Name", "Azevedo");
 // sessionStorage.removeItem("Name");
-// //getting data from the storage with .getItem("key")
-// console.log(localStorage.getItem("Name")); //Carolina
 
 // //COOKIES
 // const date = new Date(2024, 0, 1).toUTCString(); //cookies can add a manually expiration, need to set a date for it maximum of 400 days

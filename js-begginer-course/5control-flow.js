@@ -73,16 +73,16 @@ if (totalPrice == null) {
 //ONLY CASE when is interesting actually use ternary operator is when need to set a variable based on true or false of another variable
 // const isUserLogged = true;
 // let welcomeMessage = "";
-if (isUserLogged) {
-  welcomeMessage = "Welcome!";
-} else {
-  welcomeMessage = "Please log in";
-}
-console.log(welcomeMessage); //welcome! because isUserLogged = true;
+// if (isUserLogged) {
+//   welcomeMessage = "Welcome!";
+// } else {
+//   welcomeMessage = "Please log in";
+// }
+// console.log(welcomeMessage); //welcome! because isUserLogged = true;
+
 // same code using ternary operator (syntax Variable  ?  code to run if true : code to run if false)
 const isUserLogged = true;
 const welcomeMessage = isUserLogged ? "welcome!" : "Please log in"; //no need to redeclare variable, only put the new value
-console.log(welcomeMessage); //welcome!
 console.log(welcomeMessage); //welcome!
 
 //* -----------------SWITCH STATEMENT---------------*//
@@ -362,7 +362,7 @@ while (currentName != null /*while family is not null run the code*/) {
 // printName();
 
 //when to use &&, && will short circuit at the false statement
-//With && JavaScript will calculate the result which will either be the last element in the && chain 
+//With && JavaScript will calculate the result which will either be the last element in the && chain
 //or if one of the values is falsey (such as null/undefined) then it will exit the calculation prematurely and print out the falsey value.
 // const person = {
 //   name: "Leticia",
