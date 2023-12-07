@@ -49,24 +49,33 @@
 // const sayHi = storeName("Leticia");
 // console.log(sayHi); //Hello Leticia
 
-function number(a, b) {
-  return a + b;
-}
-//created variable to define value of parameters, now sum has total value of 2
-let sum = number(1, 1);
-//created another variable, taking the previous value returned by the function and add 2 new parameters on the function number
-let sum2 = sum + number(1, 1);
-console.log(sum); //2
-console.log(sum2); //4
+// function number(a, b) {
+//   return a + b;
+// }
+// //created variable to define value of parameters, now sum has total value of 2
+// let sum = number(1, 1);
+// //created another variable, taking the previous value returned by the function and add 2 new parameters on the function number
+// let sum2 = sum + number(1, 1);
+// console.log(sum); //2
+// console.log(sum2); //4
+
+// function double(a, b) {
+//   return a + b;
+// }
+// const first = double(1, 2);
+// const second = first + double("le", "ti");
+// console.log(first); //3
+// console.log(second); //3leti
 
 //* ----- 17. PASS FUNCTION TO ANOTHER, OR AS ARGUMENTS/PARAMETERS-----------*//
-//function is a "variable" with a name
+//function is a "variable" with a name that stores a logic
 
 // function printVariable(variable) {
+//the function name "printVariable" works like a variable storing the console.log
 //   console.log(variable);
 // }
-// function takeValue(a /*will be changed to printVariable*/) {
-//   a("She is the girl boss"); //calling the function "a" and giving it a information
+// function takeValue(a /*will be placeholder to printVariable*/) {
+//   a("She is the girl boss"); //calling the function "a" and also giving it's parameter value
 // }
 // takeValue(printVariable); // this is passing the parameter of takeValue to the function printVariable
 
@@ -82,20 +91,21 @@ console.log(sum2); //4
 // function person(she, callback) {
 //   callback("Hello " + she);
 // }
+// //here the callback function is being declared directly when calling the function
 // const value = person("Leticia", (values) => {
 //   console.log(values); //Hello Leticia
 // });
 
 // function printVariable(variable) {
 //   console.log(variable);
-// } //helper function to print whatever I'm going to to put on the function below
+// } //helper function just to print whatever I'm going to to put on the function below
 // function sayHi(x, callback /*callback to call another function*/) {
 //   callback("Hello " + x);
 // }
 // sayHi("Leticia", printVariable); //function was called and gave the info of "x" to leticia and replaced callback
 // sayHi("Leticia", function (variable) {
 //   console.log(variable);
-// });//another way to call function by replacing callback with already writing another function inside the "calling" and can delete the first function created
+// }); //another way to call function by replacing callback with already writing another function inside the "calling" and can delete the first function created
 
 // function number(a, b, callback) {
 //   callback(a + b);
