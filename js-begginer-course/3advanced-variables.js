@@ -2,6 +2,7 @@
 /* since const never changes its value, you can always use const on your code and 'let' only when the value WILL have to change*/
 /*remember objects and arrays has memory address as values, declaring const means only the memory address can't change aka redeclare the variable*/
 
+//let can be reassigned
 // let a = 1;
 // {
 //   a = 2;
@@ -14,24 +15,26 @@
 
 //* ----------------25. TYPE COERCION------------------*//
 /*convert from one type to another e.g. convert string to number*/
+// parseInt() function name to pass string to a integer number, syntax parseInt(the variable here);
 
 // string to number
-// let a = "1"; //variable "a" is a string
-// console.log(typeof parseInt(a));//'a' now is a number because of parseInt() fucntion
-// syntax parseInt(the variable here); // function name to pass string to an integer number
+// let a = "1.1"; //variable "a" is a string
+// console.log(typeof a); //string
+// console.log(typeof parseInt(a)); //'a' now is a number because of parseInt() function
 // parseFloat(a); // pass string to a floating number like 1.1
 
-// let a = 1.34; //"a" is a number
+//toString() converts type to a string
+// let a = 1.34; //"a" is a float number
+// console.log(typeof a); //number
 // console.log(typeof toString(a)); //"a" is now a string
-// toString(variable);//function to pass value to string
 
 //* ----------------26. == Vs === ------------------*//
 /* triple equal signs === tell JS to not convert types before comparing, because type coercion with 2 equal signs == can give bugs*/
-//only use == when comparing null and undefined otherwise use ALWAYS ===
+//TIP:::: only use == when comparing null and undefined otherwise ALWAYS use ===
 
 // with type coercion
-// const a = 1; //number
-// const b = "1"; //string
+// const a = 1; //typeof number
+// const b = "1"; //typeof string
 // console.log(a == b); //true (even though one is number and the another string, JS is doing type coercion bcs of both is 1)
 
 // const a = 0; //number
@@ -45,13 +48,15 @@
 
 // const a = 0; //number
 // const b = false; //boolean
-// // console.log(a === b); //is 'a' TRULY equal to 'b?' // false
+// console.log(a === b); //is 'a' TRULY equal to 'b' ? // false
 
+//can use == when comparing null and undefined
 // const a = 1;
 // const b = null;
 // console.log(a == b); //false
+
 //* ----------------27. NaN = not a number ------------------*//
-// isNaN(); function to check if this is not a number
+// isNaN(); function to check if this is not a number returns true if it's not a number
 
 // const a = parseInt("abc");
 // const b = 2;
@@ -60,35 +65,36 @@
 // console.log(a); //NaN
 
 //* ----------------28.ARRAYS ------------------*//
-//arrays are defined inside the square brackets [] and elements inside separated by comma
-//ALSO ARRAY INDEX STARTS AT 0
+//arrays are defined inside the square brackets [] and each element inside are separated by comma
+//** ALSO ARRAY INDEX STARTS AT 0 **
 
 // const array = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
-// console.log(array); // 1, 2, 3, 4, 5, 6, 7, 8, 9, 10
-// to access an specific element of the array use square brackets and the index
+// console.log(array); // (10) [1, 2, 3, 4, 5, 6, 7, 8, 9, 10] (10) is the current array number of elements
+// // to access an specific element of the array use square brackets and the index
 // console.log(array[0]); //1
-// adding a new element to the array use function .push()
+// console.log(array[3]); //4
+// // adding a new element to the array use function .push()
 // array.push(11); // variable.push() adds an element to the end of array, since push is a function need to use parenthesis
-// console.log(array); // 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11
+// console.log(array); // (11) [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11]
 
-// const girl = ["leticia", 26, "single"];
+// const girl = ["leticia", 26, "programmer"];
 // girl.push("yes");
 // console.log(girl[3]); //yes
 
 //Pushing a nested array inside another
-// const us = [26, 31];
-// us.push(["Leticia", "Luca"]); //creating array inside another here
-// console.log(us); //[26, 31, Array(2)]
-// console.log(us[2]); // ['Leticia', 'Luca'] which is the inner array created and has index of 2
+// const me = [26, 1997];
+// me.push(["Leticia", "Azevedo"]); //creating array inside another here
+// console.log(me); //(3) [26, 1997, Array(2)]
+// console.log(me[2]); // ['Leticia', 'Azevedo'] which is the inner array created and has index of 2
 
 //accessing an array index inside of another array
 // const array = [
 //   ["hi", "bye"],
 //   ["day", "night"],
 // ]; //this is a nested array 2 arrays inside a parent array
-// console.log(array[0][1]); //return 'bye', first brackets access array index and the second brackets access the value index inside the array
+// console.log(array[0][1]); //return 'bye', first brackets access the array index and the second brackets access the value index inside the array
 
-//exercise: create array with 5 letters and print out the middle element on the array
+// //exercise: create array with 5 letters and print out the middle element on the array
 // const letters = ["a", "b", "c", "d", "e"];
 // console.log(letters[2]); //return "c", the name of the variable[index of element] will print out the element
 
@@ -103,28 +109,37 @@
 // console.log(array[2][0]); //11
 
 //getting the lenght of array
-// const array = [1, 2, 3, 4, "b", [1]];
+// const array = [1, 2, 3, 4, "b", [5]];
+// console.log(array); //(6) [1, 2, 3, 4, 'b', Array(1)]
 // console.log(array.length); //6 return
-// array.push(1);
+// array.push(8);
 // console.log(array.length); //7
 
-// const array = ["hy", "bye"];
-// console.log(array.length); //2 array length doesn't starts at 0
+//checking length of an array
+// const array = ["hy", "bye", "oi", "tchau"];
+// if (array.length > 3) {
+//   console.log("Array is bigger than 3");
+// }
+// console.log(array.length); //4 //array length doesn't starts at 0
 
 //changing the value of an array
 // const number = [1, 2, 3];
 // const numberNew = number;
-// number[0] = 26; //telling that the index 0 of variable number will be 26 but also changes variable numberNew
+// console.log(numberNew); //(3) [1, 2, 3]
+// number[0] = 26; //telling that the index 0 of variable number will be 26
+// //but also changes variable numberNew bcs they have the same memory address
 // console.log(number); //26, 2, 3
 // console.log(numberNew); //26,2 ,3
 
 //* -------------------------29. OBJECTS-----------------------------*//
 /*objects are defined with curly brackets {key: value} inside goes key and value*/
 
+//declaring without object syntax
 // const sex = "Female";
 // const age = 23;
 // const favNumber = 8;
-//declaring same thing as an object
+
+// declaring same thing as an object
 // const person = { sex: "Female", age: 26, favNumber: 8 };
 // console.log(person); //{sex: 'Female', age: 26, favNumber: 8}
 // console.log(person.sex); //Female , variable.key will return it's value
@@ -144,6 +159,7 @@
 // person.callFunction(); //Hello
 // person.callFunction2(); //Hi
 // console.log(person.number); //8
+// console.log(person.callFunction); // ƒ () { console.log("Hello") }
 
 //exercise: create object car with properties brand, model and isUsed. Also add a function which logs "Vroom"
 // const car = {
@@ -156,11 +172,10 @@
 // };
 // car.noise();
 
-//puttting objects and array inside another object
+//puttting objects and array inside a parent object
 // const person = {
 //   name: "leticia",
-//   hobbies: ["programming", "music", "swimming"]//array
-//   ,
+//   hobbies: ["programming", "music", "swimming"], //array
 //   address: {
 //     street: "primeiro de maio",
 //     city: "São Paulo",
@@ -178,7 +193,8 @@
 //     age: 75,
 //   },
 // };
-// book.title = "The power of now"; //code to give a new value variable.key =  new value
+// //code to give a new value variable.key = new value
+// book.title = "The power of now";
 // console.log(book.title); //The power of now
 
 //* -------------------------30. REFERENCE VS VALUE--------------------------*//
@@ -217,7 +233,7 @@
 //   array.push(element);
 // }
 // console.log(a); //[1, 2, 4]
-//
+
 //* -------------------------31. ARRAYS METHODS--------------------------*//
 /*methods are functions you can use on the array*/
 
@@ -230,13 +246,14 @@
 
 //.map() will loop thru each element of the array and return a new array with new values without changing the original
 // const a = [1, 2, 3];
+//new array that will be mapped
 // const newA = a.map((number) => {
 //   return number * 2; //asking to return mapping which is the array multyplied by 2
 // });
 // console.log(a); //[1, 2, 3]
 // console.log(newA); //[2, 4, 6]
 
-//.filter() will loop thru element and filter the values that match with code
+//.filter() will loop thru each element and filter the values that match with code
 // const a = [1, 2, 3, 4, 5, 6];
 // const newA = a.filter((number) => {
 //   return number > 3; //Code to filter only number higher than 3
@@ -244,25 +261,30 @@
 // console.log(a); //[1, 2, 3, 4, 5, 6]
 // console.log(newA); //[4, 5, 6]
 
-//.find() to find a value inside the array, this fucntion will return only one value which is the first true value
+//.find() to find a value inside the array, this function will return only one value which is the first true value
 // const a = [2, 4, 6];
 // const newA = a.find((number) => {
 //   return number > 2;
 // });
-// console.log(newA); // return only 4 due to first true value
+// console.log(newA); //4 ,return only 4 due to first true value
 
-//.some will return true of false if at least one element inside the array match with code given
-//.every will do the same but return true if only EVERY element match
+//.some will return true of false if at least ONE element inside the array match with code given
+// .every will do the same but return true if only EVERY element match
 // const a = [1, 2, 3, 4, 5];
-// const isTrue = a.some((odd) => {
-//   return odd === 1; //code asking if there is number 1 on the array
+// const matching = a.some((num) => {
+//   return num === 1; //code asking if there is number 1 on the array
 // });
-// console.log(isTrue); // true
+// console.log(matching); // true
 
-//.includes() return true or false is array include that value
+//.includes() return true or false if array include that value
 // const myName = ["Leticia", "Carolina", "Nascimento", "Azevedo"];
-// const isTrue = myName.includes("Carolina");
-// console.log(isTrue); //true
+// const doesInclude = myName.includes("Carolina");
+// console.log(doesInclude); //true
+
+// const a = ["Leticia", "Carolina", "Nascimento", "Azevedo"];
+// if (a.includes("Leticia")) {
+//   console.log("array has my fxirst name");
+// }
 
 //-------- .reduce() METHOD
 //!!exercise: get the total of the code below using .reduce method
@@ -273,12 +295,12 @@
 //   { price: 1 },
 //   { price: 6 },
 // ];
-// //.reduce takes at least 2 paramethers .reduce(first is a function, second starting value that will be used in the reducer function) and reduce the array down to ONE SINGLE VALUE
+// //.reduce takes at least 2 paramethers .reduce(first is a function, second is the starting value that will be used in the reducer function) and after reduce the array down to ONE SINGLE VALUE
 // //the function inside .reduce() has 2 parameters aswell, the first is the accumulater(total) for the starting value and the second parameter is each individual item on the abject given a name (info to be passed)
 // const total = items.reduce((total, item) => {
 //   return total + item.price; //whathever return here will be added to "sum" and then do the next loop until items are over
 // }, 0 /*starting value as 0*/);
-// console.log(total);
+// console.log(total); //51
 
 //* ------------------------- 32. STRING TEMPLATE LITERALS--------------------------*//
 /*ways to declare a string on a variable ""  ''  ``*/
@@ -288,7 +310,7 @@
 // const b = "Hello";
 // const c = `Hey`;
 // console.log(a + " " + b + " " + c); //Hi Hello Hey
-// //easier way to declare same console.log above with backticks
+// // //easier way to declare same console.log above with backticks
 // console.log(`${a} ${b} ${c}`); //Hi Hello Hey , syntax `${any js code or variable to run here}`
 
 //exercise: create 2 variables with your name and combina them together with backticks
@@ -299,13 +321,15 @@
 //* ------------------------- 33. NEW & THIS keyword--------------------------*//
 
 //when you are creating an object that will be repeated, use first letter as capital for best pratice like the Date object
-// const today = new Date();//this "Date" is essentially an object that is converted to a string before logged out //'new' keyword is a constructor
+// const today = new Date(); //this "Date" is essentially an object that is converted to a string before logged out //'new' keyword is a constructor
 // console.log(today);
+// console.log(today.getFullYear()); //2023
 
 // function person(name, age) {
 //   return { name: name, age: age, human: true };
 // }
-// function NewPerson(name, age) {  /*parameters will defined base on which function it will construct*/
+// function NewPerson(name, age) {
+//   /*parameters will define base on which function it will construct*/
 //   // this = {} calling "this" it's like it creates a new empty object and we will push the key&values to it
 //   this.name = name; //'this' keyword reference the current object you are trying to create
 //   this.age = age;
@@ -332,11 +356,11 @@
 //     (this.year = year); //() curly brackets here are optional
 // }
 // //this code below will do the same as the function above but using classes instead (not very common)
-// class NewCar {
-//   constructor(model, brand, year) {
-//     (this.model = model), (this.brand = brand), (this.year = year);
-//   }
-// }
+// // class NewCar {
+// //   constructor(model, brand, year) {
+// //     (this.model = model), (this.brand = brand), (this.year = year);
+// //   }
+// // }
 // const newValues = new NewCar("Renegade", "Jeep", 2014); // the keyword "new" creates a new variable using the same paramets as the variable "car"
 // const values = car("Model S", "Tesla", 2022);
 // console.log(values);
