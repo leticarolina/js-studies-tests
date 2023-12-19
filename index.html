@@ -5,11 +5,12 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <!-- <link rel="stylesheet" href="/style.css"> -->
-    <script src="/js-begginer-course/3advanced-variables.js" defer></script>
+    <script src="/js-begginer-course/4basic-dom.js" defer></script>
     <title>JavaScript Test</title>
   </head>
   <body>
     <a
+      id="google-link"
       href="https://translate.google.com/?hl=pt-BR&sl=pt&tl=en&text=cat%C3%A1logo&op=translate"
     >
       Google translate</a
@@ -21,8 +22,24 @@
     <div class="div-class">This is a class ID</div>
     <form data-form="">
       <input data-input type="text" />
+      <input data-input-second type="checkbox" />
       <button data-button type="submit">Button 1</button>
-      <button data-button type="submit">Button 1</button>
+      <button data-button type="submit">Button 2</button>
     </form>
+    <button data-once type="submit">Button 3</button>
+    <button data-content="123" type="button">Button 4</button>
+    <button data-clicks="0" type="button">first</button>
+    <button data-clicks="0" type="button">second</button>
+    <br />
+    <br />
+    <div id="grand-parent">
+      Grand Parent
+      <div>
+        Parent 1
+        <div id="child-one" class="child">Child 1</div>
+        <div class="child">Child 1.2</div>
+      </div>
+      <div>Parent 2</div>
+    </div>
   </body>
 </html>
