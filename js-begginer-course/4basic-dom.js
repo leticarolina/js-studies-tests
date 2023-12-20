@@ -11,6 +11,7 @@ the browser will also understand without*/
 // window.addEventListener("resize", () => {
 //   console.log("resized");
 // }); //will log "resized" when user change window side
+
 /*-------------------------- 36 .DOCUMENT OBJECT-----------------------*/
 /*document is the keyword we use to access the html document, also add elements to html or change them*/
 
