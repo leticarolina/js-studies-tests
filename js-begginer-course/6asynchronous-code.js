@@ -1,14 +1,8 @@
 //asynchronous code used before addEventListener and SetTimeOut, essentially code that will not run right away but after
-setTimeout(() => {
-  console.log("I will run 2 seconds after 'hi' ");
-}, 2000); //settimeout takes a function and timer after
-console.log("hi");
-
-//takes a function and a delay timer to run
-setTimeout(() => {
-  console.log(`My name is ${name}`);
-}, 1000); //settimeout takes a function and timer after
-console.log("hi");
+// setTimeout(() => {
+//   console.log("I will run 2 seconds after 'hi' ");
+// }, 2000); //settimeout takes a function and timer after
+// console.log("hi");
 
 //* --------------------------------58. CALLBACKS------------------------------*//
 //asynchronous code === callbacks
@@ -16,12 +10,14 @@ console.log("hi");
 
 //adding an event listener to the button with callback
 // const button = document.querySelector("button");
-// addingEventListener(button, () => {
-//   console.log("Button was clicked");
-// });
+//creating a function that will call a click event listener
 // function addingEventListener(a, callback) {
 //   a.addEventListener("click", callback);
 // }
+//when calling the function can replace the target and code to run on click
+// addingEventListener(button, () => {
+//   console.log("Button was clicked");
+// });
 
 //* --------------------------------59. PROMISES------------------------------*//
 // "Promise" is an object class built into JS. The function we pass it (that takes "resolve, reject") is passed into the class constructor function.
@@ -75,7 +71,6 @@ console.log("hi");
 // addEventListenerPromise(button, "click").then(() => {
 //   console.log("clicked");
 // });
-
 // function addEventListenerPromise(element, method) {
 //   return new Promise((resolve, reject) => {
 //     element.addEventListener(method, resolve);
@@ -152,18 +147,18 @@ console.log("hi");
 // {status: 'rejected', reason: 'error'} */
 
 //---BONUS: besides .then() .catch(), there is a third that is .finally()
-//.finally() will execute weather .then or .catch, good to use when you need to execute code no matter it if resolve or reject before
-// const promise = Promise.resolve("hi");
-// promise
-//   .then((message) => {
-//     console.log(message);
-//   })
-//   .catch((a) => {
-//     console.error(a);
-//   })
-//   .finally(() => {
-//     console.log("finally");
-//   }); //hi, finally
+//.finally() will execute weather .then or .catch, good to use when you need to execute code no matter it if resolve or reject
+const promise = Promise.resolve("hi");
+promise
+  .then((message) => {
+    console.log(message);
+  })
+  .catch((a) => {
+    console.error(a);
+  })
+  .finally(() => {
+    console.log("finally");
+  }); //hi, finally
 
 //The code inside .then and .catch are the placeholders that just sit there and do nothing on their own. The only time the code in those functions runs is when you call either resolve or reject. Once you do that the code inside your .then or .catch will run based on which method you called.
 
