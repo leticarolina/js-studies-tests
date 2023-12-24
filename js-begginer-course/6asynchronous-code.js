@@ -148,19 +148,20 @@
 
 //---BONUS: besides .then() .catch(), there is a third that is .finally()
 //.finally() will execute weather .then or .catch, good to use when you need to execute code no matter it if resolve or reject
-const promise = Promise.resolve("hi");
-promise
-  .then((message) => {
-    console.log(message);
-  })
-  .catch((a) => {
-    console.error(a);
-  })
-  .finally(() => {
-    console.log("finally");
-  }); //hi, finally
+// const promise = Promise.resolve("hi");
+// promise
+//   .then((message) => {
+//     console.log(message);
+//   })
+//   .catch((a) => {
+//     console.error(a);
+//   })
+//   .finally(() => {
+//     console.log("finally");
+//   }); //hi, finally
 
-//The code inside .then and .catch are the placeholders that just sit there and do nothing on their own. The only time the code in those functions runs is when you call either resolve or reject. Once you do that the code inside your .then or .catch will run based on which method you called.
+//The code inside .then and .catch are the placeholders that just sit there and do nothing on their own.
+//The only time the code in those functions runs is when you call either resolve or reject. Once you do that the code inside your .then or .catch will run based on which method you called.
 
 //* --------------------------------60. ASYNC AWAIT------------------------------*//
 //The keyword async before a function makes the function return a promise
@@ -179,7 +180,7 @@ promise
 //   console.log("1");
 //   await setTimeOutPromise(1000);
 //   console.log("2");
-// }; //after one sec: 1 after another sec: 2
+// }; //after one sec: 1 , after another sec: 2
 // doStuff(); //need to call the async function after so everything can run
 
 //creating async function to log out the "resolve" that was declared in another function
@@ -225,24 +226,35 @@ promise
 // printName(); //Name is not correct
 
 //EXERCISE
-// function getValueWithDelay(value, delay) {
-//   return new Promise((resolve, reject) => {
-//     setTimeout(() => {
-//       resolve(value);
-//     }, delay);
-//   });
-// }
-// function getValueWithDelayError(delay) {
-//   return new Promise((resolve, reject) => {
-//     setTimeout(() => {
-//       reject("Some error happened");
-//     }, delay);
-//   });
-// }
+function getValueWithDelay(value, delay) {
+  return new Promise((resolve, reject) => {
+    setTimeout(() => {
+      resolve(value);
+    }, delay);
+  });
+}
+function getValueWithDelayError(delay) {
+  return new Promise((resolve, reject) => {
+    setTimeout(() => {
+      reject("Some error happened");
+    }, delay);
+  });
+}
+// //EXERCISE: call getValueWithDelay twice and print out the value, then call getValueWithDelayError and make sure the error is caught
+async function doStuff() {
+  try {
+    await getValueWithDelay(console.log("hi 1"), 500);
+    await getValueWithDelay(console.log("hi 2"), 500);
+    // await getValueWithDelayError(400);
+  } catch (e) {
+    console.error(e);
+  }
+}
+doStuff();
 // //EXERCISE: call getValueWithDelay twice and print out the value, then call getValueWithDelayError and make sure the error is caught
 // async function printValues() {
 //   try /*assuming this is the true side*/ {
-//     const value = await getValueWithDelay("Hello ", 1000); /*IMPORTANT ASYNC AWAIT will only run next value after first is finnished*/
+//     const value = await getValueWithDelay("Hello ", 1000); /*IMPORTANT ASYNC AWAIT will only run next value after first is finished*/
 //     console.log(value);
 //     const value2 = await getValueWithDelay("World", 1000);
 //     console.log(value2);
@@ -253,7 +265,7 @@ promise
 //   } finally {
 //     console.log(
 //       "finally"
-//     ); /*async await also has finally that will run after regardless*/
+//     ); /*async await also has finally that will run after regardless it succed or fails*/
 //   }
 // }
 // printValues(); //Hello, World, Some error happened, finally
