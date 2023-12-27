@@ -10,15 +10,28 @@
 
 //adding an event listener to the button with callback
 // const button = document.querySelector("button");
-//creating a function that will call a click event listener
+// // creating a function that will call a click event listener
 // function addingEventListener(a, callback) {
 //   a.addEventListener("click", callback);
 // }
-//when calling the function can replace the target and code to run on click
+// // when calling the function can replace the target and code to run on click
 // addingEventListener(button, () => {
 //   console.log("Button was clicked");
 // });
 
+//first function to be executed however has settimeout, after timer will call readyToEat function
+function orderPizza(readyToEat) {
+  setTimeout(() => {
+    const pizza = "marguerita";
+    readyToEat(pizza);
+  }, 2000);
+}
+
+function readyToEat(pizza) {
+  console.log(`Eat this delicios ${pizza}`);
+}
+orderPizza(readyToEat);
+console.log("Call Fernanda");
 //* --------------------------------59. PROMISES------------------------------*//
 // "Promise" is an object class built into JS. The function we pass it (that takes "resolve, reject") is passed into the class constructor function.
 //promises CAPITAL P need to be declared with new Promise(here goes the code/function you want to run)
@@ -226,31 +239,31 @@
 // printName(); //Name is not correct
 
 //EXERCISE
-function getValueWithDelay(value, delay) {
-  return new Promise((resolve, reject) => {
-    setTimeout(() => {
-      resolve(value);
-    }, delay);
-  });
-}
-function getValueWithDelayError(delay) {
-  return new Promise((resolve, reject) => {
-    setTimeout(() => {
-      reject("Some error happened");
-    }, delay);
-  });
-}
+// function getValueWithDelay(value, delay) {
+//   return new Promise((resolve, reject) => {
+//     setTimeout(() => {
+//       resolve(value);
+//     }, delay);
+//   });
+// }
+// function getValueWithDelayError(delay) {
+//   return new Promise((resolve, reject) => {
+//     setTimeout(() => {
+//       reject("Some error happened");
+//     }, delay);
+//   });
+// }
 // //EXERCISE: call getValueWithDelay twice and print out the value, then call getValueWithDelayError and make sure the error is caught
-async function doStuff() {
-  try {
-    await getValueWithDelay(console.log("hi 1"), 500);
-    await getValueWithDelay(console.log("hi 2"), 500);
-    // await getValueWithDelayError(400);
-  } catch (e) {
-    console.error(e);
-  }
-}
-doStuff();
+// async function doStuff() {
+//   try {
+//     await getValueWithDelay(console.log("hi 1"), 500);
+//     await getValueWithDelay(console.log("hi 2"), 500);
+//     // await getValueWithDelayError(400);
+//   } catch (e) {
+//     console.error(e);
+//   }
+// }
+// doStuff();
 // //EXERCISE: call getValueWithDelay twice and print out the value, then call getValueWithDelayError and make sure the error is caught
 // async function printValues() {
 //   try /*assuming this is the true side*/ {
@@ -270,7 +283,7 @@ doStuff();
 // }
 // printValues(); //Hello, World, Some error happened, finally
 
-//To run every promise code at the same time need to use .then() insteads of asynnc await
+//To run every promise code at the same time need to use .then() insteads of async await
 // function getValue(value, delay) {
 //   return new Promise((resolve, reject) => {
 //     setTimeout(() => {
