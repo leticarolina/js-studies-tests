@@ -20,23 +20,26 @@
 // });
 
 //first function to be executed however has settimeout, after timer will call readyToEat function
-function orderPizza(readyToEat) {
-  setTimeout(() => {
-    const pizza = "marguerita";
-    readyToEat(pizza);
-  }, 2000);
-}
-
-function readyToEat(pizza) {
-  console.log(`Eat this delicios ${pizza}`);
-}
-orderPizza(readyToEat);
-console.log("Call Fernanda");
+// function orderPizza(readyToEat) {
+//   console.log("pizza ordered");
+//   setTimeout(() => {
+//     const pizza = "marguerita";
+//     readyToEat(pizza);
+//   }, 2000);
+// }
+// //will be called after settimeout and pizza variable is defined
+// function readyToEat(pizza) {
+//   console.log(`Eat this delicios ${pizza}`);
+// }
+// orderPizza(readyToEat);
+// console.log("Call Fernanda");
 //* --------------------------------59. PROMISES------------------------------*//
+//promise there is maker and receiver
+//maker is the async function and the receiver is the one that calls the maker and receives the return from it
 // "Promise" is an object class built into JS. The function we pass it (that takes "resolve, reject") is passed into the class constructor function.
-//promises CAPITAL P need to be declared with new Promise(here goes the code/function you want to run)
+//promises CAPITAL P need to be declared with new Promise, example //new Promise((resolve, reject) => { here goes the code/function you want to run} )
 //the function inside the promise will take 2 parameters usually called resolve and reject, these will also take 1 parameter each
-//after when calling the paramets, resolve/first paramets === .then()  reject === .catch()
+//after when calling the parameters, resolve/first paramets === .then()  reject === .catch()
 //.then .catch() will be passed a function inside, you must always pass a function to .then .catch
 
 // const firstPromise = new Promise((resolve, reject) => {
@@ -200,20 +203,20 @@ console.log("Call Fernanda");
 // function setTimeOutPromise(delay) {
 //   return new Promise((resolve) => {
 //     setTimeout(() => {
-//       resolve("You waited ${delay} milliseconds");
+//       resolve(`You waited ${delay} milliseconds`);
 //     }, delay);
 //   });
 // }
 // async function doStuff() {
 //   const message = await setTimeOutPromise(1000);
-//   console.log(message);
+//   console.log(message);   /*IMPORTANT ASYNC AWAIT will only run next value after first is finished*/
 //   console.log("1");
 // }
 // doStuff();
 
 //async with await only has a return for "resolve" promises, if you want to get result for reject aswell need to wrap up the code
 //wrapping up the code inside try{resolve code} catch{reject code here}
-//created a function that returns a promise, the promise will check if my nickname is written correctly but it's not so it will reject
+//created a function that returns a promise, the promise will check if my nickname is written correctly but if it's not so it will reject
 // function setTimeOutPromise(delay) {
 //   return new Promise((resolve, reject) => {
 //     setTimeout(() => {
@@ -229,9 +232,9 @@ console.log("Call Fernanda");
 // }
 // //creating async function with try and catch
 // async function printName() {
-//   try {
+//   try /*assuming this is the true side*/ {
 //     const message = await setTimeOutPromise(250);
-//     console.log(a);
+//     console.log(message);
 //   } catch (error) /*catch HAS to take a parameter*/ {
 //     console.error(error);
 //   }
@@ -256,34 +259,30 @@ console.log("Call Fernanda");
 // //EXERCISE: call getValueWithDelay twice and print out the value, then call getValueWithDelayError and make sure the error is caught
 // async function doStuff() {
 //   try {
+//     const message = await getValueWithDelay("first resolve", 1000);
+//     console.log(message);
+//     const message2 = await getValueWithDelay("second resolve", 1000);
+//     console.log(message2);
+//     const message3 = await getValueWithDelayError("rejected", 1000);
+//     console.log(message3); //this won't log bcs function returned a rejected promise so it will jump to catch
+//   } catch (err) {
+//     console.error(err);
+//   }
+// }
+// doStuff();
+// //another way for same resolution with less code (console.log is already set as the value parameter)
+// async function doStuff() {
+//   try {
 //     await getValueWithDelay(console.log("hi 1"), 500);
 //     await getValueWithDelay(console.log("hi 2"), 500);
-//     // await getValueWithDelayError(400);
+//     await getValueWithDelayError(400);
 //   } catch (e) {
 //     console.error(e);
 //   }
 // }
 // doStuff();
-// //EXERCISE: call getValueWithDelay twice and print out the value, then call getValueWithDelayError and make sure the error is caught
-// async function printValues() {
-//   try /*assuming this is the true side*/ {
-//     const value = await getValueWithDelay("Hello ", 1000); /*IMPORTANT ASYNC AWAIT will only run next value after first is finished*/
-//     console.log(value);
-//     const value2 = await getValueWithDelay("World", 1000);
-//     console.log(value2);
-//     const value3 = await getValueWithDelayError("value 3", 1000);
-//     console.log(value3);
-//   } catch (e) {
-//     console.error(e);
-//   } finally {
-//     console.log(
-//       "finally"
-//     ); /*async await also has finally that will run after regardless it succed or fails*/
-//   }
-// }
-// printValues(); //Hello, World, Some error happened, finally
 
-//To run every promise code at the same time need to use .then() insteads of async await
+//To run every promise code at the same time need to use .then() instead of async await
 // function getValue(value, delay) {
 //   return new Promise((resolve, reject) => {
 //     setTimeout(() => {
@@ -318,7 +317,7 @@ console.log("Call Fernanda");
 //   .catch((b) => {
 //     console.log(b); //some error
 //   });
-//same code above using async/await
+//Using async/await
 // function aPromise(value) {
 //   return new Promise((resolve, reject) => {
 //     const sum = 1 + 2;
@@ -338,3 +337,27 @@ console.log("Call Fernanda");
 //   }
 // }
 // checkPromise();
+
+// function getData() {
+//   return new Promise((resolve) => {
+//     setTimeout(() => {
+//       resolve("hi");
+//     }, 1000);
+//   });
+// }
+
+// async function render() {
+//   const message = await getData();
+//   console.log(message);
+// }
+// render();
+
+async function start() {
+  const api = await fetch(
+    "https://api.weather.gov/gridpoints/TOP/31,80/forecast"
+  );
+  const result = await api.json();
+  console.log(result.properties.periods[0].temperature); //gettting the temperature from the API
+}
+
+start();
