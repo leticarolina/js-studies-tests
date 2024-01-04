@@ -181,9 +181,11 @@
 
 //* --------------------------------60. ASYNC AWAIT------------------------------*//
 //The keyword async before a function makes the function return a promise
-//The await keyword can only be used inside an async function.
+//The await keyword can only be used inside an async function, they must be together (exvept for JS Modules and chrome dev tools console)
 //The await keyword makes the function pause the execution and wait for a resolved promise before it continues
 //Await just means that none of the code after await will be executed until the promise is finished, It doesn't actually pause your other code and stop it from running. Instead if just stops the code directly after await from running until the promise is finished.
+//you can put await before any function that returns a promise
+//best practice is to separate the success from reject with try.
 
 //creating async function instead of a promise
 // function setTimeOutPromise(delay) {
@@ -338,26 +340,12 @@
 // }
 // checkPromise();
 
-// function getData() {
-//   return new Promise((resolve) => {
-//     setTimeout(() => {
-//       resolve("hi");
-//     }, 1000);
-//   });
+//fetching from an API with async
+// async function start() {
+//   const api = await fetch(
+//     "https://api.weather.gov/gridpoints/TOP/31,80/forecast"
+//   );
+//   const result = await api.json();
+//   console.log(result.properties.periods[0].temperature); //gettting the current weather temperature from the API
 // }
-
-// async function render() {
-//   const message = await getData();
-//   console.log(message);
-// }
-// render();
-
-async function start() {
-  const api = await fetch(
-    "https://api.weather.gov/gridpoints/TOP/31,80/forecast"
-  );
-  const result = await api.json();
-  console.log(result.properties.periods[0].temperature); //gettting the temperature from the API
-}
-
-start();
+// start();

@@ -85,15 +85,15 @@
 
 //javascript run code in a line called "MAIN THREAD"
 //any async code will run on a different thread, and queue up to run after the main one is finished
-function sayHi() {
-  console.log("hi 1");
-  console.log("hi 2");
-  setTimeout(() => console.log("hi 3"), 300);
-  setTimeout(() => console.log("hi 4"), 0);
-  console.log("hi 5");
-}
-sayHi();
-console.log("hi 6");
+// function sayHi() {
+//   console.log("hi 1");
+//   console.log("hi 2");
+//   setTimeout(() => console.log("hi 3"), 300);
+//   setTimeout(() => console.log("hi 4"), 0);
+//   console.log("hi 5");
+// }
+// sayHi();
+// console.log("hi 6");
 //hi 1, hi 2, hi 5, hi, 6, hi 4, hi 3.
 //hi 1, hi 2, hi 5, hi 6 (MAIN THREAD)
 //hi 4, hi 3 other thread which "hi 4" was the next on the queue bcs delay of 0
@@ -122,20 +122,22 @@ console.log("hi 6");
 //hi 4, hi 2 queued up accordingly to the settimeout specifically
 
 //* --------------------------------63. EVENT DELEGATION------------------------------*//
-//the layers of javascript
-//for example when you click a button, it's behind the scenes also clicking the body and the document
+//Event delegation is a technique where you attach an event listener to a parent element rather than to its children.
+//for example when you click a button, it's behind the scenes also clicking the body and the document so can attach an event listener to these
 //when you click on a button or any event on the page, these events will be captured and bubbled, starting with capturing from the outside/document to the inside/button in this case, and then bubbling up from the inside/button to the furthest/outside (document)
 //code is run on the bubble phase
+//Event Propagation
+//the layers of javascript
+//Bubbling: Events in the DOM tree can "bubble" up from the target element to its ancestors.
+//Capturing: This is the opposite of bubbling.
 
 // const buttons = document.querySelectorAll("button");
 // document.addEventListener("click", () => {
 //   console.log("clicked document");
 // });
-
 // document.body.addEventListener("click", () => {
 //   console.log("clicked body");
 // });
-
 // buttons.forEach((e) => {
 //   e.addEventListener("click", () => {
 //     console.log("clicked button");
@@ -146,7 +148,7 @@ console.log("hi 6");
 // document.addEventListener("click", () => {
 //   console.log("clicked document");
 // });
-
+// //capture good to use when have overlapping elements
 // document.body.addEventListener(
 //   "click",
 //   () => {
@@ -154,7 +156,6 @@ console.log("hi 6");
 //   },
 //   { capture: true } // setting capture to true will capture this event first before the button
 // );
-
 // buttons.forEach((e) => {
 //   e.addEventListener("click", (e) => {
 //     e.stopPropagation(); //this will stop the browser from propagating and won't capture body and document.
@@ -163,20 +164,30 @@ console.log("hi 6");
 // }); //sequence of output: clicked button, clicked body (baucause body has a  { capture: true } otherwise wouldn't be logged)
 
 //creating a new button and also adding the event listener to this new button
-// const button = document.querySelector("button");
-// const newButton = document.createElement("button");
-// newButton.innerHTML = " Button 2";
-// document.body.append(newButton);
-// // //will NOT log clicked on both, code is only being added to button and not newButton
-// // button.addEventListener("click", () => {
-// //   console.log("clicked");
-// // });
-// //RESOLUTION
-// //this code has no connection with variable declared on previous example, it targets the document and ask for the matching of "button"
+// event delegation allows dynamically added elements to also be covered by the click logic.
+// Simplifies code maintenance
+const button = document.querySelector("button");
+const newButton = document.createElement("button");
+newButton.innerHTML = " Button 2";
+document.body.append(newButton);
+// //will NOT log clicked on both, code is only being added to button and not newButton
+button.addEventListener("click", () => {
+  console.log("clicked");
+});
+//RESOLUTION
+//this code has no connection with variable declared on previous example, it targets the document and ask for the matching of "button"
 // document.addEventListener("click", (e) => {
 //   if (e.target.matches("button")) {
 //     console.log("clicked");
 //   } //.matches(name as targeret on css)
+// });
+
+// document.addEventListener("mouseover", (e) => {
+//   if (e.target.matches(".div-class")) {
+//     console.log(
+//       "using advantage of event propagation during capture phase, event starts from the top of the DOM tree (document/window) and propagates down to the target element"
+//     );
+//   }
 // });
 
 //* ----------------------------64. BROWSER STORAGE--------------------------*//
