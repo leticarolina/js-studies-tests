@@ -185,6 +185,12 @@ rezise = whenever the user resixe the window browser */
 // }); //this will access the html code for button
 
 /*----------------------------DATA ATTRIBUTES------------------------*/
+{
+  /* <input data-input type="text" />
+<input data-input-second type="checkbox" /> 
+    <button data-content="123" type="button">Button 4</button>
+    <button data-clicks="0" type="button">first</button>*/
+}
 
 //dataset method will return a javascript object with all data values it has inside
 // const dataOne = document.querySelector("[data-content]");

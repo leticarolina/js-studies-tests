@@ -166,20 +166,20 @@
 //creating a new button and also adding the event listener to this new button
 // event delegation allows dynamically added elements to also be covered by the click logic.
 // Simplifies code maintenance
-const button = document.querySelector("button");
-const newButton = document.createElement("button");
-newButton.innerHTML = " Button 2";
-document.body.append(newButton);
-// //will NOT log clicked on both, code is only being added to button and not newButton
-button.addEventListener("click", () => {
-  console.log("clicked");
-});
-//RESOLUTION
-//this code has no connection with variable declared on previous example, it targets the document and ask for the matching of "button"
+// const button = document.querySelector("button");
+// const newButton = document.createElement("button");
+// newButton.innerHTML = " Button 2";
+// document.body.append(newButton);
+// //will NOT log clicked on Button 2, code is only being added to button variable and not newButton
+// button.addEventListener("click", () => {
+//   console.log("clicked");
+// });
+// //fixed error above - RESOLUTION
+// //this code has no connection with variable declared on previous example, it targets the document and ask for the matching of "button"
 // document.addEventListener("click", (e) => {
 //   if (e.target.matches("button")) {
 //     console.log("clicked");
-//   } //.matches(name as targeret on css)
+//   } //.matches(name as target on css)
 // });
 
 // document.addEventListener("mouseover", (e) => {
@@ -194,18 +194,28 @@ button.addEventListener("click", () => {
 //3 different main types of browser storage: cookies, local storage and session storage
 // Local Storage       |  Cookies              | Session Storage
 // 10 MB (a lot)       | 4KB                   | 5MB                   //you're gonna get limit of for each item inside
-// data never expires  |manual up to 400 days  | Expire on tab close   //when the data expires?
+// data never expires  | manual up to 400 days | Expire on tab close   //when the data expires?
 // only on user browser| client and server     | only on user browser //how can you access this information? *cookies are perfect for when u need to send data from the client/user to the server automatically
 // Easy to use         | Hard                  | Easy to use
 
-//LOCAL/SESSION STORAGE can access with keyword localStorage,since it is an object has methods on it
-//syntax .setItem("key - you choose", "value - always string") syntax to save a new item on the storage
+// // LOCAL/SESSION STORAGE
+
+// syntax for both are the same
+//can access these with keyword localStorage/SessionStorage ,since it is an object has methods on it
+//syntax ("key - you choose", "value - always string")
+
+// //to save a new item on the storage
+// //localStorage.setItem('key', 'value');
 // window.localStorage.setItem("Name", "Leticia");
-// //updating the same key "name", it will not add a new key
+// //updating the same key "Name", it will not add a new key
 // localStorage.setItem("Name", "Carolina");
+
 // //deleting an item .removeItem('key')
-// // localStorage.removeItem("Name"); //case-sensitive
+// //localStorage.removeItem('key');
+// localStorage.removeItem("Name"); //case-sensitive
+
 // //getting data from the storage with .getItem("key")
+// //const value = localStorage.getItem('key');
 // console.log(localStorage.getItem("Name")); //Carolina
 
 // //same for session Storage
@@ -214,6 +224,7 @@ button.addEventListener("click", () => {
 // sessionStorage.removeItem("Name");
 
 // //COOKIES
+
 // const date = new Date(2024, 0, 1).toUTCString(); //cookies can add a manually expiration, need to set a date for it maximum of 400 days
 // //storaging data with cookie
 // document.cookie = `name=Leticia; expires=1 Jan 2024 00:00:00 `; //expires=${data} could alternatively set expires to the variable date
@@ -224,109 +235,10 @@ button.addEventListener("click", () => {
 // //deleting cookie with key of Name
 // document.cookie = "name= ; expires=1 Jan 2023 00:00:00";
 
-//* ---------------------69. ES6 MODULES------------------*/
-//raw exporting code to another .js file
-//need to tell browser that will use module on the html head <script type="module"></script> (this automatically has defer on it)
-
-//example code at script1.js helper doc with code inside
-// export const me = { name: "Leticia", age: 26 };
-// export const luca = { name: "Luca", age: 31 };
-// function printName(user) {
-//   console.log(`Name: ${user.name}. Age: ${user.age}`);
-// }
-// export default printName;
-
-// // example code at script2.js with <script type="module" src="/script2.js ></script>
-// import print, { me as leti, luca } from "./7advanced-dom.js";
-// // if it's not default export need to defined inside curly brackets {}, to rename NameofVariable as new Name.
-// //default export can have any name, exported as printName and imported as print
-// print(leti); //Name: Leticia. Age: 26
-
-//* ---------------------70. NODE MODULES------------------*/
-//with node we cannot have a export defaulft and the syntax is different
-
-//code to export from user.js
-// const me = { name: "Leticia", age: 26 };
-// const luca = { name: "Luca", age: 31 };
-// function printName(user) {
-//   console.log(`Name: ${user.name}. Age: ${user.age}`);
-// }
-// //need to declare , ser it to object if exporting more than one thing
-// module.exports = { me: me, luca: luca, printName: printName }; //can also write module.exports = { me, luca, printName } as long as the key and the variable are exactly the same, can do with any object
-
-//code to import require()
-// const imported = require("./user.js"); //variable set the whole object imported
-// const leti = imported.me; //tagging the key of the object and setting as a new variable
-// const luca = imported.luca;
-// const aFucntion = imported.printName;
-// aFucntion(leti); // Name: Leticia. Age: 26
-
-//* ---------------------71. NPM node package manager website------------------*/
-//import libraries into the project
-
-//IMPORTING A NPM TO USE ON NODE
-//code to initiate npm, this will create package.json file with dependencies inside
-//npm init -y (-y is yes to all questions)
-
-//terminal code to install npm a package, this will turn nameOfPackage as value of dependencie so won't need the big folder of package
-//npm install NameOfPackage NameOfPackage2
-
-// //js normal file, running the npm inside node
-// const uuid = require("uuid");
-// //uuid.v4() is the functionn inside this specific npm to generate a randon ID
-// console.log(uuid.v4()); //978b8dee-894f-4abe-91fe-a60e764d7f38
-
-//IMPORTING A NPM TO USE ON HTML
-// import { v4 as uuid } from "./node_modules/uuid/dist/esm-browser/index.js"; //this relative path has to find inside the package which file has the export
-// console.log(uuid()); //dd2a378b-fc51-46b8-af59-e4e44b0e9abd
-
-//* ---------------------72. Bundler called PARCEL website------------------*/
-//bundle = a collection of things or quantity of material tied or wrapped up together in a parcel
-
-//Initiating npm to run parcel
-//npm init -y
-
-//instal parcel
-//npm install parcel-bundler (will install normal dependency) which your entire program depends on to run //   Normal dependencies are installed always and will be used in the production build of your code.
-//npm install parcel-bundler --save-dev (development dependency) need when actually developing the site but not when you run it // dev dependencies are only installed and used when you run the start command
-//anything that is not needed for your site to run (such as Parcel, Babel, etc.) should be a dev dependency while everything else is a normal dependency.
-
-//  Parcel-bundler will probably still work, but if you want to use new parcel do this: instead of running "npm i --save-dev parcel-bundler", run "npm i --save-dev parcel".
-
-//using type="modules"
-//example code on another file user.js
-// export const luca = {
-//     name: "luca",
-//   };
-//   export const leti = { name: "leti" };
-//   export default function printName(name) {
-//     console.log(name);
-//   }
-// example importing code from user.js to this file
-// import printName, { luca, leti } from "./user.js";
-// printName(leti.name); //leti
-
-//getting a browser link from parcel to develop without using type=modules on html
-//inside package.json there is an object value called scripts: scripts are sets of code you can run thru npm
-//need to do the setting
-// "scripts": {
-//     "start": "parcel index.html" //this will run parcel inside the html file (technically can remove type="modules" from html head)
-//   }
-//on the terminal run ( npm start ) to get a link for browser window
-
-//making file of code available in any browser with parcel
-//inside package.json there is an object value called scripts: scripts are sets of code you can run thru npm
-//need to do the setting
-// "scripts": {
-//     "start": "parcel index.html" //this will run parcel inside the html file (technically can remove type="modules" from html head)
-//       "build": "parcel build index.html" //
-//   }
-//on the terminal run ( npm run build)
-//will return 3 files with reduced convoluted code (?)
-
-//then can run npm i uuid as a test, will create a dependencie of uuid on package.json
-//importing code from user.js to this file
-// import printName, { luca, leti } from "./user.js";
-// printName(leti.name); //leti
-// import { v4 } from "uuid";
-// console.log(v4()); // 75667de6-8313-4640-8449-eab712ddaba0 easy running without having to do code at lesson 70 node modules
+const me = { name: "Leticia", age: 26 };
+const luca = { name: "Luca", age: 31 };
+function printName(user) {
+  console.log(`Name: ${user.name}. Age: ${user.age}`);
+}
+//if exporting more than one thing better to declare as an object
+module.exports = { me: me, luca: luca, printName: printName };

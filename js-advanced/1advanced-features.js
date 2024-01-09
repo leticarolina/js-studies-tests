@@ -3,73 +3,98 @@
 //another way to get elements from an array/object
 //syntax const [elementsDestructed] = variableToDestruct
 
-//array destructing
+//example array destructing
+
 // const array = ["A", "B", "C"];
-// //normal way to get value by tagging index
-// const first = array[0];
-// const second = array[1];
-// // destructing the aarray, giving variable names to them and pushing a new element at the end
+//normal way to get value by tagging index
+// const first = array[0]; //A
+// const second = array[1]; //B
+// // destructing the array, giving variable names to them and also pushing a new element at the end "D"
+// // the fourth key is a placeholder default value, in case this index was NOT declared on the original array, will log placeholder value of "fourth"
 // const [first, second, third, fourth = "D"] = array; // The [] are like giving a variable name to each item of array
-// // can also do skipping to declare an array index
-// // const [first, , third] = array;
+// console.log(first, second, fourth); // A B D
 // console.log(`${first} ${second} ${third} ${fourth}`); //A B C D
+// can also do skipping to declare an array index
+// const [first, , third] = array;
+// console.log(third); // C
+// console.log(first, second); // Uncaught ReferenceError: second is not defined
 // console.log(first, third); //A C
 
-// function addAndMultiply(a, b) {
-//   // this function returns an array
+// function addAndSub(a, b) {
+//   // this function returns an array of the logic
 //   return [a + b, a - b]; // [3, 1]
 // }
-// //to get array from the function
-// const results = addAndMultiply(2, 1);
+//to get array from the function
+// const results = addAndSub(2, 1);
 // console.log(results); // [3, 1]
-// //redeclaring same function and destructing the array to get individual element
-// const [first, second] = addAndMultiply(1, 1);
+//redeclaring same result and destructing the array to get individual element
+//since the function returns an array (2 index), we are using destructing to get each index
+// const [first, second] = addAndSub(1, 1);
 // console.log(first); // 2
+// console.log(second); //0
 
-//object destructing
-// const object = {
-//   name: "Leticia",
-//   age: 26,
-//   favoriteFood: "burger",
-//   address: {
-//     street: "222 s main st",
-//     city: "Los Angeles",
-//   },
-// };
-// //normal way to get value by tagging key
-// // const firstName = object.name;
-// // console.log(firstName); // Leticia
-// //changing the object key name to firstName
-// const { name: firstName, favoriteFood } = object; //renaming "name" key
+//using spread operator, to get every element no need to declare each index separetely
+// const alphabet = ["a", "b", "c", "d", "e"];
+// const numbers = [1, 2, 3, 4, 5];
+// const [first, ...rest] = alphabet;
+// console.log(first); //a
+// console.log(rest); //(4) ['b', 'c', 'd', 'e']
+//merging 2 arrays together
+// const mergeArray = [...alphabet, ...numbers];
+// const mergeArray = alphabet.concat(numbers); //same output as code above
+// console.log(mergeArray); //log both arrays together
+
+//example object destructing
+
+const object = {
+  name: "Leticia",
+  age: 26,
+  favoriteFood: "burger",
+  address: {
+    street: "222 s main st",
+    city: "Los Angeles",
+  },
+};
+// // normal way to get value by tagging key
+// const firstName = object.name;
 // console.log(firstName); // Leticia
-// //destrcuting a nested object, (object descructing doesnt have to be in the same order like array, just have to refer to the key)
+// // getting key value with object destructing also adding a new key
+const { name, age, hobby = "swimming" } = object;
+console.log(name, age, hobby); //Leticia 26 swimming
+// //changing the object key "name" to "firstName"
+// const { name: firstName } = object; //renaming "name" key
+// console.log(firstName); // Leticia
+// //destrcuting a nested object
+// // NOTE: object descructing doesnt have to be in the same index order like array, just have to refer to the key
 // const {
-//   address: { city: angelsCity, zipcode = "90012", street }, //renamed the key city and pushed a new key:value
-// } = object; //{address} will return an object, to get an element inside the nested object need to deconstruct key inside nested object too
+//   address: { city: angelsCity, zipcode = "90012", street }, //renamed the key city to "angelsCity" and pushed a new key:value , renaming the value will only work if object doesnt already have that key
+// } = object; //{address} will return an object, to get an element inside the nested object need to deconstruct parent object key first
 // console.log(angelsCity, zipcode); //Los Angeles 90012
+// console.log(street); // 222 s main st
 
 // function addAndMultiply(a, b) {
-//   return { sum: a + b, sub: a - b };
+//   return { sum: a + b, mult: a * b };
 // }
-// const values = addAndMultiply(2, 1); //this return the object
-// console.log(values); // {sum: 3, sub: 1}
-// const { sum: soma, sub: subtrair } = addAndMultiply(2, 2); //{} destruct the object that the function is returning
-// console.log(soma); // 4
+// // not destructing
+// const values = addAndMultiply(2, 1); //this variable will return the object, the value of the variable is the function and the fucntion returns an object
+// console.log(values); // {sum: 3, mult: 2}
+// // Destructing
+// const { sum: soma, mult: multiplicar } = addAndMultiply(1, 2);
+// console.log(soma, multiplicar); // 3 2
 
 //EXERCISE
 //create a function that will take full name and convert to individual name
-// function fullNameToIndividual(fullname) {
-//     return fullname.spli(" ") //this will split in an array the whole string on every space
-//   return Array.from(fullname); // this will return an array but splitted into each letter not word
+// function fullToIndividual(a) {
+//   return a.split(" "); //this will split in an array the whole string on every space
+//   // return Array.from(a); // this will return an array but splitted into each letter not space word
 // }
+// const myName = fullToIndividual("leticia carolina do nascimento azevedo");
+// console.log(myName); // (5) ['leticia', 'carolina', 'do', 'nascimento', 'azevedo']
+// //destructing my name
+// const [first, middle, last] = fullToIndividual("Leticia Carolina Azevedo");
+// console.log(first, middle, last); //Leticia Carolina Azevedo
 
-// const name = fullNameToIndividual("Leticia Azevedo");
-// console.log(name);
-// const [first, middle, last = "Azevedo"] = fullNameToIndividual(
-//   "Leticia Carolina Azevedo"
-// );
-// console.log(first); //Leticia
-//object version f exerciseo
+//object version of the exercise
 // function fullNameToIndividual(fullname) {
 //   const [first, middle, last] = fullname.split(" ");
 //   return {
@@ -78,21 +103,22 @@
 //     lastName: last,
 //   };
 // }
-// const { firstName } = fullNameToIndividual("Leticia Carolina Azevedo");
-// console.log(firstName); //Leticia
+// const { middle } = fullNameToIndividual("Leticia Carolina Azevedo");
+// console.log(middle); //Carolina
 
 //------- clean destructing code
-//destructing an object without having to create one
+// //destructing an object without having to create one
 // function addAndMultiply(options) {
-//   const a = options.a;
-//   const b = options.b;
-// //cleaning code above with same output
+// const a = options.a;
+// const b = options.b;
+//cleaning code above with same output
 // const { a, b } = options;
+
 //   return [a + b, a - b];
 // }
 // const values = addAndMultiply({ a: 2, b: 1 }); //destrcuting before declaring?
 // console.log(values); // [3, 1]
-// //can go even further and destruct 'values' before
+//can go even further and destruct 'values' before
 // const [sum, sub] = addAndMultiply({ a: 2, b: 1 });
 // console.log(sub); //1
 
@@ -567,17 +593,17 @@
 
 //*------------------ 13. BIND -------------------*//
 //NEED TO FINISH
-window.name = "Global Name";
-const person = {
-  name: "Leticia",
-};
-function printName() {
-  console.log(this.name); //Global Name , this. is reffering to the global variable window
-}
-printName();
-//binding the person object
-const newPrintName = printName.bind(person);
-//cann call new variabled binded as function
-newPrintName(); //Leticia
+// window.name = "Global Name";
+// const person = {
+//   name: "Leticia",
+// };
+// function printName() {
+//   console.log(this.name); //Global Name , this. is reffering to the global variable window
+// }
+// printName();
+// //binding the person object
+// const newPrintName = printName.bind(person);
+// //cann call new variabled binded as function
+// newPrintName(); //Leticia
 
 //STOPPED WILL CONTINUE AFTER REAct basics
