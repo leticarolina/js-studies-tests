@@ -9,7 +9,7 @@
 //normal way to get value by tagging index
 // const first = array[0]; //A
 // const second = array[1]; //B
-// // destructing the array, giving variable names to them and also pushing a new element at the end "D"
+// // destructing the array, giving variablge names to them and also pushing a new element at the end "D"
 // // the fourth key is a placeholder default value, in case this index was NOT declared on the original array, will log placeholder value of "fourth"
 // const [first, second, third, fourth = "D"] = array; // The [] are like giving a variable name to each item of array
 // console.log(first, second, fourth); // A B D
@@ -46,21 +46,21 @@
 
 //example object destructing
 
-const object = {
-  name: "Leticia",
-  age: 26,
-  favoriteFood: "burger",
-  address: {
-    street: "222 s main st",
-    city: "Los Angeles",
-  },
-};
+// const object = {
+//   name: "Leticia",
+//   age: 26,
+//   favoriteFood: "burger",
+//   address: {
+//     street: "222 s main st",
+//     city: "Los Angeles",
+//   },
+// };
 // // normal way to get value by tagging key
 // const firstName = object.name;
 // console.log(firstName); // Leticia
 // // getting key value with object destructing also adding a new key
-const { name, age, hobby = "swimming" } = object;
-console.log(name, age, hobby); //Leticia 26 swimming
+// const { name, age, hobby = "swimming" } = object;
+// console.log(name, age, hobby); //Leticia 26 swimming
 // //changing the object key "name" to "firstName"
 // const { name: firstName } = object; //renaming "name" key
 // console.log(firstName); // Leticia
@@ -76,7 +76,7 @@ console.log(name, age, hobby); //Leticia 26 swimming
 //   return { sum: a + b, mult: a * b };
 // }
 // // not destructing
-// const values = addAndMultiply(2, 1); //this variable will return the object, the value of the variable is the function and the fucntion returns an object
+// const values = addAndMultiply(2, 1); //this variable will return the object, the value of the variable is the function and the function returns an object
 // console.log(values); // {sum: 3, mult: 2}
 // // Destructing
 // const { sum: soma, mult: multiplicar } = addAndMultiply(1, 2);
@@ -147,44 +147,46 @@ console.log(name, age, hobby); //Leticia 26 swimming
 // const numberArray = [2, 1, 3, 1];
 // function multiplyAndAdd(multiplier, ...add) {
 //   console.log(multiplier); //2
-//   console.log(add); // (2) [1, 3, 1]
+//   console.log(add); // (2) [1, 3, 1]// ...add means take the rest of elements
 //   return multiplier * add.reduce((base, sum) => base + sum, 0);
 // }
 // multiplyAndAdd(...numberArray); //passing numberArray as parameters, will take first index to first parameters and so on. If there is a rest operator will take all last indexes as last parameter
 // const newArray = [...numberArray]; //copying an existent array, exact same array as const numberArray but a brand new one
 // newArray.push("hi"); //will only push to newArray  and not numberArray
-// console.log(newArray); //[2, 1, 3, 1]
+// console.log(newArray); // (5) [2, 1, 3, 1, 'hi']
+// console.log(numberArray); // (4) [2, 1, 3, 1]
 
-// const myName = ["Leticia", "Nascimento", "Azevedo"];
-// function concatNames(first, ...last) {
-//   //   console.log(last); // ['Nascimento', 'Azevedo']
-//   console.log(`${first} ${last}`); //Leticia Nascimento,Azevedo
+// const myName = ["Leticia", "carolina", "Nascimento", "Azevedo"];
+// function concatNames(first, second, ...last) {
+//   //   console.log(last); //(2) ['Nascimento', 'Azevedo'] as an array
+//   console.log(`${first} ${second}`); //Leticia carolina
 // }
 // concatNames(...myName); //using spread operator , will spread index of array according to parameters
 
 //converting smt similar to an array into an array, example with Nodelist
 // const divs = document.querySelectorAll("div");
 // console.log(divs); //NodeList(5) [div, div, div, div, div]
-// // divs.map((number) => {
-// //   console.log(number); //Uncaught TypeError: divs.map is not a function
-// // });
+// divs.map((number) => {
+//   console.log(number); // doesnt work //Uncaught TypeError: divs.map is not a function
+// });
 // const divsArray = [...divs];
 // console.log(divsArray); //(5) [div, div, div, div, div]
-// divsArray.map((number) => {
-//   console.log(number); //return each div separetely
-// });
 // //can also convert Nodelist to an array straight from the document.querySelector
 // const div = [...document.querySelectorAll("div")];
 // console.log(div); //(5) [div, div, div, div, div]
+// divsArray.map((div) => {
+//   console.log(div); //return each div separetely
+// });
 
+//rest operator will take the rest and  accordingly match parameters with values
 // const array = ["a", "b", "c", "d", "e"];
 // const [first, second, ...rest] = array;
 // console.log(rest); //['c', 'd', 'e']
 
-//REST OPERATOR OBJECT ORIENTED
+//REST OPERATOR OBJECT ORIENTED + destructing
 // const object = {
 //   name: "Leticia",
-//   age: 26,
+//   age: 1997,
 //   favoriteFood: "burger",
 //   address: {
 //     street: "222 s main st",
@@ -217,7 +219,7 @@ console.log(name, age, hobby); //Leticia 26 swimming
 
 // const firstName = "Leticia";
 // const secondName = "name";
-// const age = 26;
+// const age = 1997;
 // const ageIndex = 1;
 // const person = {
 //   [secondName]: firstName, //secondName is just a way to refer the variable, the value of mentioned variable will turn to be the key of the object
@@ -236,7 +238,7 @@ console.log(name, age, hobby); //Leticia 26 swimming
 //if giving default parameters put them at the end of the list of parameters
 
 //greet and fullName has default parameters
-//If we specify the parameter when calling the fucntion it will override the default value
+//If we specify the parameter when calling the function it will override the default value
 // function greetings(
 //   firstName,
 //   lastName,
@@ -253,11 +255,12 @@ console.log(name, age, hobby); //Leticia 26 swimming
 //   console.log(`${greet} ${suffix} ${lastName}`); // Hello Mrs Azevedo
 // }
 // greetings("Azevedo", { greet: "Hello", suffix: "Mrs" }); //destructing the object
-//can also set value directly on the parameter object destructed but need to set to an empty object
+// // can also set value directly on the parameter object destructed but need to set to an empty object
 // function greetings(lastName, { greet = "Hi", suffix = "Mrs" } = {}) {
 //   console.log(`${greet} ${suffix} ${lastName}`);
-// }gi
-// greetings("Azevedo"); //Hi Mrs Azevedo
+// }
+// //if function has default parameters object need to declare as empty object first otherwise will give error of undefined parameter
+// greetings("Azevedo", {}); //Hi Mrs Azevedo
 
 //*------------------------- 6. NULL COALESCING ------------------------*//
 //coalesce = come together to form one mass or whole.
@@ -265,18 +268,21 @@ console.log(name, age, hobby); //Leticia 26 swimming
 //variable1 is to check weather null or undefined, variable2 is the one that will return in case variable1 result is null/undefined
 
 // function greetings(firstName = "Leticia", lastName) {
-//   lastName = lastName ?? "Azevedo"; //syntax If last name return falsie value("" 0) it will return the falsie anyway
+//   lastName = lastName ?? "Azevedo"; //syntax if lastname returns null or undefined last name will be "Azevedo"
 //   console.log(`${firstName} ${lastName}`);
 // }
+// greetings(); // Leticia Azevedo
 // greetings("Leti", null); //Leti Azevedo
 // greetings("Leti", undefined); //Leti Azevedo
+// // If last name return falsie value("" 0) it will return the falsie anyway
 // greetings("Leti", 0); //Leti 0
 // greetings("Leti", " "); //Leti   //empty string is being printed out because it is not null or undefined
+// greetings("Leti", "linda"); // Leti linda
 
 //*------------------------- 7. OPTIONAL CHAINING (new feature) ------------------------*//
 // It is an easy way to check for null/undefined without having to write it out the long way.
 //person != null && person.address vs person?.address
-//it's a question mark syntax after a variable/key/fucntion to basically check if we have something called that name on the code to return if not wil;l return undefined instead of throwing error
+//it's a question mark syntax after a variable/key/function to basically check if we have something called that name on the code to return if not wil;l return undefined instead of throwing error
 
 //object key
 // const leti = {
@@ -301,7 +307,7 @@ console.log(name, age, hobby); //Leticia 26 swimming
 //   },
 // };
 // function sayHi(person) {
-//   person?.sayHi?.(); // person?. checks if there is a variable called person, if so continues, sayHi?.() check if this fucntion exist
+//   person?.sayHi?.(); // person?. checks if there is a variable called person, if so continues, sayHi?.() check if this function exist
 // }
 // sayHi(person);
 
@@ -465,9 +471,9 @@ console.log(name, age, hobby); //Leticia 26 swimming
 //generator is broken in 2 different parts, the generator function and the generator itself
 //iterator is something has ability to call .next() on it
 
-//writing a generator function sytax function* , cannot be arrow fucntion only normal one
+//writing a generator function sytax function* , cannot be arrow function only normal one
 // function* simpleGenerator() {
-//   //fucntion will return multiple values from the generator, use the keyword yield instead of "return"
+//   //function will return multiple values from the generator, use the keyword yield instead of "return"
 //   //yield is similar to async await
 //   console.log("before 1");
 //   yield 1; //return value of 1 and wait
@@ -489,7 +495,7 @@ console.log(name, age, hobby); //Leticia 26 swimming
 // console.log(generator.next()); // {value: undefined, done: true}
 
 //exercise
-//create a fucntion called ID Generator to generate a new ID every time, new ID will be 1 greater than previous ID
+//create a function called ID Generator to generate a new ID every time, new ID will be 1 greater than previous ID
 // function* idGenerator() {
 //   let defaultID = 1;
 //   yield defaultID;
