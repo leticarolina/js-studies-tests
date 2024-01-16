@@ -264,7 +264,7 @@
 
 //*------------------------- 6. NULL COALESCING ------------------------*//
 //coalesce = come together to form one mass or whole.
-//syntax variable1 ?? variable2
+//syntax variable1 ?? variable2 (if variable1 is null or undedined then return the variable2)
 //variable1 is to check weather null or undefined, variable2 is the one that will return in case variable1 result is null/undefined
 
 // function greetings(firstName = "Leticia", lastName) {
@@ -281,8 +281,8 @@
 
 //*------------------------- 7. OPTIONAL CHAINING (new feature) ------------------------*//
 // It is an easy way to check for null/undefined without having to write it out the long way.
-//person != null && person.address vs person?.address
-//it's a question mark syntax after a variable/key/function to basically check if we have something called that name on the code to return if not wil;l return undefined instead of throwing error
+//if (person != null && person.address)  VS  person?.address
+//it's a question mark syntax after a variable/key/function to basically check if we have something called that name on the code to return if not will return undefined instead of throwing error
 
 //object key
 // const leti = {
@@ -292,10 +292,11 @@
 //     street: "222 s main st",
 //   },
 // };
-// //syntax key?.key?. this question mark after check if key is null or undefined,if so will stop right there and return undefined instead of throwing an error
+// //syntax variable?.key?. this question mark after check if key is null or undefined,if so will stop right there and return undefined instead of throwing an error
 // //if it's not null/undefined it continues
 // function printStreet(parameter) {
 //   console.log(parameter?.address?.street); // 222 s main st
+//   // leti?.address?.street // if leti and address is not null/undefined will return street
 // }
 // printStreet(leti);
 
@@ -306,8 +307,9 @@
 //     console.log("hi");
 //   },
 // };
-// function sayHi(person) {
-//   person?.sayHi?.(); // person?. checks if there is a variable called person, if so continues, sayHi?.() check if this function exist
+// function sayHi(persona) {
+//   persona?.sayHi?.(); // person?. checks if there is a variable called person, if so continues, sayHi?. check if this exist if true, then run the function ()
+//   //can also call function directly persona?.sayHi()
 // }
 // sayHi(person);
 
@@ -319,31 +321,56 @@
 // function printHobby(person) {
 //   //checking do we have an object person?. yes
 //   //do we have a property called hobbies?. yes
+//   //then print hobbies index of 0
 //   console.log(person?.hobbies?.[0]); //swimming
 // }
 // printHobby(person);
 
+//another example of optional chaining with a nestewd object
+// const supermarketList = {
+//   breakfast: {
+//     bread: "sourdough",
+//     cheese: "gouda",
+//     milk: "almond milk",
+//   },
+//   lunch: {
+//     carb: "rice",
+//     protein: "chicken",
+//   },
+//   dinner: {
+//     carb: "pasta",
+//     protein: "meat",
+//   },
+// };
+// function printIngridients(list) {
+//   console.log(list?.breakfast?.bread); //sourdough
+//   //using null coalescing together
+//   console.log(list?.snack ?? "I am undefined"); // I am undefined
+//   console.log(list?.lunch); // {carb: 'rice', protein: 'chicken'}
+// }
+// printIngridients(supermarketList);
+
 //*------------------------- 8. MAPS ------------------------*//
 //to create a map need to declare new Map()
-//inside () can create an array, this array can contain other arrays with 2 values the first value will refer to key and second to value
+//inside ([]) can create an array, this parent array can contain other arrays inside, each of with 2 values the first will refer to key and second to value
 //plus: the key can be anything, regular object the key HAS to be an string
 
 //sintax new Map([])
 // const map = new Map([
 //   ["Brazil", "BRL"],
 //   ["United States", "USD"],
-//   [{ Germany: "Deutsch" }, "Euro"], //key {Germany: 'Deutsch'} value Euro
+//   [{ Germany: "Deutsch" }, "Euro"], //key {Germany: 'Deutsch'} value: "Euro" , in nthis case key is also an object
 // ]);
-// console.log(map); // Map(2)  {'Brazil' => 'BRL', 'USA' => 'USD'} key and value
+// console.log(map); // Map(3) {'Brazil' => 'BRL', 'United States' => 'USD', {…} => 'Euro'}
 
 //mapping from one object to another object
 // const user = {
 //   name: "leticia",
 // };
-// const map = new Map([[user, { age: 26 }]]);
-// console.log(map); // key: {name: 'leticia'} value: {age: 26}
-// //to get a value from the map map.get(key)
-// console.log(map.get(user)); //{age: 26}
+// const map = new Map([[user, { age: 1997 }]]);
+// console.log(map); // key: {name: 'leticia'} value: {age: 1997}
+// // to get a value from the map syntax map.get(key)
+// console.log(map.get(user)); //{age: 1997}
 
 //maps VS object, building a loop thru an object is way easier with map
 //the order on the map is always the same order we add them
@@ -368,19 +395,33 @@
 //   [4, "D"],
 //   [5, "E"],
 // ]);
-// //Getting a value from the map map.get(key)
+// //Getting a value from the map variable.get(key)
 // console.log(map.get(1)); // A
 // //adding a new key value to the existent map map.set(key, value)
 // map.set(6, "F");
 // console.log(map.get(6)); //F
-// //Checking if a value exists on the map map.has(key) return true or false
+// //Checking if a value exists under that key map.has(key) return true or false
 // console.log(map.has(5)); //do we have a value for the key 5? // true
 // //deleting a map key/value map.delete(key)
 // map.delete(6);
 // console.log(map.has(6)); //false
-//map.clear() will clear the map and return a brand new empty map
+// // map.clear() will clear the map and return a brand new empty map
+// map.clear();
+// console.log(map); //Map(0) {size: 0}
 
-//EXERCISE create the map and get a value from it
+//EXERCISE create a map and get and return values from it
+// const myMap = new Map([
+//   ["city", { "Los Angeles": "California" }],
+//   ["country", "United States"],
+//   ["continent", "America"],
+//   ["language", "English"],
+// ]);
+// function printMap(map, key) {
+//   console.log(map.get(key)); //United States
+// }
+// printMap(myMap, "country");
+
+//another example where each value is an object
 // const items = new Map([
 //   [1, { id: 1, name: "Test", description: "Desc" }],
 //   [2, { id: 2, name: "Test 2", description: "Desc 2" }],
@@ -392,9 +433,10 @@
 // getItem(items);
 
 //*------------------------- 9. SETS------------------------*//
-//sets are extension to arrays, that is always guaranteed to have all items inside of it to be unique
+//sets are extension to arrays, sort of an array except that is always guaranteed to have all items inside of it to be unique no repetitions
+//rest operator with sets as it's very similar to an array [...set]
 
-//example checking if a number is on the array ans if it's not add it to the array
+//example checking if a number is on the array and if it's not add it to the array
 //without using sets >
 // const uniqueList = [2, 3, 4, 5];
 // const newNumber = 1;
@@ -403,21 +445,27 @@
 // }
 // console.log(uniqueList); // [2, 3, 4, 5, 1]
 
-//using sets , syntax: new Set()
-// const set = new Set([1, 2, 3, 3, 3]);
-// console.log(set); //{1, 2, 3} sets remove all the duplicated values
-// //adding a value to the set, can't be an existent value variable.add(value)
-// set.add(4);
-// console.log(set); //{1, 2, 3, 4}
+// // using sets , syntax: new Set()
+// const set = new Set([2, 2, 3, 4, 5]);
+// console.log(set); //(4) {2, 3, 4, 5} sets remove all the duplicated values
+
+// //adding a new value to the set, can't be an existent value variable.add(value)
+// set.add(1);
+// console.log(set); // Set(5) {2, 3, 4, 5, 1}
+
 // //acessing element inside of a set variable.has(value) returns true or false
 // //we cant really get an element from the array set but only check weather the set has that element
 // console.log(set.has(1)); //true
+// console.log(set.has(6)); //false
+
 // //delete an element from the set variable.delete(element)
 // //quite handy since it's difficult to delete an element on a regular array
 // set.delete(4);
-// console.log(set); //{1, 2, 3}
+// console.log(set); //Set(3) {2, 3, 5}
+
 // //can also get size of the set using set.size
 // console.log(set.size); //3
+
 // //clear the whole set using set.clear()
 // set.clear();
 // console.log(set); //Set(0) {size: 0}
@@ -425,14 +473,16 @@
 //EXERCISE
 //remove all the duplicate elements from the array
 // function removeDuplicate(array) {
-//   // return new Set(array);
+//   return new Set(array);
 //   //another way
-//   return [...new Set(array)];
+//   //   return [...new Set(array)];
 // }
 
 // console.log(removeDuplicate([1, 2, 3, 4, 3, 2, 5]));
 
-//*------------------------- 10. SYMBOLS------------------------*//
+//*------------------------- 10. SYMBOLS (not very common to use)------------------------*//
+//its sole purpose is to act as a unique identifier of object properties
+// The methods Symbol.for() and Symbol.keyFor() help create and read Symbols in the global symbol registry.
 //PRIMITIVE IS a string, boolean ,array etc
 
 //to create a symbol need to declare as a variable and use syntax Symbol('any name here')
@@ -448,12 +498,13 @@
 //   [sym]: "Leticia",
 // };
 // console.log(person); // {age: 25, Symbol(leti): 'Leticia'}
-// //accessing the symbol
+// //accessing the symbol value
 // console.log(person[sym]); //Leticia
+// // accessing symbol key
 // console.log(Object.getOwnPropertySymbols(person)) // [Symbol(leti)]
 
 //there is a way symbols are not unique, can create a global symbol using syntax Symbol.for
-//Symbol.for will look for symbol with this name, if there is it will use it otherwise it will create a new symbol of that name
+//Symbol.for will look for symbol with this name, if there is one it will use it otherwise it will create a new symbol of that name
 
 //useful case for symbol, using symbol to not duplicate object
 // const LOG_LEVEL = {
@@ -470,6 +521,7 @@
 //*------------------ 11. GENERATORS AND ITERATORS -------------------*//
 //generator is broken in 2 different parts, the generator function and the generator itself
 //iterator is something has ability to call .next() on it
+//iterator is a bit more common than generators
 
 //writing a generator function sytax function* , cannot be arrow function only normal one
 // function* simpleGenerator() {
@@ -483,12 +535,13 @@
 //   yield 3;
 // }
 // const generator = simpleGenerator();
-// console.log(generator); //simpleGenerator , this won't call the code inside generator
+// console.log(generator); //simpleGenerator , this won't call the code inside generator but create a generator that is populated with yield code.
 
-//running code inside the generator syntax variable.next()
-// generator.next(); //before 1 //this is running code before the first yield and waiting until next is called
-// generator.next(); // after 1 before 2 , stops right before the yield 2
+//to actually run code inside the generator syntax variable.next()
+// generator.next(); //before 1 // stops right before the yield 1, this is running code before the first yield and waiting until .next is called
+// generator.next(); // after 1 before 2 ,this stops right before the yield 2
 
+//calling everything inside simpleGenerator()
 // console.log(generator.next()); // before 1 {value: 1, done: false} done will be false if generator is not over
 // console.log(generator.next()); //after 1 before 2 {value: 2, done: false}
 // console.log(generator.next()); //{value: 3, done: false}
@@ -509,7 +562,12 @@
 //     defaultID = next;
 //   }
 // }
-//resolution = another way to write generator function
+// const generator = idGenerator();
+// console.log(generator.next()); //{value: 1, done: false} this is logging variable defaultID and waiting
+// console.log(generator.next()); //{value: 2, done: false}
+// console.log(generator.next()); //{value: 3, done: false}
+
+//resolution CLEANER = another way to write generator function
 // function* idGenerator() {
 //   let defaultID = 1;
 
@@ -517,7 +575,7 @@
 //     yield defaultID++;
 //   }
 // }
-// const generator = idGenerator(); //creating a variable to call the generator, cann also create another variable and call the same generator each will be unique
+// const generator = idGenerator(); //creating a variable to call the generator, can also create another variable and call the same generator each will be unique
 // console.log(generator.next()); //{value: 1, done: false} this is logging variable defaultID and waiting
 // console.log(generator.next()); //{value: 2, done: false}
 // console.log(generator.next()); //{value: 3, done: false}
@@ -540,9 +598,9 @@
 // const generator = idGenerator();
 // console.log(generator.next()); // {value: 1, done: false}
 // console.log(generator.next(4)); //{value: 5, done: false}
-// //variable.return() will exit/stop the generator, can pass value to return it will directly print out as value instead of undefined
 // console.log(generator.next()); //{value: 6, done: false}
-// console.log(generator.return()); //{value: undefined, done: true}
+// //variable.return() will exit/stop the generator, can pass value to return it will directly print out as value instead of undefined
+// console.log(generator.return("exit the generator")); //{value: 'exit the generator', done: true}
 
 //*------------------ 12. OBJECT GETTERS AND SETTERS -------------------*//
 //to build a property that you get the value from we use getter
