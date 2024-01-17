@@ -604,14 +604,37 @@
 
 //*------------------ 12. OBJECT GETTERS AND SETTERS -------------------*//
 //to build a property that you get the value from we use getter
-//get is a property name that would be normally a function but has no parameters so can be accessed as object
+//get is a property name that would be normally a function but has NO parameters so - can be accessed as object
 //syntax get nameOfFunction(noValue) { here write code that will be returned from the property nameOfFunction}
+//setter is similar to getter except it allows to set a one parameter with a function
+//syntax set nameOfFunction(oneValue) {inside here we use the parameter to set any value we want, dont have to worry about returning anything}
+
+// const person = {
+//   name: "leti",
+//   last: "azevedo",
+//   full: `${this.name} ${this.last}`,
+// };
+// console.log(person.full); //undefined // this will not work
+//fixing this issue with getter
+// const person = {
+//   name: "leti",
+//   last: "azevedo",
+//   // to make the function act like a object key need to declare keyword get and then the function
+//   get fullname() {
+//     return `${person.name} ${person.last}`;
+//     //same way
+//     // return `${this.name} ${this.last}`;
+//   },
+// };
+// console.log(person.fullname); //leti azevedo
+
 // const person = {
 //   firstName: "Leticia",
 //   lastName: "Azevedo",
 //   get fullName() {
 //     return `${this.firstName} ${this.lastName}`;
 //   },
+//   //setter
 //   set fullName(value) {
 //     //condensed code
 //     [this.firstName, this.lastName] = value.split(" ");
@@ -621,15 +644,13 @@
 //     // this.lastName = nameArray[1];
 //   },
 // };
-// //doesnt need to call fullname as a function with ()
+// //good point doesnt need to call fullname as a function with () but as an object
 // console.log(person.fullName); //Leticia Azevedo
-// //setter is similar to getter except it allows to set a one parameter with a function
-// //syntax set nameOfFunction(oneValue) {inside here we use the parameter to set any value we want, dont have to worry about returning anything}
-// person.fullName = "Luca Hamm"; //changing the
+// person.fullName = "Luca Hamm"; //changing the value of the function
 // console.log(person.fullName); //Luca Hamm
 
 //tip
-//if you see properties starting with an underscore _name it meanns it's a private property aka don't mess with this property
+//if you see properties starting with an underscore _name it means it's a private property aka don't mess with this property
 // const user = {
 //   _username: "Letsgoma",
 //   get username() {
@@ -646,17 +667,16 @@
 
 //exercise create a getter that will return the year you were born
 // const person = {
-//   age: 26,
+//   age: 27,
 //   get birthYear() {
-//     const date = new Date();
-//     let year = date.getFullYear();
+//     const year = new Date().getFullYear();
 //     return year - this.age;
 //   },
 // };
-// console.log(person.birthYear);
+// console.log(person.birthYear); //1997
 
 //*------------------ 13. BIND -------------------*//
-//NEED TO FINISH
+
 // window.name = "Global Name";
 // const person = {
 //   name: "Leticia",
@@ -664,10 +684,42 @@
 // function printName() {
 //   console.log(this.name); //Global Name , this. is reffering to the global variable window
 // }
-// printName();
-// //binding the person object
+// // //binding the person object to .this
 // const newPrintName = printName.bind(person);
-// //cann call new variabled binded as function
+// // //calling new variable binded as function
 // newPrintName(); //Leticia
 
-//STOPPED WILL CONTINUE AFTER REAct basics
+//using .bind() to determine default parameters
+// function sum(a, b) {
+//   return a + b;
+// }
+// console.log(sum(2, 3)); //5
+// ////.bind(first, second) the "first" property will always be to redirect .this and the second can act as default parameter for a function
+// const newSum = sum.bind(null, 2);
+// console.log(newSum(1)); //3 //under the hood 2 + 1 = 3 because 2 is the default parameter
+// console.log(newSum(5, 5)); //7 //still refer to the fisrt parameter as number 2
+// //can also create a brand new function and determining both parameters
+// const results = sum.bind(null, 10, 10);
+// console.log(results()); //20
+
+//use case for bind
+//using the map methood to double down each number inside the array
+//not using bind
+// const array = [1, 2, 3, 4, 5];
+// function multiplier(a) {
+//   return a * 2;
+// }
+// const newArray = array.map((number) => {
+//   return multiplier(number);
+// });
+// console.log(newArray); //(5) [2, 4, 6, 8, 10]
+//using bind
+// const array = [1, 2, 3, 4, 5];
+// function multiplier(a, b) {
+//   return a * b;
+// }
+// //array.map(here comes a function) instead of writing the function I am calling multiplier function and binding the first parameter as default
+// const newArrayBind = array.map(multiplier.bind(null, 2));
+// console.log(newArrayBind); //(5) [2, 4, 6, 8, 10]
+
+//*------------------ 13. CALL AND APPLY -------------------*//
