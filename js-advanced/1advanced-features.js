@@ -720,6 +720,41 @@
 // }
 // //array.map(here comes a function) instead of writing the function I am calling multiplier function and binding the first parameter as default
 // const newArrayBind = array.map(multiplier.bind(null, 2));
-// console.log(newArrayBind); //(5) [2, 4, 6, 8, 10]
+// console.log(newArrayBind)G; //(5) [2, 4, 6, 8, 10]
 
-//*------------------ 13. CALL AND APPLY -------------------*//
+//*------------------ 14. CALL AND APPLY (interviews) -------------------*//
+//works similar to bind
+//call ans apply other than the difference in how you call the methods they are exactly the same in what they do.
+
+// window.name = "Global Name";
+// const person = {
+//   name: "leticia",
+// };
+// function printName() {
+//   console.log(this.name);
+// }
+// printName(); //Global name
+// printName.apply(person); //leticia
+// //using bind need to call the function after binding
+// printName.bind(person)(); //leticia
+
+// function sum(a, b) {
+//   console.log(a + b);
+// }
+// //with bind
+// sum.bind(null, 2, 3)(); //5
+// //with call doesn't have to call the function, call does not accept array
+// sum.call(null, 2, 3); //5
+// //apply accepts array so need to pass an array of value to determine parameters
+// sum.apply(null, [2, 3]); //5
+
+// function sum(...numbers) {
+//   numbers.reduce((count, n) => {
+//     return count + n;
+//   });
+// }
+
+// const numbersToAdd = [1, 2, 3, 4, 5];
+// console.log(sum.apply(null, numbersToAdd));
+// //this does the same thing (call and apply would be useful if i wanted sum to redirect to another object/array)
+// console.log(sum(...numbersToAdd));
