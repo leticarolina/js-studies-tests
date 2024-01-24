@@ -75,7 +75,10 @@
 //to use babel it has to be installed on your project
 //step by step: https://courses.webdevsimplified.com/view/courses/javascript-simplified-advanced/729106-using-future-javascript/2125731-20-transpile-and-babel
 
+//when coding with babel need to use the run command after changes are made on the code
+
 //*------------------------- 5. BUNDLERS ------------------------*//
+//what is a bundler?  a tool that puts your code and all its dependencies together in one JavaScript file.
 //Parcel is a bundler that already has babel on it, it make sure when you make changes on the code it automatically refresh
 //Snowpack similar to Parcel, just a newer version
-//Webpack - very complex a lot of configuration
+//Webpack - very famous but aslso complex  bcs needs a lot of configuration
