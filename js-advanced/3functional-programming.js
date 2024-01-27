@@ -12,7 +12,7 @@
 // }
 // addElement(5);
 // console.log(array);
-//pure function bcs is not having any side effects (changinf an external variable)
+//pure function bcs is not having any side effects (changing an external variable)
 // const array = [1, 2, 3, 4];
 // //creating a new array instead of modifying the variable array
 // function addElement(a, element) {
@@ -25,12 +25,11 @@
 //   name: "Leticia",
 //   friends: ["Fernanda", "Juliano"],
 // };
-// //impure function
 // // function addFriend(friendName) {
 // //   person.friends.push(friendName);
 // // }
 // // addFriend("Thalita");
-// // //pure function
+// //pure function
 // function addFriend(object, friendName) {
 //   return { ...object, friends: [...object.friends, friendName] };
 // }
@@ -53,10 +52,10 @@
 //   name: "leti",
 //   friends: ["ju", "fe"],
 // });
-// person.name = "leticia"; //name will still leti
+// person.name = "leticia"; //name will still leti bcs of Object.freeze()
 // console.log(person);
 
-//changing the object by creating a new object withput changing the original one
+//changing the object by creating a new object without changing the original one
 // const person = {
 //   name: "leticia",
 //   address: {
@@ -65,15 +64,15 @@
 //   },
 //   hobbies: ["swimming", "painting"],
 // };
-// //creating new object that will exactly like the person object, but just changing the street and hobbies
+// //creating new object that will be exactly like the person object, but just changing the street and hobbies
 // const newPerson = {
 //   ...person,
 //   address: { ...person.address, street: "S Main Street" },
-//   hobbies: [...person.hobbies, "Running"],
+//   hobbies: [person.hobbies[0], "Running"],
 // };
 // //original person object will not be affected
 // console.log(newPerson.address); //{street: 'S Main Street', city: 'los angeles'}
-// console.log(newPerson.hobbies); //(3) ['swimming', 'painting', 'Running']
+// console.log(newPerson.hobbies); //(2) ['swimming', 'Running']
 
 //* ---------------------- 32. HIGH ORDER FUNCTIONS ------------------*//
 //A higher order function is a function that takes one or more functions as arguments, or returns a function as its result like a callback
@@ -101,7 +100,7 @@
 // });
 // console.log(names); //(3)[("John", "Jane", "Jack")];
 
-//The function inside map is a high order function
+//The function map is a high order function
 // const array = [5, 10, 15];
 // const newArray = array
 //   .map((number) => {
@@ -120,7 +119,7 @@
 //   return person.age > 30;
 // });
 // //same but different
-// const output = users.filter(({ age }) => age > 30);
+// const ages = users.filter(({ age }) => age > 30);
 // console.log(ages);
 
 //.reduce()
@@ -128,10 +127,10 @@
 // const obj1 = { a: 1, b: 2 };
 // const obj2 = { c: 3, d: 4 };
 // const obj3 = { e: 5, f: 6 };
-// const mergedObj = [obj1, obj2, obj3].reduce((acc, curr) => {
-//   return { ...acc, ...curr };
+// const mergedObj = [obj1, obj2, obj3].reduce((total, currentobj) => {
+//   return { ...total, ...currentobj };
 // }, {});
-// console.log(mergedObj);
+// console.log(mergedObj); //{a: 1, b: 2, c: 3, d: 4, e: 5, f: 6}
 
 //creating my own high order function
 // const people = [
@@ -156,7 +155,7 @@
 // console.log(results);
 
 //* ---------------------- 33. FUNCTION COMPOSITION ------------------*//
-//Combining multiple functions into one silgle function
+//Combining multiple functions into one single function
 
 // const array = [1, 2, 3, 4, 5];
 // function double(element) {
@@ -170,7 +169,7 @@
 // console.log(newArray); // (5) [3, 5, 7, 9, 11]
 // //using function composition to add double and addOne function together
 // function doubleAndAddOne(element) {
-//   //calling addOne with paremeter being double function , so double function will run first
+//   //calling addOne with paremeter being 'double' function , so double function will run first
 //   //its kind of backwards bcs you have to read from inside out
 //   return addOne(double(element));
 // }
@@ -188,15 +187,23 @@
 //Currying is taking all the arguments from that function and reducing it, preferably down to one
 //better using loadash
 
-function sum(a, b) {
-  return a + b;
-}
-console.log(sum(1, 3)); //4
-///currying
-function sumOne(a) {
-  return (b) => {
-    return a + b;
-  };
-}
-const result = sumOne(1)(3); //4
-console.log(result);
+// function sum(a, b) {
+//   return a + b;
+// }
+// console.log(sum(1, 3)); //4
+
+// ///currying
+// function sumOne(a) {
+//   return (b) => {
+//     return a + b;
+//   };
+// }
+// const result = sumOne(1)(3);
+// console.log(result); //4
+
+// Immediately invoked functiom
+//syntax ( function() {code})()
+(function () {
+  const IIFE = "local var inside a IIFE";
+  console.log(IIFE);
+})();

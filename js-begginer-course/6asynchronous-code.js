@@ -4,6 +4,12 @@
 // }, 2000); //settimeout takes a function and timer after
 // console.log("hi");
 
+const greetings = settimeout(() => {
+  console.log("hi");
+}, 2000);
+console.log(greetings);
+console.log("Hi I'm first");
+
 //* --------------------------------58. CALLBACKS------------------------------*//
 //asynchronous code === callbacks
 //code that will run at a later time based on specific condition

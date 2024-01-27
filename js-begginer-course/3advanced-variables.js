@@ -302,6 +302,17 @@
 // }, 0 /*starting value as 0*/);
 // console.log(total); //51
 
+// Using reduce() to find the maximum value in an array
+let numbers = [5, 20, 100, 60, 1];
+const maxValue = numbers.reduce((max, current) => {
+  if (current > max) {
+    max = current;
+  }
+  return max;
+}, 0);
+console.log(maxValue); //100
+// 100
+
 //* ------------------------- 32. STRING TEMPLATE LITERALS--------------------------*//
 /*ways to declare a string on a variable ""  ''  ``*/
 // `` this backticks syntax is called template literals or template string

@@ -181,6 +181,15 @@
 // }
 // theName("Leticia", printVariable);
 
+//*---------20. HOISTING-----------*//
+// https://courses.webdevsimplified.com/view/courses/javascript-simplified-beginner/521734-functions-scoping/1510570-20-hoisting
+
+function sum(a, b) {
+  return a + b;
+}
+console.log(sum(a, 1)); //2
+let a = 1;
+
 //*---------21. SCOOPING-----------*//
 
 /*code inside the scope can access the code from global scope.
