@@ -78,15 +78,15 @@
 //A higher order function is a function that takes one or more functions as arguments, or returns a function as its result like a callback
 
 // // Callback function, passed as a parameter in the higher order function
-// function callbackFunction() {
+// function callback() {
 //   console.log("I am the callback function");
 // }
-// // //higherOrderFunction() is an HOF because we are passing a callback function as a parameter to it.
+// // // //higherOrderFunction() is an HOF because we are passing a callback function as a parameter to it.
 // function hihgOrderFunction(func) {
 //   console.log("I am the high order function");
 //   func();
 // }
-// hihgOrderFunction(callbackFunction);
+// hihgOrderFunction(callback);
 
 // //How to Use Some Important BUILD IN Higher Order Functions
 //.map() is a high order function because its a function and the element we pass in like "person" is the parameter to the callback function
@@ -193,17 +193,24 @@
 // console.log(sum(1, 3)); //4
 
 // ///currying
-// function sumOne(a) {
+// function sum(a) {
 //   return (b) => {
 //     return a + b;
 //   };
 // }
-// const result = sumOne(1)(3);
-// console.log(result); //4
+// console.log(sum(1)(3)); //4
 
 // Immediately invoked functiom
 //syntax ( function() {code})()
-(function () {
-  const IIFE = "local var inside a IIFE";
-  console.log(IIFE);
-})();
+// (function () {
+//   const IIFE = "local var inside a IIFE";
+//   console.log(IIFE);
+// })();
+
+function first(a) {
+  return function second() {
+    console.log(a, lastName); //Leticia Azevedo
+  };
+}
+const lastName = "Azevedo";
+first("Leticia")();

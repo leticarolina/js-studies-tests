@@ -184,12 +184,17 @@
 //*---------20. HOISTING-----------*//
 // https://courses.webdevsimplified.com/view/courses/javascript-simplified-beginner/521734-functions-scoping/1510570-20-hoisting
 
-function sum(a, b) {
-  return a + b;
-}
-console.log(sum(a, 1)); //2
-let a = 1;
+//Hoisting in JavaScript is a behavior where variable and function declarations are moved to the top of their containing scope during the compilation phase.
+// This means that you can use a variable or function before it's declared in the code.
 
+// console.log(message); // undefined
+// var message = "Hello, hoisting!";
+// console.log(message); // "Hello, hoisting!"
+
+// sayHello(); // "Hello, function hoisting!"
+// function sayHello() {
+//   console.log("Hello, function hoisting!");
+// }
 //*---------21. SCOOPING-----------*//
 
 /*code inside the scope can access the code from global scope.
@@ -236,13 +241,13 @@ but global scope cannot access code inside the scope. */
 // x("Leti"); //when calling "x" we are calling the function "first" which has a function inside and passing the parameter which maps to "second" function, thats how we pass value to the inner function
 // let x = first("Leticia")("Leti"); // this code will give same result as 3 lines above together.
 
-// function a(x) {
-//   return function (age) {
-//     console.log(x); //Leticia
-//     console.log(age); //26
-//   };
-// }
-// const me = a("Leticia")(26);
+function a(x) {
+  return function (age) {
+    console.log(x); //Leticia
+    console.log(age); //27
+  };
+}
+const me = a("Leticia")(1997);
 
 // function first(a) {
 //   console.log(a + " = first"); //Leticia first

@@ -32,7 +32,9 @@
 /* triple equal signs === tell JS to not convert types before comparing, because type coercion with 2 equal signs == can give bugs*/
 //TIP:::: only use == when comparing null and undefined otherwise ALWAYS use ===
 
-// with type coercion
+// type coercion/ implicit type coercion: the automatic conversion of one data type to another in certain situations.
+
+// with type coercion / Implicit Type Coercion:
 // const a = 1; //typeof number
 // const b = "1"; //typeof string
 // console.log(a == b); //true (even though one is number and the another string, JS is doing type coercion bcs of both is 1)
@@ -303,15 +305,14 @@
 // console.log(total); //51
 
 // Using reduce() to find the maximum value in an array
-let numbers = [5, 20, 100, 60, 1];
-const maxValue = numbers.reduce((max, current) => {
-  if (current > max) {
-    max = current;
-  }
-  return max;
-}, 0);
-console.log(maxValue); //100
-// 100
+// let numbers = [5, 20, 100, 60, 1];
+// const maxValue = numbers.reduce((max, current) => {
+//   if (current > max) {
+//     max = current;
+//   }
+//   return max;
+// }, 0);
+// console.log(maxValue); //100
 
 //* ------------------------- 32. STRING TEMPLATE LITERALS--------------------------*//
 /*ways to declare a string on a variable ""  ''  ``*/
