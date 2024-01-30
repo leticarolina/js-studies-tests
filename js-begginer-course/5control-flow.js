@@ -248,7 +248,7 @@
 //   currentName = currentName.child; //this will change the currentName to be the child every time it loops until child is null
 // }
 
-//* --------------------------------RECURSION (GOOD FOR INTERVIEWS)------------------------------*//
+//* --------------------------------51. RECURSION (GOOD FOR INTERVIEWS)------------------------------*//
 //recursion is a function that calls itself again, anything you can do with recursion you do with a normal for loop aswell
 //not reccomended to use recursion unless you have a strong case for it
 
@@ -256,7 +256,7 @@
 // for (let n = 1; n <= 10; n++) {
 //   console.log(n);
 // }
-// example same result to print 1 to 10 but with recursion
+// // example same result to print 1 to 10 but with recursion
 // function callNumber(number) {
 //   if (number > 10) return; // this is the ending point
 //   console.log(number); //logging current number
@@ -288,15 +288,15 @@
 // console.log(total(5));
 
 //EXERCISE: object base for the exercise
-// const person = {
-//   name: "Leticia",
-//   friend: {
-//     name: "Fernanda",
-//     friend: {
-//       name: "Bia",
-//     },
-//   },
-// };
+const person = {
+  name: "Leticia",
+  friend: {
+    name: "Fernanda",
+    friend: {
+      name: "Bia",
+    },
+  },
+};
 //Getting info from object with while loop
 // let currentName = person;
 // while (currentName != null) {
@@ -312,13 +312,13 @@
 // }
 // printNames(person);
 //another way to run with recursion changing the if statement
-// function printName(n) {
-//   if (n != null) {
-//     console.log(n.name);
-//     printName(n.friend);
-//   }
-// }
-// printName(person);
+function printName(currentPerson) {
+  if (currentPerson != null) {
+    console.log(currentPerson.name);
+    printName(currentPerson.friend);
+  }
+}
+printName(person);
 
 // function printNames(theName) {
 //   if (theName == null) return;
