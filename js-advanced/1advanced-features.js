@@ -615,7 +615,7 @@
 //   full: `${this.name} ${this.last}`,
 // };
 // console.log(person.full); //undefined // this will not work
-//fixing this issue with getter
+// // fixing this issue with getter
 // const person = {
 //   name: "leti",
 //   last: "azevedo",
@@ -677,17 +677,17 @@
 
 //*------------------ 13. BIND -------------------*//
 
-// window.name = "Global Name";
-// const person = {
-//   name: "Leticia",
-// };
-// function printName() {
-//   console.log(this.name); //Global Name , this. is reffering to the global variable window
-// }
-// // //binding the person object to .this
-// const newPrintName = printName.bind(person);
-// // //calling new variable binded as function
-// newPrintName(); //Leticia
+window.name = "Global Name";
+const person = {
+  name: "Leticia",
+};
+function printName() {
+  console.log(this.name); //Global Name , this. is reffering to the global variable window
+}
+// //binding the person object to .this
+const newPrintName = printName.bind(person);
+// //calling new variable binded as function
+newPrintName(); //Leticia
 
 //using .bind() to determine default parameters
 // function sum(a, b) {

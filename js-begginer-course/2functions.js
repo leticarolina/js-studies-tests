@@ -241,21 +241,21 @@ but global scope cannot access code inside the scope. */
 // x("Leti"); //when calling "x" we are calling the function "first" which has a function inside and passing the parameter which maps to "second" function, thats how we pass value to the inner function
 // let x = first("Leticia")("Leti"); // this code will give same result as 3 lines above together.
 
-function a(x) {
-  return function (age) {
-    console.log(x); //Leticia
-    console.log(age); //27
-  };
-}
-const me = a("Leticia")(1997);
-
-// function first(a) {
-//   console.log(a + " = first"); //Leticia first
-//   return function second(b, c) {
-//     console.log(b + " = second b"); //Carolina = second b
-//     console.log(c + " = second c"); //Azevedo = second c
+// function a(x) {
+//   return function (age) {
+//     console.log(x); //Leticia
+//     console.log(age); //27
 //   };
 // }
-// // let theValues = first("Leticia");
-// // theValues("Carolina", "Azevedo"); //this code is basically giving values to the 2 parameters of the inner function called "second"
-// let theValues = first("Leticia")("Carolina", "Azevedo"); // code will give same result as 2 lined above
+// const me = a("Leticia")(1997);
+
+function first(a) {
+  console.log(a + " = first"); //Leticia first
+  return function second(b, c) {
+    console.log(b + " = second b"); //Carolina = second b
+    console.log(c + " = second c"); //Azevedo = second c
+  };
+}
+// let theValues = first("Leticia");
+// theValues("Carolina", "Azevedo"); //this code is basically giving values to the 2 parameters of the inner function called "second"
+let theValues = first("Leticia")("Carolina", "Azevedo"); // code will give same result as 2 lined above

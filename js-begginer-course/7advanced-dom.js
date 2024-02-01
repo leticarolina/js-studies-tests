@@ -81,7 +81,7 @@
 //https://courses.webdevsimplified.com/view/courses/javascript-simplified-beginner/521739-advanced-dom/1511157-62-event-loop
 //event loop is the way javascript run the code
 //usually promises have priority over others async code, they can run after the main thread is over or after the function it's in is over.
-//the key is that Promises/async funnctions will run eventually when they have time to and generally run quicker than things like timeouts because of the separate queue they are in.
+//the key is that Promises/async functions will run eventually when they have time to and generally run quicker than things like timeouts because of the separate queue they are in.
 
 //javascript run code in a line called "MAIN THREAD"
 //any async code will run on a different thread, and queue up to run after the main one is finished

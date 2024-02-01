@@ -32,8 +32,21 @@
 // //I have not created a method called getFullYear()but it does return me the current year.
 // //The reason for that is the use of prototypes, the build in methods inside the object
 
-const myName = ["Leticia", "Carolina", "Azevedo"];
-function concatNames(first, ...last) {
-  console.log(last); //(2) ['Carolina', 'Azevedo']
+// const myName = ["Leticia", "Carolina", "Azevedo"];
+// function concatNames(first, ...last) {
+//   console.log(last); //['Carolina', 'Azevedo']
+// }
+// concatNames(...myName);
+
+function numbers() {
+  console.log("1");
+  setTimeout(() => {
+    console.log("2");
+  }, 10);
+  setTimeout(() => {
+    console.log("3");
+  }, 0);
+  console.log("4");
 }
-concatNames(...myName);
+numbers(); //hi
+console.log("end");
