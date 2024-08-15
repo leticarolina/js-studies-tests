@@ -4,12 +4,13 @@
 //syntax const [elementsDestructed] = variableToDestruct
 
 //example array destructing
-
 // const array = ["A", "B", "C"];
+
 //normal way to get value by tagging index
 // const first = array[0]; //A
 // const second = array[1]; //B
-// // destructing the array, giving variablge names to them and also pushing a new element at the end "D"
+
+// // destructing the array, giving variable names to them and also pushing a new element at the end "D"
 // // the fourth key is a placeholder default value, in case this index was NOT declared on the original array, will log placeholder value of "fourth"
 // const [first, second, third, fourth = "D"] = array; // The [] are like giving a variable name to each item of array
 // console.log(first, second, fourth); // A B D

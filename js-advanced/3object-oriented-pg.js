@@ -38,6 +38,7 @@
 // }
 // concatNames(...myName);
 
+//event loop
 function numbers() {
   console.log("1");
   setTimeout(() => {
@@ -48,5 +49,5 @@ function numbers() {
   }, 0);
   console.log("4");
 }
-numbers(); //hi
+numbers(); // 1 4 end 3 2
 console.log("end");

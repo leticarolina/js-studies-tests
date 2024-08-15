@@ -121,6 +121,28 @@
 //hi 3 logged out after function started to run
 //hi 4, hi 2 queued up accordingly to the settimeout specifically
 
+//promises are treated as microtasks, it will run as soon as it resolves or when the current function it's on finished running
+// function say() {
+//   new Promise((resolve) => {
+//     resolve("hi promise");
+//   }).then((a) => {
+//     console.log(a);
+//   });
+//   console.log("hi 1");
+//   console.log("hi 2");
+//   setTimeout(() => {
+//     console.log("hi 3");
+//   }, 10);
+//   console.log("hi 4");
+// }
+// say(); //first call say() // hi 1 hi 2 hi 4 + queued up setTimeOut + after finish function call stack is empty
+// console.log("hi 0"); //second renders hi 0 and hi promise that is resolved
+// sayCiao(); //third call sayCiao and queue up second setTimeOut and then log both accordingly
+// function sayCiao() {
+//   setTimeout(() => {
+//     console.log("ciao");
+//   }, 0);
+// }
 //* --------------------------------63. EVENT DELEGATION------------------------------*//
 //Event delegation is a technique where you attach an event listener to a parent element rather than to its children.
 //for example when you click a button, it's behind the scenes also clicking the body and the document so can attach an event listener to these

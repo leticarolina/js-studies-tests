@@ -14,7 +14,7 @@
 // let a = 1;
 // let b = 2;
 // let c = 3;
-// let d = a;
+// let d = a; //assign a variable as value
 // a = 3; //reassigning the variable value
 
 // console.log(a); //1
@@ -22,22 +22,27 @@
 // console.log(c); //3
 // console.log(d); //1 because variable "a" was still 1 when I declared "d", I haven't redeclared "a" before "d" was declared
 
+let leticia = "It's been a while";
+leticia = "Better late than never";
+console.log(leticia);
+
 //-----------9. NUMBER TYPE-------------
 
 // let integer = 1; //integer means a full number
 // let float = 2.3; //float menas a number with decimal point
-//typeof returns the type of variable
+// // typeof returns the type of variable
 // console.log(typeof integer); //number
 // console.log(typeof float); //number
-// console.log(integer + float); //3.3
-// console.log(integer + 2); //3
+// console.log(integer + float); //3.3 //this is opnly working because both are numbers
+// console.log(integer + 2); //3 // this is working because it's adding another number
+// console.log(integer + false); // 1
+// console.log(integer + true); // 2 //  adding true to it will increase it by 1, and adding false will leave it unchanged
 
-// let a = 1;
-// let b = 2;
-// let c = 3;
-// console.log((a + b) / c); // 1 double parethesis to log the sum first
-// console.log(b * c); //6
-
+let a = 1;
+let b = 2;
+let c = 3;
+console.log((a + b) / c); // 1 double parethesis to log the sum first
+console.log(b * c); //6
 //-------10. STRING TYPE--------
 
 // let a = "Leticia says 'hi'"; //single or double quote
