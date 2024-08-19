@@ -26,6 +26,9 @@ let leticia = "It's been a while";
 leticia = "Better late than never";
 console.log(leticia);
 
+//const is mostly used, variable caanot be reassigned
+//let can be reassigned
+
 //-----------9. NUMBER TYPE-------------
 
 // let integer = 1; //integer means a full number
@@ -38,21 +41,24 @@ console.log(leticia);
 // console.log(integer + false); // 1
 // console.log(integer + true); // 2 //  adding true to it will increase it by 1, and adding false will leave it unchanged
 
-let a = 1;
-let b = 2;
-let c = 3;
-console.log((a + b) / c); // 1 double parethesis to log the sum first
-console.log(b * c); //6
+// let a = 1;
+// let b = 2;
+// let c = 3;
+// console.log((a + b) / c); // 1 double parethesis to log the sum first
+// console.log(b * c); //6
+
 //-------10. STRING TYPE--------
 
 // let a = "Leticia says 'hi'"; //single or double quote
 // console.log(typeof a); //string
 
-// let myName = "Leticia";
-//ways to console.log/print strings together
+let myName = "Leticia";
+
+// ways to console.log/print strings together
 // console.log("Hello my name is", myName); //Hello my name is Leticia
-// console.log("Hello my name is " + myName);
-// console.log(`${"Hello my name is"} ${myName}`);
+// console.log("Hello my name is " + myName); //Hello my name is Leticia
+// console.log(`${"Hello my name is"} ${myName}`); //Hello my name is Leticia
+// console.log(`${"Hello"} ${myName}`);
 
 //-------BOOLEAN--------
 //boolean is a true or false value
@@ -60,11 +66,13 @@ console.log(b * c); //6
 // let a = true;
 // let b = false;
 // let c = true;
-// //&& means "and", will return true or false if both values match
+// //&& means "and", and when used to compare will return true or false if both values MATCH
 // console.log(a && b); //false
 // console.log(a && c); //true
 // //|| means "or" will return true if one value is true
 // console.log(a || b); //true
+// console.log(b || b); //false
+// console.log(b || a); //true
 
 // let happy = true;
 // let fun = true;
@@ -76,7 +84,7 @@ console.log(b * c); //6
 
 // let a = null;
 // let b = undefined;
-// // null returns as an object
+// // null returns as an object, menas has a value but its null
 // console.log(typeof a); //object
 // console.log(typeof b); //undefined returns undefined, means not defined yet
 
@@ -84,9 +92,11 @@ console.log(b * c); //6
 
 // let a = 1;
 // let b = 2;
-// == stands for "equals to"
+// let c = a;
+// // == stands for "equals to"
 // console.log(a == b); //false, value of "a" is not equal to "b"
-// console.log(a < b);  //true // < stands for "less than" same apply for > "greater than"
+// console.log(c == a);//true
+// console.log(a < b); //true // < stands for "less than" same apply for > "greater than"
 // console.log(a <= b); //true // <= less or equal to same for >= greater or equal to
 // code below essentially saying: is "a" NOT EQUAL TO "b" ?
 // console.log(a != b); //true // ! to get opposite return if false returns true
