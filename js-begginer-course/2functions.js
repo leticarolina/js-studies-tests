@@ -15,17 +15,25 @@
 // }
 // myName();
 
+function hello() {
+  list = ["banana", "milk"];
+}
+list = ["rice", "beans"];
+hello(); //function in this case is changing the array value
+console.log(list); // (2) ['banana', 'milk']
+
 //* ----------------16.1 FUNCTIONS WITH ARGUMENT/PARAMETERS-----------------------*//
 
-// function sum(a, b) {
-//   console.log(a + b); //3
-// }
-// //option to create a variable to define a value that will be passed to the function inside ()
-// let x = 1;
-// let y = 2;
-// sum(x, y);
-// //passing the number directly when calling the function() is another option
-// sum(1, 2);
+// parameters = giving a name to the info the function will take later
+function sum(a, b) {
+  console.log(a + b); //3
+}
+//option to create a variable to define a value that will be passed to the function inside ()
+let x = 1;
+let y = 2;
+sum(x, y);
+//passing the number directly when calling the function() is another option
+sum(1, 2);
 
 // //create a function that takes one argument (a person's name) ans prints that out
 // function myName(a) {
@@ -34,13 +42,19 @@
 // myName("Leticia"); //passing the info/Leticia straight to "a" parameter without creating a variable for that
 
 //create a function with one argument (name) it will return that name added to the end of the string "Hello"
-// function person(she) {
-//   return "Hello " + she;
+// function n(arg) {
+//   console.log("hello", arg);
 // }
-// //code below the variable itself is holding the function as its value and also calling/passing the parameter to the function
-// const girl = person("Leti");
-// console.log(girl); //Hello Leti
-// console.log(person()); //Hello undefined
+// const nome = "gabi";
+// n(nome);
+
+function person(she) {
+  return "Hello " + she;
+}
+//code below the variable itself is holding the function as its value and also calling/passing the parameter to the function
+const girl = person("Leti");
+console.log(girl); //Hello Leti
+console.log(person(girl)); //Hello undefined
 
 // function storeName(a) {
 //   return "Hello " + a;
