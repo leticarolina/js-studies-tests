@@ -25,15 +25,15 @@ console.log(list); // (2) ['banana', 'milk']
 //* ----------------16.1 FUNCTIONS WITH ARGUMENT/PARAMETERS-----------------------*//
 
 // parameters = giving a name to the info the function will take later
-function sum(a, b) {
-  console.log(a + b); //3
-}
-//option to create a variable to define a value that will be passed to the function inside ()
-let x = 1;
-let y = 2;
-sum(x, y);
-//passing the number directly when calling the function() is another option
-sum(1, 2);
+// function sum(a, b) {
+//   console.log(a + b); //3
+// }
+// //option to create a variable to define a value that will be passed to the function inside ()
+// let x = 1;
+// let y = 2;
+// sum(x, y);
+// //passing the number directly when calling the function() is another option
+// sum(1, 2);
 
 // //create a function that takes one argument (a person's name) ans prints that out
 // function myName(a) {
@@ -48,13 +48,14 @@ sum(1, 2);
 // const nome = "gabi";
 // n(nome);
 
-function person(she) {
-  return "Hello " + she;
-}
-//code below the variable itself is holding the function as its value and also calling/passing the parameter to the function
-const girl = person("Leti");
-console.log(girl); //Hello Leti
-console.log(person(girl)); //Hello undefined
+// function person(she) {
+//   return "Hello " + she;
+// }
+// //code below the variable itself is holding the function as its value and also calling/passing the parameter to the function
+// const girl = person("Leti");
+// console.log(girl); //Hello Leti
+// console.log(person()); //Hello undefined
+// console.log(person(girl)); //Hello Hello Leti
 
 // function storeName(a) {
 //   return "Hello " + a;
@@ -101,7 +102,7 @@ console.log(person(girl)); //Hello undefined
 // }
 // second(first);
 
-// //create function that takes 2 parameter name and callback, take the name and append "hello" and print on the first function
+//create function that takes 2 parameter name and callback, take the name and append "hello" and print on the first function
 // function person(she, callback) {
 //   callback("Hello " + she);
 // }
@@ -109,6 +110,17 @@ console.log(person(girl)); //Hello undefined
 // const value = person("Leticia", (values) => {
 //   console.log(values); //Hello Leticia
 // });
+
+// //If you wanted to do something with the result of person, you would need to modify person to return a value
+// function person(she, callback) {
+//   const greeting = "Hello " + she;
+//   callback("Hello " + she);
+//   return greeting; // Return the value
+// }
+// const result = person("Leticia", (values) => {
+//   console.log(values); // Hello Leticia
+// });
+// console.log(result); // Hello Leticia
 
 // function printVariable(variable) {
 //   console.log(variable);
@@ -140,9 +152,13 @@ console.log(person(girl)); //Hello undefined
 //   return a + b;
 // };
 
-// let printName = (x) => x; //TIP: if only one thing declared to return inside arrow function, can be option the name the curly {}, () and the "return" word
-// console.log(printName("Leticia"));
-
+// let printName = (nam) => {
+//   console.log(nam)
+// }
+//TIP: if only one thing declared to return inside arrow function, function name is optional also the curly {} and the "return" word
+let printName = (x) => x;
+console.log(printName("Leticia"));
+let printhi = (n) => "hi" + n;
 //another arrow function
 // let print = (c) => c; // (c) => c
 // console.log(print); // (c) => c
@@ -176,6 +192,7 @@ console.log(person(girl)); //Hello undefined
 // function sayHi(theName) {
 //   return "Hi " + theName;
 // }
+// //for Understanding function logic, Start with Identifying the main function being executed. And then rrace through each function call with the arguments provided.
 // doItAll(1, 1, "Leti"); //2 Hi Leti
 
 //passing one function to another with return
@@ -263,13 +280,13 @@ but global scope cannot access code inside the scope. */
 // }
 // const me = a("Leticia")(1997);
 
-function first(a) {
-  console.log(a + " = first"); //Leticia first
-  return function second(b, c) {
-    console.log(b + " = second b"); //Carolina = second b
-    console.log(c + " = second c"); //Azevedo = second c
-  };
-}
-// let theValues = first("Leticia");
-// theValues("Carolina", "Azevedo"); //this code is basically giving values to the 2 parameters of the inner function called "second"
-let theValues = first("Leticia")("Carolina", "Azevedo"); // code will give same result as 2 lined above
+// function first(a) {
+//   console.log(a + " = first"); //Leticia first
+//   return function second(b, c) {
+//     console.log(b + " = second b"); //Carolina = second b
+//     console.log(c + " = second c"); //Azevedo = second c
+//   };
+// }
+// // let theValues = first("Leticia");
+// // theValues("Carolina", "Azevedo"); //this code is basically giving values to the 2 parameters of the inner function called "second"
+// let theValues = first("Leticia")("Carolina", "Azevedo"); // code will give same result as 2 lined above
