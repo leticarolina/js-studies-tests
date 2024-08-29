@@ -122,16 +122,16 @@ console.log(list); // (2) ['banana', 'milk']
 // });
 // console.log(result); // Hello Leticia
 
-// function printVariable(variable) {
-//   console.log(variable);
-// } //helper function just to print whatever I'm going to to put on the function below
-// function sayHi(x, callback /*callback to call another function*/) {
-//   callback("Hello " + x);
-// }
-// sayHi("Leticia", printVariable); //function was called and gave the info of "x" to leticia and replaced callback
-// sayHi("Leticia", function (variable) {
-//   console.log(variable);
-// }); //another way to call function by replacing callback with already writing another function inside the "calling" and can delete the first function created
+function printVariable(variable) {
+  console.log(variable);
+} //helper function just to print whatever I'm going to to put on the function below
+function sayHi(x, callback /*callback to call another function*/) {
+  callback("Hello " + x);
+}
+sayHi("Leticia", printVariable); //function was called and gave the info of "x" to leticia and replaced callback
+sayHi("Leticia", function (variable) {
+  console.log(variable);
+}); //another way to call function by replacing callback with already writing another function inside the "calling" and can delete the first function created
 
 // function number(a, b, callback) {
 //   callback(a + b);
@@ -156,9 +156,9 @@ console.log(list); // (2) ['banana', 'milk']
 //   console.log(nam)
 // }
 //TIP: if only one thing declared to return inside arrow function, function name is optional also the curly {} and the "return" word
-let printName = (x) => x;
-console.log(printName("Leticia"));
-let printhi = (n) => "hi" + n;
+// let printName = (x) => x;
+// console.log(printName("Leticia"));
+
 //another arrow function
 // let print = (c) => c; // (c) => c
 // console.log(print); // (c) => c
@@ -231,7 +231,7 @@ let printhi = (n) => "hi" + n;
 /*code inside the scope can access the code from global scope.
 but global scope cannot access code inside the scope. */
 
-//console.log can access variable "c" outsIde the scope
+// console.log can access variable "c" outsIde the scope
 // let c = 3;
 // {
 //   let a = 1;
@@ -267,18 +267,18 @@ but global scope cannot access code inside the scope. */
 //     console.log(b); //Leti
 //   };
 // }
-// let x = first("Leticia"); //calling "first" function that will return another function from it
-// console.log(x); //x now represents the function inside "first"
+// let x = first("Leticia"); //calling "first" function with a value and this will return another function from it
+// console.log(x); //this return on the console the function itself, x now represents the function inside "first"
 // x("Leti"); //when calling "x" we are calling the function "first" which has a function inside and passing the parameter which maps to "second" function, thats how we pass value to the inner function
 // let x = first("Leticia")("Leti"); // this code will give same result as 3 lines above together.
 
-// function a(x) {
-//   return function (age) {
-//     console.log(x); //Leticia
-//     console.log(age); //27
-//   };
-// }
-// const me = a("Leticia")(1997);
+function a(x) {
+  return function b(age) {
+    console.log(x); //Leticia
+    console.log(age); //1997
+  };
+}
+const me = a("Leticia")(1997);
 
 // function first(a) {
 //   console.log(a + " = first"); //Leticia first
