@@ -16,6 +16,7 @@
 //* ----------------25. TYPE COERCION------------------*//
 /*convert from one type to another e.g. convert string to number*/
 // parseInt() function name to pass string to a integer number, syntax parseInt(the variable here);
+//parseFloat() same but to float number
 
 // string to number
 // let a = "1.1"; //variable "a" is a string
@@ -32,7 +33,7 @@
 /* triple equal signs === tell JS to not convert types before comparing, because type coercion with 2 equal signs == can give bugs*/
 //TIP:::: only use == when comparing null and undefined otherwise ALWAYS use ===
 
-// type coercion/ implicit type coercion: the automatic conversion of one data type to another in certain situations.
+// type coercion/implicit type coercion: the automatic conversion of one data type to another in certain situations.
 
 // with type coercion / Implicit Type Coercion:
 // const a = 1; //typeof number
@@ -40,7 +41,7 @@
 // console.log(a == b); //true (even though one is number and the another string, JS is doing type coercion bcs of both is 1)
 
 // const a = 0; //number
-// const b = false; //boolean
+// const b = false; //booleans
 // console.log(a == b); //return "true" even though they are not the same type due to type coercion
 
 // without type coercion using ===
@@ -57,6 +58,11 @@
 // const b = null;
 // console.log(a == b); //false
 
+// const a = 1;
+// const b = true;
+// console.log(a == b); //true
+// console.log(a === b); //false
+
 //* ----------------27. NaN = not a number ------------------*//
 // isNaN(); function to check if this is not a number returns true if it's not a number
 
@@ -71,7 +77,7 @@
 //** ALSO ARRAY INDEX STARTS AT 0 **
 
 // const array = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
-// console.log(array); // (10) [1, 2, 3, 4, 5, 6, 7, 8, 9, 10] (10) is the current array number of elements
+// console.log(array); // (10) [1, 2, 3, 4, 5, 6, 7, 8, 9, 10] (10) is the current array number of elements doesnt start at 0
 // // to access an specific element of the array use square brackets and the index
 // console.log(array[0]); //1
 // console.log(array[3]); //4
@@ -79,22 +85,29 @@
 // array.push(11); // variable.push() adds an element to the end of array, since push is a function need to use parenthesis
 // console.log(array); // (11) [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11]
 
+// const a = ["hi", 1, true, "leti"];
+// console.log(a[2]); //true
+// a.push(2);
+// console.log(a); //(5) ['hi', 1, true, 'leti', 2]
+
 // const girl = ["leticia", 26, "programmer"];
 // girl.push("yes");
 // console.log(girl[3]); //yes
 
-//Pushing a nested array inside another
-// const me = [26, 1997];
+// //Pushing a nested array inside another
+// const me = ["brazilian", 1997];
 // me.push(["Leticia", "Azevedo"]); //creating array inside another here
-// console.log(me); //(3) [26, 1997, Array(2)]
+// console.log(me); //(3) ['brazilian', 1997, Array(2)]
 // console.log(me[2]); // ['Leticia', 'Azevedo'] which is the inner array created and has index of 2
+// console.log(me[2][1]); //Azevedo
 
 //accessing an array index inside of another array
-// const array = [
-//   ["hi", "bye"],
-//   ["day", "night"],
-// ]; //this is a nested array 2 arrays inside a parent array
+// const b = ["hi", "bye"];
+// const array = [b, ["day", "night"]]; //this is a nested array 2 arrays inside a parent array
 // console.log(array[0][1]); //return 'bye', first brackets access the array index and the second brackets access the value index inside the array
+
+const a = ["a", "b", "c"];
+console.log(a[1]);
 
 // //exercise: create array with 5 letters and print out the middle element on the array
 // const letters = ["a", "b", "c", "d", "e"];

@@ -272,16 +272,17 @@ but global scope cannot access code inside the scope. */
 // x("Leti"); //when calling "x" we are calling the function "first" which has a function inside and passing the parameter which maps to "second" function, thats how we pass value to the inner function
 // let x = first("Leticia")("Leti"); // this code will give same result as 3 lines above together.
 
-function a(x) {
-  return function b(age) {
-    console.log(x); //Leticia
-    console.log(age); //1997
-  };
-}
-const me = a("Leticia")(1997);
+// function a(x) {
+//   return function b(age) {
+//     console.log(x); //Leticia
+//     console.log(age); //1997
+//   };
+// }
+// const me = a("Leticia")(1997); //The (1997) right after the returned function cause it to be executed immediately.
+//This is known as an immediately invoked function expression (IIFE) or simply as a function call chaining.
 
 // function first(a) {
-//   console.log(a + " = first"); //Leticia first
+//   console.log(a + " = first"); //Leticia = first
 //   return function second(b, c) {
 //     console.log(b + " = second b"); //Carolina = second b
 //     console.log(c + " = second c"); //Azevedo = second c
